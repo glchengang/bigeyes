@@ -1,0 +1,10 @@
+pages: [
+    {
+        name: null,
+        url: "http://www.weather.com.cn/weather1d/${code}.shtml",
+        xpaths: [
+            [0, 天气, "//DIV[@id='today']/INPUT[@id='hidden_title']"],
+        ]
+    }
+]
+

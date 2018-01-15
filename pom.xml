@@ -1,0 +1,272 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>cn.yowob</groupId>
+    <artifactId>bigeyes</artifactId>
+    <packaging>jar</packaging>
+    <version>1.0</version>
+    <name>chengang's bigeyes</name>
+    <url>http://www.yowob.cn</url>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <!-- 在复制时,如有同名资源文件, 则覆盖 -->
+        <maven.resources.overwrite>true</maven.resources.overwrite>
+        <maven.compiler.source>1.7</maven.compiler.source>
+        <maven.compiler.target>1.7</maven.compiler.target>
+    </properties>
+
+    <profiles>
+        <profile>
+            <!-- 本地开发环境. 命令: mvn clean package -->
+            <id>development</id>
+            <properties>
+                <profiles.active>development</profiles.active>
+                <!--<deploy.url>http://host:port/manager/text</deploy.url>-->
+            </properties>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+        </profile>
+        <profile>
+            <!-- 生产环境. 命令: mvn clean package -Pproduction -->
+            <id>production</id>
+            <properties>
+                <profiles.active>production</profiles.active>
+                <!--<deploy.url>http://host:port/manager/text</deploy.url>-->
+            </properties>
+        </profile>
+    </profiles>
+
+
+    <build>
+        <!-- bigeyes.jar 无版本号. 这行取消则会加版本号 bigeyes-1.0.jar-->
+        <finalName>bigeyes</finalName>
+        <sourceDirectory>src/main/java</sourceDirectory>
+
+        <resources>
+            <!-- targetPath不设置, 默认复制到classes目录, 而打jar包基于classes目录 -->
+            <!--<resource>-->
+                <!--<directory>src/main/resources</directory>-->
+                <!--<includes>-->
+                    <!--<include>logback.xml</include>-->
+                <!--</includes>-->
+            <!--</resource>-->
+            <!-- 复制到conf目录, 这是一个开放目录, 方便修改配置文件 -->
+            <resource>
+                <directory>src/main/resources</directory>
+                <includes>
+                    <include>**/*</include>
+                </includes>
+                <excludes>
+                    <!--<exclude>logback.xml</exclude>-->
+                    <exclude>assembly.xml</exclude>
+                    <exclude>production/*</exclude>
+                    <exclude>development/*</exclude>
+                </excludes>
+                <targetPath>${project.build.directory}/conf</targetPath>
+            </resource>
+            <resource>
+                <directory>src/main/resources/${profiles.active}</directory>
+                <targetPath>${project.build.directory}/conf</targetPath>
+            </resource>
+    </resources>
+
+
+        <plugins>
+
+            <!-- 打包时默认跳过测试 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.20.1</version>
+                <configuration>
+                    <skipTests>true</skipTests>
+                </configuration>
+            </plugin>
+
+            <!-- jar运行时依赖lib目录 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.0.2</version>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <addClasspath>true</addClasspath>
+                            <classpathPrefix>lib/</classpathPrefix>
+                            <mainClass>cn.yowob.bigeyes.Starter</mainClass>
+                        </manifest>
+                        <!-- 添加 MANIFEST.MF 中 Class-Path 缺少的内容 -->
+                        <manifestEntries>
+                            <Class-Path>lib/bigeyes-common-1.0.jar conf/</Class-Path>
+                        </manifestEntries>
+                    </archive>
+                    <excludes>
+                        <!--&lt;!&ndash; 在资源文件放进jar包之时进行过滤  &ndash;&gt;-->
+                        <!--&lt;!&ndash; 以 jar 里的目录路径为准, 而不是以项目源代码目录路径 &ndash;&gt;-->
+                        <!--<exclude>*.yml</exclude>-->
+                        <!--<exclude>*.txt</exclude>-->
+                        <!--<exclude>*.xml</exclude>-->
+                        <!--&lt;!&ndash;<exclude>cn/**</exclude>&ndash;&gt;-->
+                    </excludes>
+                </configuration>
+            </plugin>
+
+            <!-- 拷贝依赖的jar包到lib目录 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <version>3.0.2</version>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>copy-dependencies</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                     <!--scope: compile provided runtime test system-->
+                    <includeScope>compile</includeScope>
+                    <!--<excludeGroupIds>jdom,commons-logging</excludeGroupIds>-->
+                    <outputDirectory>${project.build.directory}/lib</outputDirectory>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <version>2.2.1</version>
+                <configuration>
+                    <descriptors>
+                        <!--<descriptor>src/main/assembly/assembly.xml</descriptor>-->
+                        <descriptor>src/main/resources/assembly.xml</descriptor>
+                    </descriptors>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>make-assembly</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+        </plugins>
+    </build>
+
+    <dependencies>
+        <dependency>
+            <groupId>bigeyes</groupId>
+            <artifactId>bigeyes-common</artifactId>
+            <version>1.0</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/lib/bigeyes-common-1.0.jar</systemPath>
+        </dependency>
+
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.11</version>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- ##### log #####--><!--<dependency>-->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>log4j-over-slf4j</artifactId>
+            <version>1.7.25</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>jcl-over-slf4j</artifactId>
+            <version>1.7.12</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-logging</groupId>
+            <artifactId>commons-logging</artifactId>
+            <version>1.1.1</version>
+            <!-- 改用 jcl-over-slf4j-1.7.12.jar 转接到 slf4j-->
+            <scope>test</scope>
+            <!--<scope>provided</scope>-->
+        </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-access</artifactId>
+            <!--<version>1.2.3</version>-->
+            <version>1.1.3</version>
+        </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>1.1.3</version>
+        </dependency>
+        <!-- ##### log: end ##### -->
+
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.1</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>2.6</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+            <!-- 2018 1.* latest -->
+            <version>4.5.4</version>
+        </dependency>
+
+        <dependency>
+            <groupId>net.sourceforge.nekohtml</groupId>
+            <artifactId>nekohtml</artifactId>
+            <!-- 2018 1.* latest -->
+            <version>1.9.22</version>
+        </dependency>
+        <dependency>
+            <groupId>dom4j</groupId>
+            <artifactId>dom4j</artifactId>
+            <version>1.6.1</version>
+        </dependency>
+        <dependency>
+            <groupId>jaxen</groupId>
+            <artifactId>jaxen</artifactId>
+            <version>1.1.1</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>xom</groupId>
+                    <artifactId>xom</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>xml-apis</groupId>
+            <artifactId>xml-apis</artifactId>
+            <!-- 2018 1.* latest -->
+            <version>1.4.01</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.yaml</groupId>
+            <artifactId>snakeyaml</artifactId>
+            <!-- 2018 latest -->
+            <version>1.19</version>
+        </dependency>
+        <dependency>
+            <groupId>org.codehaus.jackson</groupId>
+            <artifactId>jackson-mapper-asl</artifactId>
+            <!-- 2018 latest -->
+            <version>1.9.13</version>
+        </dependency>
+
+    </dependencies>
+
+</project>

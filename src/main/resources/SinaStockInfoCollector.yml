@@ -1,0 +1,69 @@
+pages: [
+    {
+        name: 公司简介,
+        url: "http://vip.stock.finance.sina.com.cn/corp/go.php/vCI_CorpInfo/stockid/${code}.phtml",
+        #file:///Users/chen/Documents/workspace/BigEyes/collector/sysadm/src/test/java/siam/sysadm/coll/公司简介_${code}.html
+        xpaths: [
+            [1, "股票名称及代码", "//*[@id='stockName']"],
+            [1, "公司名称", "//TD[text()='公司名称：']/following-sibling::TD"],
+            [1, "公司英文名称", "//TD[text()='公司英文名称：']/following-sibling::TD"],
+            [1, "上市市场", "//TD[text()='上市市场：']/following-sibling::TD"],
+            [1, "上市日期", "//TD[text()='上市日期：']/following-sibling::TD"],
+            [1, "发行价格", "//TD[text()='发行价格：']/following-sibling::TD"],
+            [1, "主承销商", "//TD[text()='主承销商：']/following-sibling::TD"],
+            [1, "成立日期", "//TD[text()='成立日期：']/following-sibling::TD"],
+            [1, "注册资本", "//TD[text()='注册资本：']/following-sibling::TD"],
+            [1, "机构类型", "//TD[text()='机构类型：']/following-sibling::TD"],
+            [1, "组织形式", "//TD[text()='组织形式：']/following-sibling::TD"],
+            [1, "董事会秘书", "//TD[text()='董事会秘书：']/following-sibling::TD"],
+            [1, "公司电话", "//TD[text()='公司电话：']/following-sibling::TD"],
+            [1, "董秘电话", "//TD[text()='董秘电话：']/following-sibling::TD"],
+            [1, "公司传真", "//TD[text()='公司传真：']/following-sibling::TD"],
+            [1, "董秘传真", "//TD[text()='董秘传真：']/following-sibling::TD"],
+            [1, "公司电子邮箱", "//TD[text()='公司电子邮箱：']/following-sibling::TD"],
+            [1, "董秘电子邮箱", "//TD[text()='董秘电子邮箱：']/following-sibling::TD"],
+            [1, "公司网址", "//TD[text()='公司网址：']/following-sibling::TD"],
+            [1, "邮政编码", "//TD[text()='邮政编码：']/following-sibling::TD"],
+            [1, "信息披露网址", "//TD[text()='信息披露网址：']/following-sibling::TD"],
+            [1, "证券简称更名历史", "//TD[text()='证券简称更名历史：']/following-sibling::TD"],
+            [1, "注册地址", "//TD[text()='注册地址：']/following-sibling::TD"],
+            [1, "办公地址", "//TD[text()='办公地址：']/following-sibling::TD"],
+            [1, "公司简介", "//TD[text()='公司简介：']/following-sibling::TD"],
+            [1, "经营范围", "//TD[text()='经营范围：']/following-sibling::TD"],
+        ]
+    },
+    {
+        name: 公司高管,
+        url: "http://vip.stock.finance.sina.com.cn/corp/go.php/vCI_CorpManager/stockid/${code}.phtml",
+        #file:///Users/chen/Documents/workspace/BigEyes/collector/sysadm/src/test/java/siam/sysadm/coll/公司高管_${code}.html
+        xpaths: [
+            [2,"历届高管成员","//TH[text()='历届高管成员']/../../../TBODY/TR"],
+            [2,"历届董事会成员","//TH[text()='历届董事会成员']/../../../TBODY/TR"],
+            [2,"历届监事会成员","//TH[text()='历届监事会成员']/../../../TBODY/TR"],
+        ]
+    },
+    {
+        name: 公司章程,
+        url: "http://vip.stock.finance.sina.com.cn/corp/go.php/vCI_CorpRule/stockid/${code}.phtml",
+        xpaths: [
+            [4, "公司章程","//TABLE[@id]/THEAD"],
+        ]
+    },
+    {
+        name: 相关证券,
+        url: "http://vip.stock.finance.sina.com.cn/corp/go.php/vCI_CorpXiangGuan/stockid/${code}.phtml",
+        xpaths: [
+            [2,"相关证券","//TH[text()='相关证券']/../../../TBODY/TR"],
+            [2,"所属指数","//TH[text()='所属指数']/../../../TBODY/TR"],
+            [2,"所属系","//TH[text()='所属系']/../../../TBODY/TR"],
+        ]
+    },
+    {
+        name: 所属行业,
+        url: "http://vip.stock.finance.sina.com.cn/corp/go.php/vCI_CorpOtherInfo/stockid/${code}/menu_num/2.phtml",
+        xpaths: [
+            [3,"所属行业板块","//TD[text()='所属行业板块']/../../TR"],
+            [3,"所属概念板块","//TD[text()='所属概念板块']/../../TR"],
+        ]
+    },
+]

@@ -1,0 +1,20 @@
+weather_city_id_file: /Users/chen/workspace/collector/admgui/src/main/resources/weather_city_id.xml
+
+pages: [
+    {
+        name: null,
+        url: "http://www.weather.com.cn/weather1d/${code}.shtml",
+        xpaths: [
+            [天气1, 0, "//DIV[@id='today']/INPUT[@id='hidden_title']"],
+            [天气2, 0, "//DIV[@id='today']/INPUT[@id='hidden_title']"]
+        ]
+    },
+    {
+        name: aaa,
+        url: "http://www.weather.com.cn/weather1d/${code}.shtml",
+        xpaths: [
+            [天气, 0, "//DIV[@id='today']/INPUT[@id='hidden_title']"]
+        ]
+    }
+]
+
