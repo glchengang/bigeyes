@@ -6,7 +6,7 @@
 
 ## 使用指南
 
-本项目使用 JDK7 + Maven3  编译打包，我在本机环境测试通过：OS X EI Capitan 10.11.6 + JDK_1.7.0_55 + Maven_3.5.2。
+本项目使用 JDK7 + Maven3  编译打包，我在本机环境测试通过：JDK_1.7.0_55 + Maven_3.5.2 + OS X EI Capitan 10.11.6
 
 1. 编译打包：
 
@@ -34,8 +34,7 @@
 4. 运行
 
    ```
-   cd target/bigeyes/
-   ./start.sh
+   bigeyes/bin/start.sh
    ```
 
    本小工具没有自带定时执行功能，可以借用 linux 的定时器来调用执行。

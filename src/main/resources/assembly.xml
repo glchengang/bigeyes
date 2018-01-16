@@ -8,13 +8,8 @@
 
     <fileSets>
         <!-- 从目标目录拷贝文件去压缩 -->
-        <fileSet>
-            <directory>target</directory>
-            <includes>
-                <include>*.jar</include>
-            </includes>
-            <outputDirectory>/</outputDirectory>
-        </fileSet>
+        <!-- directory相对路径：以pom.xml所在目录为起始 -->
+        <!-- outputDirectory绝对路径：以最终生成的压缩包为基准 -->
         <fileSet>
             <directory>target/lib</directory>
             <outputDirectory>/lib</outputDirectory>
@@ -24,12 +19,19 @@
             <outputDirectory>/conf</outputDirectory>
         </fileSet>
         <fileSet>
+            <directory>target</directory>
+            <includes>
+                <include>bigeyes*.jar</include>
+            </includes>
+            <outputDirectory>/lib</outputDirectory>
+        </fileSet>
+        <fileSet>
             <directory></directory>
             <includes>
                 <include>start.sh</include>
             </includes>
-            <outputDirectory>/</outputDirectory>
-            <!-- 可执行权限 -->
+            <outputDirectory>/bin</outputDirectory>
+            <!-- 给 start.sh 设置可执行权限 -->
             <fileMode>0700</fileMode>
         </fileSet>
     </fileSets>

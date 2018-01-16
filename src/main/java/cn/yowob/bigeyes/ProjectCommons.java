@@ -14,9 +14,9 @@ import java.util.List;
 import java.util.Map;
 
 /**
+ * 工具类
  * User: chen.gang, glchengang@163.com
  * Date: 2018-01-15
- *
  */
 public class ProjectCommons {
 	private static final Logger log = LoggerFactory.getLogger(ProjectCommons.class);

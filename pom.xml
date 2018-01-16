@@ -24,9 +24,11 @@
             <id>development</id>
             <properties>
                 <profiles.active>development</profiles.active>
+                <!-- 以下可以配置成直接发布到tomcat，而我习惯用shell脚本发布项目 -->
                 <!--<deploy.url>http://host:port/manager/text</deploy.url>-->
             </properties>
             <activation>
+                <!-- 开发环境为默认profile -->
                 <activeByDefault>true</activeByDefault>
             </activation>
         </profile>
@@ -40,44 +42,41 @@
         </profile>
     </profiles>
 
-
     <build>
-        <!-- bigeyes.jar 无版本号. 这行取消则会加版本号 bigeyes-1.0.jar-->
-        <finalName>bigeyes</finalName>
-        <sourceDirectory>src/main/java</sourceDirectory>
+        <!-- 默认生所jar带版本号：bigeyes-1.0.jar，以下可以指定无版本号名称：bigeyes.jar -->
+        <!--<finalName>bigeyes</finalName>-->
+
+        <!--设置java源代码目录，默认即为src/main/java-->
+        <!--<sourceDirectory>src/main/java</sourceDirectory>-->
 
         <resources>
-            <!-- targetPath不设置, 默认复制到classes目录, 而打jar包基于classes目录 -->
-            <!--<resource>-->
-                <!--<directory>src/main/resources</directory>-->
-                <!--<includes>-->
-                    <!--<include>logback.xml</include>-->
-                <!--</includes>-->
-            <!--</resource>-->
-            <!-- 复制到conf目录, 这是一个开放目录, 方便修改配置文件 -->
+            <!--
+            配置文件还是从jar包里移出来好，这样方便修改。如果没有targetPath,
+            配置文件默认会复制到classes目录, 而classes目录的文件将会压入jar包。
+            所以设置targetPath到conf目录, 这样生成的jar文件就不再包含配置文件了
+            -->
+            <!--  -->
             <resource>
                 <directory>src/main/resources</directory>
                 <includes>
                     <include>**/*</include>
                 </includes>
                 <excludes>
-                    <!--<exclude>logback.xml</exclude>-->
+                    <!-- 过滤以下文件 -->
                     <exclude>assembly.xml</exclude>
                     <exclude>production/*</exclude>
-                    <exclude>development/*</exclude>
                 </excludes>
                 <targetPath>${project.build.directory}/conf</targetPath>
             </resource>
             <resource>
+                <!-- 按使用的profile来覆盖配置文件，例：mvn package -Pproduction  -->
                 <directory>src/main/resources/${profiles.active}</directory>
                 <targetPath>${project.build.directory}/conf</targetPath>
             </resource>
-    </resources>
-
+        </resources>
 
         <plugins>
-
-            <!-- 打包时默认跳过测试 -->
+            <!-- 打包时默认跳过测试：mvn package -DskipTests参数不再需要 -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
@@ -86,35 +85,6 @@
                     <skipTests>true</skipTests>
                 </configuration>
             </plugin>
-
-            <!-- jar运行时依赖lib目录 -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-jar-plugin</artifactId>
-                <version>3.0.2</version>
-                <configuration>
-                    <archive>
-                        <manifest>
-                            <addClasspath>true</addClasspath>
-                            <classpathPrefix>lib/</classpathPrefix>
-                            <mainClass>cn.yowob.bigeyes.Starter</mainClass>
-                        </manifest>
-                        <!-- 添加 MANIFEST.MF 中 Class-Path 缺少的内容 -->
-                        <manifestEntries>
-                            <Class-Path>lib/bigeyes-common-1.0.jar conf/</Class-Path>
-                        </manifestEntries>
-                    </archive>
-                    <excludes>
-                        <!--&lt;!&ndash; 在资源文件放进jar包之时进行过滤  &ndash;&gt;-->
-                        <!--&lt;!&ndash; 以 jar 里的目录路径为准, 而不是以项目源代码目录路径 &ndash;&gt;-->
-                        <!--<exclude>*.yml</exclude>-->
-                        <!--<exclude>*.txt</exclude>-->
-                        <!--<exclude>*.xml</exclude>-->
-                        <!--&lt;!&ndash;<exclude>cn/**</exclude>&ndash;&gt;-->
-                    </excludes>
-                </configuration>
-            </plugin>
-
             <!-- 拷贝依赖的jar包到lib目录 -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -135,14 +105,14 @@
                     <outputDirectory>${project.build.directory}/lib</outputDirectory>
                 </configuration>
             </plugin>
-
+            <!-- 装配插件，最终得到 bigeyes-bin.zip -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-assembly-plugin</artifactId>
                 <version>2.2.1</version>
                 <configuration>
                     <descriptors>
-                        <!--<descriptor>src/main/assembly/assembly.xml</descriptor>-->
+                        <!-- 装配的具体设置文件 -->
                         <descriptor>src/main/resources/assembly.xml</descriptor>
                     </descriptors>
                 </configuration>
@@ -156,27 +126,27 @@
                     </execution>
                 </executions>
             </plugin>
-
         </plugins>
     </build>
 
     <dependencies>
         <dependency>
+            <!-- 这个内部用的一个通用工具包 -->
             <groupId>bigeyes</groupId>
             <artifactId>bigeyes-common</artifactId>
             <version>1.0</version>
             <scope>system</scope>
             <systemPath>${project.basedir}/lib/bigeyes-common-1.0.jar</systemPath>
         </dependency>
-
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>4.11</version>
+            <!--仅测试时需要-->
             <scope>test</scope>
         </dependency>
 
-        <!-- ##### log #####--><!--<dependency>-->
+        <!-- ########## log ##########-->
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>log4j-over-slf4j</artifactId>
@@ -186,14 +156,6 @@
             <groupId>org.slf4j</groupId>
             <artifactId>jcl-over-slf4j</artifactId>
             <version>1.7.12</version>
-        </dependency>
-        <dependency>
-            <groupId>commons-logging</groupId>
-            <artifactId>commons-logging</artifactId>
-            <version>1.1.1</version>
-            <!-- 改用 jcl-over-slf4j-1.7.12.jar 转接到 slf4j-->
-            <scope>test</scope>
-            <!--<scope>provided</scope>-->
         </dependency>
         <dependency>
             <groupId>ch.qos.logback</groupId>
@@ -206,7 +168,18 @@
             <artifactId>logback-classic</artifactId>
             <version>1.1.3</version>
         </dependency>
-        <!-- ##### log: end ##### -->
+        <dependency>
+            <groupId>commons-logging</groupId>
+            <artifactId>commons-logging</artifactId>
+            <version>1.1.1</version>
+            <!--
+            改用jcl-over-slf4j.jar来将使用commons-logging的日志转接到slf4j
+            但很多项目都会依赖commons-logging，设置scope=test是为了把此jar排
+            除出lib目录
+            -->
+            <scope>test</scope>
+        </dependency>
+        <!-- ########## log: end ########## -->
 
         <dependency>
             <groupId>org.apache.commons</groupId>
@@ -240,6 +213,7 @@
             <groupId>jaxen</groupId>
             <artifactId>jaxen</artifactId>
             <version>1.1.1</version>
+            <!-- 把jaxen依赖的xom.jar排除掉 -->
             <exclusions>
                 <exclusion>
                     <groupId>xom</groupId>
