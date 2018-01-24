@@ -1,0 +1,5 @@
+# 新浪用户ID为一串数字, 比如博文目录页的地址为: http://blog.sina.com.cn/s/articlelist_1182391231_0_1.html
+# 则其userId=1182391231
+# 示例: blog_user_id: 1182391231
+
+blog_user_id: 1182391231

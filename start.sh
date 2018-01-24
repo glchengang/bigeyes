@@ -28,10 +28,13 @@ export CLASSPATH
 
 
 # cn.yowob.bigeyes.Starter类在bigeyes-1.0.jar里
-# 启动天气信息抓取器
 # java cn.yowob.bigeyes.Starter weather
-# 启动新浪上市公司信息抓取器 (步骤抓取IP会被封锁)
-# java cn.yowob.bigeyes.Starter sina_stock_info
-# 同时启动两个网页抓取器
-java cn.yowob.bigeyes.Starter weather sina_stock_info
+# java cn.yowob.bigeyes.Starter weather sina_stock_info
+#
+# 现在支持以下信息的采集:
+#      sinablog - 新浪博客备份
+#      blogjava - www.blogjava.net BlogJava技术博客备份
+#      weather - 天气信息
+#      sina_stock_info - 新浪网站的上市公司信息 (频繁抓取,IP会被新浪封掉一个小时)
 
+java cn.yowob.bigeyes.Starter sinablog blogjava

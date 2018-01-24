@@ -2,4 +2,4 @@
 outputDir: /Users/chen/Downloads/tmp/
 
 #采集的最大数量,0=不限制。 开发测试时设值小些。
-collectMaxCount: 3
+collectMaxCount: 0

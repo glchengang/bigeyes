@@ -1,0 +1,3086 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head id="Head"><title>
+	jBPM开发入门指南(3)  - 子在川上曰 - BlogJava
+</title><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><meta id="metaKeywords" name="keywords" content="jBPM开发入门指南(3) " /><link type="text/css" rel="stylesheet" href="/css/common.css" /><link id="MainCss" type="text/css" rel="stylesheet" href="http://www.blogjava.net/Skins/AnotherEon001/style.css" /><link id="RSSLink" title="RSS" type="application/rss+xml" rel="alternate" href="http://www.blogjava.net/chengang/rss.aspx" /></head>
+<body>
+    <form name="Form1" method="post" action="65346.html" id="Form1">
+<div>
+<input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="" />
+<input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="" />
+<input type="hidden" name="__VIEWSTATE" id="
+__VIEWSTATE" value="" />
+</div>
+
+<script type="text/javascript">
+//<![CDATA[
+var theForm = document.forms['Form1'];
+if (!theForm) {
+    theForm = document.Form1;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+</script>
+
+
+<script src="/WebResource.axd?d=hCqqcDq62xC48aLO1-oizzph91mftTcpBQYAMmX9y1_MEKckib0uai68YudFFqahbIRj8ZaZB19FpMr30&amp;t=635588906575142005" type="text/javascript"></script>
+
+<script language=JavaScript>
+									function ctlent(evt,id)
+											{
+												if(evt.ctrlKey && evt.keyCode == 13)
+												{	
+													try
+													{
+														TempSave(id);
+													}
+													catch(ex)
+													{
+													}
+													finally
+													{
+													    __doPostBack('AjaxHolder$PostComment$btnSubmit','')
+													}
+												}
+		
+												}</script>
+												<script language=JavaScript>function SetReplyAuhor(author){document.getElementById('AjaxHolder_PostComment_tbComment').value+="@"+author+"\n";document.getElementById('AjaxHolder_PostComment_tbComment').focus();return false}</script>
+<script src="/ScriptResource.axd?d=-BecoVNwDVCZ4TW3gB_ZzPWfgjCQ_C64O4hNc3pweA4UGq0B-lWFnUMMAtqURN0AZF_f7fxk9s5U1gsq0foUhwHdXezBbn_OgCN5EL300MOu7Jb-c7WU_a2OCK01&amp;t=634979389729873750" type="text/javascript"></script>
+<script src="/ScriptResource.axd?d=4npu1eCN6HUVuTPPO5YDuuBNC2hrBvTsGEVYQhhAo9CX_hfoT2Mz1UGnoo5C32pPXZvBizBLMnY0_szRgrGRkyv7-BsG0CvEejE8Vl3Xt8nd-D_58kXSDmaBFOFFj7w3EMKivQ2&amp;t=634979389729873750" type="text/javascript"></script>
+        
+<table width="100%" class="Framework" cellspacing="0" cellpadding="0">
+	<tr>
+		<td>
+			
+<div id="top">
+<h1><a id="Header1_HeaderTitle" class="headermaintitle" href="http://www.blogjava.net/chengang/">子在川上曰</a></h1>
+<div id="subtitle">　　逝者如斯夫不舍昼夜</div>
+</div>
+<div id="sub">
+<div class="BlogStats">随笔 - 113, 文章 - 0, 评论 - 941, 引用 - 0</div>
+</div>
+
+
+</td>
+	</tr>
+</table>
+<table width="100%" class="Framework" cellspacing="0" cellpadding="0">
+	<tr>
+		<td rowspan="2" class="LeftCell" >
+			<div id="leftmenu">
+				数据加载中……
+			</div>
+		</td>
+		<td class="MainCell">
+			<div id="main">
+				
+					
+	<div class="post">
+		<h2>
+			<a id="viewpost1_TitleUrl" href="http://www.blogjava.net/chengang/archive/2006/08/23/65346.html">jBPM开发入门指南(3) </a>
+		</h2>
+		<div class="postbody">
+		
+		<h2 style="MARGIN: 12pt 0cm">
+				<span lang="EN-US">
+						<font face="Arial">5</font>
+				</span>
+				<span style="FONT-FAMILY: 黑体; mso-ascii-font-family: Arial">　安装</span>
+				<span lang="EN-US">
+						<font face="Arial">jBPM</font>
+				</span>
+				<span style="FONT-FAMILY: 黑体; mso-ascii-font-family: Arial">的</span>
+				<span lang="EN-US">
+						<font face="Arial">Eclipse</font>
+				</span>
+				<span style="FONT-FAMILY: 黑体; mso-ascii-font-family: Arial">开发插件</span>
+		</h2>
+		<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt">
+				<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">有个辅助工具开发起来方便一点，只不过现在</span>
+				<span lang="EN-US">jBPM</span>
+				<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">的开发工具插件功能还不算太强，也就一个“项目创建向导”的功能，让你：</span>
+		</p>
+		<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt">
+				<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">（1）不用再去配置</span>
+				<span lang="EN-US">classpath</span>
+				<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">库的引用了</span>
+		</p>
+		<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt">
+				<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">（2）直接得到了一个</span>
+				<span lang="EN-US">jBPM</span>
+				<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">的项目初始结构</span>
+		</p>
+		<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt">
+				<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">其实吧，开发</span>
+				<span lang="EN-US">jBPM</span>
+				<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">也不需要什么插件工具，在熟练了以后，库引用了项目初始结构都可以手工创建。</span>
+		</p>
+		<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt">
+				<span lang="EN-US">
+						<?xml:namespace prefix = o ns = "urn:schemas-microsoft-com:office:office" /?>
+						<o:p> </o:p>
+				</span>
+		</p>
+		<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt">
+				<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">插件不用再去下载了，</span>
+				<span lang="EN-US">jbpm-starters-kit-<?xml:namespace prefix = st1 ns = "urn:schemas-microsoft-com:office:smarttags" /?><st1:chsdate isrocdate="False" islunardate="False" day="30" month="12" year="1899" w:st="on">3.1.1</st1:chsdate></span>
+				<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">包里就有，目录地址如下：</span>
+				<span class="Char0">
+						<span lang="EN-US" style="FONT-SIZE: 9pt; mso-bidi-font-family: 'Times New Roman'">
+								<font face="Courier New">D:\jbpm-starters-kit-3.1.1\jbpm-designer\jbpm-gpd-feature\eclipse</font>
+						</span>
+				</span>
+				<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">，插件的安装方式是链接式还是直接复制式，任选吧。不懂的就去看看《</span>
+				<span lang="EN-US">Eclipse</span>
+				<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">从入门精通》这本书，在前面章节都有讲到。另外，注明一下</span>
+				<span lang="EN-US">Eclipse</span>
+				<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">的版本我是用</span>
+				<span lang="EN-US">3.2</span>
+				<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">，插件和</span>
+				<span lang="EN-US">Eclispe</span>
+				<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">版本相关的，要注意了。</span>
+		</p>
+		<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt">
+				<span lang="EN-US">
+						<o:p> </o:p>
+				</span>
+		</p>
+		<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt">
+				<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">如果安装成功，则</span>
+				<span lang="EN-US">Eclipse</span>
+				<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">首选项里多了一个</span>
+				<span lang="EN-US">JBoss jBPM</span>
+				<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">，另外我们也需要到这个</span>
+				<span lang="EN-US">jBPM</span>
+				<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">的首选项里做一些配置工作――指定</span>
+				<span lang="EN-US">jBPM</span>
+				<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">的安装路径（如下图所示）。这个配置主要是为了找到</span>
+				<span lang="EN-US">jbpm</span>
+				<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">下的各种</span>
+				<span lang="EN-US">jar</span>
+				<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">包，好让</span>
+				<span lang="EN-US">Eclipse</span>
+				<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">设置项目的库引用。本文指向路径是</span>
+				<span lang="EN-US">d:\jbpm-starters-kit-<st1:chsdate isrocdate="False" islunardate="False" day="30" month="12" year="1899" w:st="on">3.1.1</st1:chsdate>\jbpm.3</span>
+		</p>
+		<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt">
+				<span lang="EN-US">
+						<?xml:namespace prefix = v ns = "urn:schemas-microsoft-com:vml" /?>
+						<v:shapetype id="_x0000_t75" coordsize="21600,21600" o:spt="75" o:preferrelative="t" path="m&#64;4&#64;5l&#64;4&#64;11&#64;9&#64;11&#64;9&#64;5xe" filled="f" stroked="f">
+								<v:stroke joinstyle="miter">
+								</v:stroke>
+								<v:formulas>
+										<v:f eqn="if lineDrawn pixelLineWidth 0">
+										</v:f>
+										<v:f eqn="sum &#64;0 1 0">
+										</v:f>
+										<v:f eqn="sum 0 0 &#64;1">
+										</v:f>
+										<v:f eqn="prod &#64;2 1 2">
+										</v:f>
+										<v:f eqn="prod &#64;3 21600 pixelWidth">
+										</v:f>
+										<v:f eqn="prod &#64;3 21600 pixelHeight">
+										</v:f>
+										<v:f eqn="sum &#64;0 0 1">
+										</v:f>
+										<v:f eqn="prod &#64;6 1 2">
+										</v:f>
+										<v:f eqn="prod &#64;7 21600 pixelWidth">
+										</v:f>
+										<v:f eqn="sum &#64;8 21600 0">
+										</v:f>
+										<v:f eqn="prod &#64;7 21600 pixelHeight">
+										</v:f>
+										<v:f eqn="sum &#64;10 21600 0">
+										</v:f>
+								</v:formulas>
+								<v:path o:extrusionok="f" gradientshapeok="t" o:connecttype="rect">
+								</v:path>
+								<o:lock v:ext="edit" aspectratio="t">
+								</o:lock>
+						</v:shapetype>
+				</span>
+		</p>
+		<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt">
+				<span lang="EN-US">
+						<o:p>
+								<img height="313" alt="20060823_image001.jpg" src="/images/blogjava_net/chengang/jbpm/20060823_image001.jpg" width="553" border="0" /> </o:p>
+				</span>
+		</p>
+		<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt">
+				<span lang="EN-US">
+						<o:p> </o:p>
+				</span>
+		</p>
+		<h2 style="MARGIN: 12pt 0cm">
+				<span lang="EN-US">
+						<font face="Arial">6</font>
+				</span>
+				<span style="FONT-FAMILY: 黑体; mso-ascii-font-family: Arial">　</span>
+				<span lang="EN-US">
+						<font face="Arial">jBPM</font>
+				</span>
+				<span style="FONT-FAMILY: 黑体; mso-ascii-font-family: Arial">的</span>
+				<span lang="EN-US">
+						<font face="Arial">Hello World</font>
+				</span>
+		</h2>
+		<h3 style="MARGIN: 12pt 0cm 6pt">
+				<font size="3">
+						<font face="宋体, MS Song">
+								<span lang="EN-US">6.1</span>　新建<span lang="EN-US">jBPM</span>项目</font>
+				</font>
+		</h3>
+		<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt">
+				<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">主菜单“文件－＞新建－＞项目”，在弹出的对话框里，有“</span>
+				<span lang="EN-US">Process Project</span>
+				<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">”项，如下图所示：</span>
+		</p>
+		<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt">
+				<span lang="EN-US">
+				</span>
+		</p>
+		<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt">
+				<span lang="EN-US">
+						<o:p> </o:p>
+						<img height="205" alt="20060823_image002.jpg" src="/images/blogjava_net/chengang/jbpm/20060823_image002.jpg" width="314" border="0" />
+						<br />
+				</span>
+		</p>
+		<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt">
+				<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">
+						<br />选上好，单击“下一步”，起个名“</span>
+				<span lang="EN-US">myjbpm</span>
+				<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">”，然后就可以单击“完成”了。然后就生成了如下图所示的一个项目结构：</span>
+				<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">
+						<br />
+						<img height="359" alt="20060823_image003.jpg" src="/images/blogjava_net/chengang/jbpm/20060823_image003.jpg" width="229" border="0" /> <br /><br />这个项目和通常</span>
+				<span lang="EN-US">Eclipse</span>
+				<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">的项目结构有点不同，不过这是一个现在非常流行的项目结构，</span>
+				<span lang="EN-US">src/java</span>
+				<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">存放源文件，</span>
+				<span lang="EN-US">test/java</span>
+				<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">存放相应的</span>
+				<span lang="EN-US">JUnit</span>
+				<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">单元测试代码。如果你用</span>
+				<span lang="EN-US">Maven</span>
+				<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">来编译构建项目，对这种目录结构一定不陌生。</span>
+		</p>
+		<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt">
+				<span lang="EN-US">
+						<o:p> </o:p>
+				</span>
+		</p>
+		<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt">
+				<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">项目创建起了，介绍一下里面的文件吧：</span>
+		</p>
+		<p class="a" style="MARGIN: 0cm 0cm 0pt 39pt">
+				<span lang="EN-US" style="FONT-SIZE: 7.5pt; FONT-FAMILY: Wingdings; mso-bidi-font-family: Wingdings; mso-fareast-font-family: Wingdings; mso-bidi-font-size: 10.5pt">
+						<span style="mso-list: Ignore">l<span style="FONT: 7pt 'Times New Roman'">           </span></span>
+				</span>
+				<span lang="EN-US">MessageActionHandler</span>
+				<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">，自动生成的一个</span>
+				<span lang="EN-US">ActionHandler</span>
+				<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">。不想要可以删掉。</span>
+		</p>
+		<p class="a" style="MARGIN: 0cm 0cm 0pt 39pt">
+				<span lang="EN-US" style="FONT-SIZE: 7.5pt; FONT-FAMILY: Wingdings; mso-bidi-font-family: Wingdings; mso-fareast-font-family: Wingdings; mso-bidi-font-size: 10.5pt">
+						<span style="mso-list: Ignore">l<span style="FONT: 7pt 'Times New Roman'">           </span></span>
+				</span>
+				<span lang="EN-US">ehcache.xml<span style="mso-spacerun: yes">  </span>cache</span>
+				<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">的配置文件，里面有很详解的英文说明。没有必要可以不用改它。</span>
+		</p>
+		<p class="a" style="MARGIN: 0cm 0cm 0pt 39pt">
+				<span lang="EN-US" style="FONT-SIZE: 7.5pt; FONT-FAMILY: Wingdings; mso-bidi-font-family: Wingdings; mso-fareast-font-family: Wingdings; mso-bidi-font-size: 10.5pt">
+						<span style="mso-list: Ignore">l<span style="FONT: 7pt 'Times New Roman'">           </span></span>
+				</span>
+				<span lang="EN-US">hibernate.cfg.xml</span>
+				<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">　</span>
+				<span lang="EN-US">jBPM</span>
+				<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">是用</span>
+				<span lang="EN-US">Hibernate</span>
+				<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">进行工作流的数据存储的，这个就是</span>
+				<span lang="EN-US">Hibernate</span>
+				<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">的配置文件。后面我们将讲到如何配置这个文件。</span>
+		</p>
+		<p class="a" style="MARGIN: 0cm 0cm 0pt 39pt">
+				<span lang="EN-US" style="FONT-SIZE: 7.5pt; FONT-FAMILY: Wingdings; mso-bidi-font-family: Wingdings; mso-fareast-font-family: Wingdings; mso-bidi-font-size: 10.5pt">
+						<span style="mso-list: Ignore">l<span style="FONT: 7pt 'Times New Roman'">           </span></span>
+				</span>
+				<span lang="EN-US">jbpm.cfg.xml</span>
+				<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">　</span>
+				<span lang="EN-US">jbpm</span>
+				<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">本身的配置文件。现在是空的，它用的是缺省配置，你想知道有哪些配置就去看这个文件</span>
+				<span lang="EN-US">D:\jbpm-starters-kit-<st1:chsdate isrocdate="False" islunardate="False" day="30" month="12" year="1899" w:st="on">3.1.1</st1:chsdate>\jbpm.3\src\java.jbpm\org\jbpm\default.jbpm.cfg.xml</span>
+		</p>
+		<p class="a" style="MARGIN: 0cm 0cm 0pt 39pt">
+				<span lang="EN-US" style="FONT-SIZE: 7.5pt; FONT-FAMILY: Wingdings; mso-bidi-font-family: Wingdings; mso-fareast-font-family: Wingdings; mso-bidi-font-size: 10.5pt">
+						<span style="mso-list: Ignore">l<span style="FONT: 7pt 'Times New Roman'">           </span></span>
+				</span>
+				<span lang="EN-US">log4j.properties</span>
+				<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">　这个是日志</span>
+				<span lang="EN-US">API</span>
+				<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">包</span>
+				<span lang="EN-US">log4j</span>
+				<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">的配置文件，用过</span>
+				<span lang="EN-US">log4j</span>
+				<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">的都知道。</span>
+		</p>
+		<p class="a" style="MARGIN: 0cm 0cm 0pt 39pt">
+				<span lang="EN-US" style="FONT-SIZE: 7.5pt; FONT-FAMILY: Wingdings; mso-bidi-font-family: Wingdings; mso-fareast-font-family: Wingdings; mso-bidi-font-size: 10.5pt">
+						<span style="mso-list: Ignore">l<span style="FONT: 7pt 'Times New Roman'">           </span></span>
+				</span>
+				<span lang="EN-US">SimpleProcessTest.java</span>
+				<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">　这个是对最重要的流程配置文件的</span>
+				<span lang="EN-US">processdefinition.xml</span>
+				<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">单元测试代码。这里表扬一点，</span>
+				<span lang="EN-US">jBPM</span>
+				<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">的优良设计使得它的可测试性非常之高，喜欢写</span>
+				<span lang="EN-US">t</span>
+				<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">单元测试的人有福了。</span>
+		</p>
+		<p class="a" style="MARGIN: 0cm 0cm 0pt 39pt">
+				<span lang="EN-US" style="FONT-SIZE: 7.5pt; FONT-FAMILY: Wingdings; mso-bidi-font-family: Wingdings; mso-fareast-font-family: Wingdings; mso-bidi-font-size: 10.5pt">
+						<span style="mso-list: Ignore">l<span style="FONT: 7pt 'Times New Roman'">           </span></span>
+				</span>
+				<span lang="EN-US">gpd.xml</span>
+				<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">　用于生成流程图的定义文件。都是一些方框的坐标和长宽</span>
+		</p>
+		<p class="a" style="MARGIN: 0cm 0cm 0pt 39pt">
+				<span lang="EN-US" style="FONT-SIZE: 7.5pt; FONT-FAMILY: Wingdings; mso-bidi-font-family: Wingdings; mso-fareast-font-family: Wingdings; mso-bidi-font-size: 10.5pt">
+						<span style="mso-list: Ignore">l<span style="FONT: 7pt 'Times New Roman'">           </span></span>
+				</span>
+				<span lang="EN-US">processdefinition.xml</span>
+				<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">　这个是对最重要的流程配置文件，以后写流程要经常和它打交道。</span>
+		</p>
+		<p class="a" style="MARGIN: 0cm 0cm 0pt 39pt">
+				<span lang="EN-US" style="FONT-SIZE: 7.5pt; FONT-FAMILY: Wingdings; mso-bidi-font-family: Wingdings; mso-fareast-font-family: Wingdings; mso-bidi-font-size: 10.5pt">
+						<span style="mso-list: Ignore">l<span style="FONT: 7pt 'Times New Roman'">           </span></span>
+				</span>
+				<span lang="EN-US">processimage.jpg</span>
+				<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">　一个流程图</span>
+				<br />
+		</p>
+		<p class="a" style="MARGIN: 0cm 0cm 0pt 39pt">
+				<span lang="EN-US" style="FONT-SIZE: 7.5pt; FONT-FAMILY: Wingdings; mso-bidi-font-family: Wingdings; mso-fareast-font-family: Wingdings; mso-bidi-font-size: 10.5pt">
+						<span style="mso-list: Ignore">
+						</span>
+				</span>
+		</p>
+		<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt">
+				<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">
+						<br />从项目结构来看，我们没有看到</span>
+				<span lang="EN-US">JSP</span>
+				<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">网页程序，也没有看到</span>
+				<span lang="EN-US">GUI</span>
+				<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">客户端程序，这些代码都是要我们以后开发中来写的。但本文不准备用</span>
+				<span lang="EN-US">JSP</span>
+				<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">、</span>
+				<span lang="EN-US">GUI</span>
+				<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">（</span>
+				<span lang="EN-US">Swing</span>
+				<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">、</span>
+				<span lang="EN-US">SWT</span>
+				<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">）来做示例，而是用</span>
+				<span lang="EN-US">JUnit</span>
+				<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">代码来做使用</span>
+				<span lang="EN-US">jBPM</span>
+				<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">客户端来演示。因为</span>
+				<span lang="EN-US">jBPM</span>
+				<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">实际上是一个后台框架，至于前台是</span>
+				<span lang="EN-US">JSP</span>
+				<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">还是</span>
+				<span lang="EN-US">Swing</span>
+				<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">还是无界面的</span>
+				<span lang="EN-US">java.class</span>
+				<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">都是无关紧要的。在教程里用无界面的</span>
+				<span lang="EN-US">java.class</span>
+				<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">来做客户端则更方便一些，如果进一步采用</span>
+				<span lang="EN-US">JUnit</span>
+				<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">，则这样的</span>
+				<span lang="EN-US">java.class</span>
+				<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">同时还具备了单元测试的功能。以后就是用</span>
+				<span lang="EN-US">JSP</span>
+				<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">写了</span>
+				<span lang="EN-US">WEB</span>
+				<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">页面，我们还是可以用这些</span>
+				<span lang="EN-US">JUnit</span>
+				<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">程序来做单元测试，避免了频繁的鼠标点按</span>
+				<span lang="EN-US">WEB</span>
+				<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">页面这样的力气活。所以在</span>
+				<span lang="EN-US">jBPM</span>
+				<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">自带的英文教程里都是一个</span>
+				<span lang="EN-US">JUnit</span>
+				<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">程序，不仔佃看还真摸不着头脑。</span>
+		</p>
+		<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt">
+				<span lang="EN-US">
+						<o:p> </o:p>
+				</span>
+		</p>
+		<h3 style="MARGIN: 12pt 0cm 6pt">
+				<font size="3">
+						<font face="宋体, MS Song">
+								<span lang="EN-US">6.2</span>　修改<span lang="EN-US">hibernate.cfg.xml</span></font>
+				</font>
+		</h3>
+		<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt">
+				<span lang="EN-US">
+						<span style="mso-tab-count: 1">       </span>hibernate.cfg.xml</span>
+				<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">的默认设置是用</span>
+				<span lang="EN-US">HSQL</span>
+				<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">，这是一个内存数据库，这种内存数据库用来代替项目实际所用的数据库来做单元测试挺不错的。不过我们这里是要试试用</span>
+				<span lang="EN-US">MySQL</span>
+				<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">、</span>
+				<span lang="EN-US">Oracle</span>
+				<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">，那就改一下设置吧。</span>
+		</p>
+		<p class="a1" style="MARGIN: 7.8pt 0cm">
+				<font size="2">
+						<font style="BACKGROUND-COLOR: #dddddd">
+								<span style="FONT-FAMILY: 楷体_GB2312; mso-ascii-font-family: 'Times New Roman'">注：配置值可参考</span>
+								<span lang="EN-US">D:\jbpm-starters-kit-<st1:chsdate isrocdate="False" islunardate="False" day="30" month="12" year="1899" w:st="on">3.1.1</st1:chsdate>\jbpm-db</span>
+								<span style="FONT-FAMILY: 楷体_GB2312; mso-ascii-font-family: 'Times New Roman'">对应子目录下的</span>
+								<span lang="EN-US">hibernate.properties</span>
+								<span style="FONT-FAMILY: 楷体_GB2312; mso-ascii-font-family: 'Times New Roman'">文件。</span>
+						</font>
+				</font>
+		</p>
+		<p class="4" style="MARGIN: 6pt 0cm">
+				<span lang="EN-US">1</span>
+				<span style="FONT-FAMILY: 楷体_GB2312; mso-ascii-font-family: 'Times New Roman'">、</span>
+				<span lang="EN-US">MySQL</span>
+				<span style="FONT-FAMILY: 楷体_GB2312; mso-ascii-font-family: 'Times New Roman'">的更改如下：</span>
+		</p>
+		<div style="BORDER-RIGHT: medium none; PADDING-RIGHT: 0cm; BORDER-TOP: windowtext 1pt solid; PADDING-LEFT: 0cm; BACKGROUND: #fff4e9; PADDING-BOTTOM: 1pt; BORDER-LEFT: medium none; PADDING-TOP: 1pt; BORDER-BOTTOM: windowtext 1pt solid; mso-element: para-border-div">
+				<p class="a0" style="MARGIN: 0cm 0cm 0pt">
+						<span lang="EN-US">
+								<font face="Courier New" size="2">&lt;property name="hibernate.dialect"&gt;org.hibernate.dialect.MySQLDialect&lt;/property&gt;</font>
+						</span>
+				</p>
+				<p class="a0" style="MARGIN: 0cm 0cm 0pt">
+						<span lang="EN-US">
+								<font face="Courier New" size="2">&lt;property name="hibernate.connection.driver_class"&gt;com.mysql.jdbc.Driver&lt;/property&gt;</font>
+						</span>
+				</p>
+				<p class="a0" style="MARGIN: 0cm 0cm 0pt">
+						<span lang="EN-US">
+								<font face="Courier New" size="2">&lt;property name="hibernate.connection.url"&gt;jdbc:mysql://localhost:3306/jbpm&lt;/property&gt;</font>
+						</span>
+				</p>
+				<p class="a0" style="MARGIN: 0cm 0cm 0pt">
+						<span lang="EN-US">
+								<font face="Courier New" size="2">&lt;property name="hibernate.connection.username"&gt;root&lt;/property&gt;</font>
+						</span>
+				</p>
+				<p class="a0" style="MARGIN: 0cm 0cm 0pt">
+						<span lang="EN-US">
+								<font face="Courier New" size="2">&lt;property name="hibernate.connection.password"&gt;123456&lt;/property&gt;</font>
+						</span>
+				</p>
+		</div>
+		<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt">
+				<span lang="EN-US">
+						<o:p> </o:p>
+				</span>
+		</p>
+		<p class="4" style="MARGIN: 6pt 0cm">
+				<span lang="EN-US">2</span>
+				<span style="FONT-FAMILY: 楷体_GB2312; mso-ascii-font-family: 'Times New Roman'">、</span>
+				<span lang="EN-US">Oracle</span>
+				<span style="FONT-FAMILY: 楷体_GB2312; mso-ascii-font-family: 'Times New Roman'">的更改如下：</span>
+		</p>
+		<div style="BORDER-RIGHT: medium none; PADDING-RIGHT: 0cm; BORDER-TOP: windowtext 1pt solid; PADDING-LEFT: 0cm; BACKGROUND: #fff4e9; PADDING-BOTTOM: 1pt; BORDER-LEFT: medium none; PADDING-TOP: 1pt; BORDER-BOTTOM: windowtext 1pt solid; mso-element: para-border-div">
+				<p class="a0" style="MARGIN: 0cm 0cm 0pt">
+						<span lang="EN-US">
+								<font face="Courier New" size="2">&lt;property name="hibernate.dialect"&gt;org.hibernate.dialect.OracleDialect&lt;/property&gt;</font>
+						</span>
+				</p>
+				<p class="a0" style="MARGIN: 0cm 0cm 0pt">
+						<span lang="EN-US">
+								<font face="Courier New" size="2">&lt;property name="hibernate.connection.driver_class"&gt;oracle.jdbc.driver.OracleDriver&lt;/property&gt;</font>
+						</span>
+				</p>
+				<p class="a0" style="MARGIN: 0cm 0cm 0pt">
+						<span lang="EN-US">
+								<font face="Courier New" size="2">&lt;property name="hibernate.connection.url"&gt;jdbc:oracle:thin:&#64;192.168.123.10:1521:wxxrDB&lt;/property&gt;</font>
+						</span>
+				</p>
+				<p class="a0" style="MARGIN: 0cm 0cm 0pt">
+						<span lang="EN-US">
+								<font face="Courier New" size="2">&lt;property name="hibernate.connection.username"&gt;chengang&lt;/property&gt;</font>
+						</span>
+				</p>
+				<p class="a0" style="MARGIN: 0cm 0cm 0pt">
+						<span lang="EN-US">
+								<font face="Courier New" size="2">&lt;property name="hibernate.connection.password"&gt;chengang&lt;/property&gt;</font>
+						</span>
+				</p>
+		</div>
+		<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt">
+				<span lang="EN-US">
+						<o:p> </o:p>
+				</span>
+		</p>
+		<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt">
+				<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">如果你装了</span>
+				<span lang="EN-US">Oracle</span>
+				<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">的客户端，并且</span>
+				<span lang="EN-US">D:\oracle\ora92\network\ADMIN\tnsnames.ora</span>
+				<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">里做了如下的设置</span>
+		</p>
+		<div style="BORDER-RIGHT: medium none; PADDING-RIGHT: 0cm; BORDER-TOP: windowtext 1pt solid; PADDING-LEFT: 0cm; BACKGROUND: #fff4e9; PADDING-BOTTOM: 1pt; BORDER-LEFT: medium none; PADDING-TOP: 1pt; BORDER-BOTTOM: windowtext 1pt solid; mso-element: para-border-div">
+				<p class="a0" style="MARGIN: 0cm 0cm 0pt">
+						<span lang="EN-US">
+								<font face="Courier New" size="2">WXXRDB_192.168.123.10 =</font>
+						</span>
+				</p>
+				<p class="a0" style="MARGIN: 0cm 0cm 0pt">
+						<span lang="EN-US">
+								<font size="2">
+										<font face="Courier New">
+												<span style="mso-spacerun: yes">  </span>(DESCRIPTION =</font>
+								</font>
+						</span>
+				</p>
+				<p class="a0" style="MARGIN: 0cm 0cm 0pt">
+						<span lang="EN-US">
+								<font size="2">
+										<font face="Courier New">
+												<span style="mso-spacerun: yes">    </span>(ADDRESS_LIST =</font>
+								</font>
+						</span>
+				</p>
+				<p class="a0" style="MARGIN: 0cm 0cm 0pt">
+						<span lang="EN-US">
+								<font size="2">
+										<font face="Courier New">
+												<span style="mso-spacerun: yes">      </span>(ADDRESS = (PROTOCOL = TCP)(HOST = 192.168.123.10)(PORT = 1521))</font>
+								</font>
+						</span>
+				</p>
+				<p class="a0" style="MARGIN: 0cm 0cm 0pt">
+						<span lang="EN-US">
+								<font size="2">
+										<font face="Courier New">
+												<span style="mso-spacerun: yes">    </span>)</font>
+								</font>
+						</span>
+				</p>
+				<p class="a0" style="MARGIN: 0cm 0cm 0pt">
+						<span lang="EN-US">
+								<font size="2">
+										<font face="Courier New">
+												<span style="mso-spacerun: yes">    </span>(CONNECT_DATA =</font>
+								</font>
+						</span>
+				</p>
+				<p class="a0" style="MARGIN: 0cm 0cm 0pt">
+						<span lang="EN-US">
+								<font size="2">
+										<font face="Courier New">
+												<span style="mso-spacerun: yes">      </span>(SID = wxxrDB)</font>
+								</font>
+						</span>
+				</p>
+				<p class="a0" style="MARGIN: 0cm 0cm 0pt">
+						<span lang="EN-US">
+								<font size="2">
+										<font face="Courier New">
+												<span style="mso-spacerun: yes">      </span>(SERVER = DEDICATED)</font>
+								</font>
+						</span>
+				</p>
+				<p class="a0" style="MARGIN: 0cm 0cm 0pt">
+						<span lang="EN-US">
+								<font size="2">
+										<font face="Courier New">
+												<span style="mso-spacerun: yes">    </span>)</font>
+								</font>
+						</span>
+				</p>
+				<p class="a0" style="MARGIN: 0cm 0cm 0pt">
+						<span lang="EN-US">
+								<font size="2">
+										<font face="Courier New">
+												<span style="mso-spacerun: yes">  </span>)</font>
+								</font>
+						</span>
+				</p>
+		</div>
+		<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt">
+				<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">
+						<br />则</span>
+				<span lang="EN-US">Oracle</span>
+				<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">的</span>
+				<span lang="EN-US">hibernate.connection.url</span>
+				<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">项也可以设为：</span>
+				<span lang="EN-US">jdbc:oracle:oci:&#64;WXXRDB_192.168.123.10</span>
+		</p>
+		<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt">
+				<span lang="EN-US">
+						<o:p> </o:p>
+				</span>
+		</p>
+		<h3 style="MARGIN: 12pt 0cm 6pt">
+				<font size="3">
+						<font face="宋体, MS Song">
+								<span lang="EN-US">6.3</span>　完善库引用</font>
+				</font>
+		</h3>
+		<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt">
+				<span lang="EN-US">
+						<span style="mso-tab-count: 1">       </span>
+				</span>
+				<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">虽然</span>
+				<span lang="EN-US">jBPM</span>
+				<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">在创建项目之初给我们设置好了库引用，如下图</span>
+		</p>
+		<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt">
+				<span lang="EN-US">
+				</span>
+		</p>
+		<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt">
+				<span lang="EN-US">
+						<o:p>
+								<img height="415" alt="20060823_image004.jpg" src="/images/blogjava_net/chengang/jbpm/20060823_image004.jpg" width="400" border="0" />
+								<br /> </o:p>
+				</span>
+		</p>
+		<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt">
+				<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">但后面运行时还是报一些</span>
+				<span lang="EN-US">NoClassDefFoundError</span>
+				<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">异常，如没有对</span>
+				<span lang="EN-US">hibernate3.jar</span>
+				<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">的引用导致下面的错误</span>
+		</p>
+		<div style="BORDER-RIGHT: medium none; PADDING-RIGHT: 0cm; BORDER-TOP: windowtext 1pt solid; PADDING-LEFT: 0cm; BACKGROUND: #fff4e9; PADDING-BOTTOM: 1pt; BORDER-LEFT: medium none; PADDING-TOP: 1pt; BORDER-BOTTOM: windowtext 1pt solid; mso-element: para-border-div">
+				<p class="a0" style="MARGIN: 0cm 0cm 0pt">
+						<span lang="EN-US">
+								<font face="Courier New" size="2">java.lang.NoClassDefFoundError: org/hibernate/Session</font>
+						</span>
+				</p>
+				<p class="a0" style="MARGIN: 0cm 0cm 0pt">
+						<span lang="EN-US">
+								<font size="2">
+										<font face="Courier New">
+												<span style="mso-tab-count: 1">    </span>at org.jbpm.persistence.db.DbPersistenceServiceFactory.openService(DbPersistenceServiceFactory.java:55)</font>
+								</font>
+						</span>
+				</p>
+				<p class="a0" style="MARGIN: 0cm 0cm 0pt">
+						<span lang="EN-US">
+								<font size="2">
+										<font face="Courier New">
+												<span style="mso-tab-count: 1">    </span>at org.jbpm.svc.Services.getService(Services.java:136)</font>
+								</font>
+						</span>
+				</p>
+				<p class="a0" style="MARGIN: 0cm 0cm 0pt">
+						<span lang="EN-US">
+								<font size="2">
+										<font face="Courier New">
+												<span style="mso-tab-count: 1">    </span>.......</font>
+								</font>
+						</span>
+				</p>
+		</div>
+		<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt">
+				<span lang="EN-US">
+						<o:p> </o:p>
+				</span>
+		</p>
+		<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt">
+				<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">所以我们要为本文的实例完善库引用。主要是把</span>
+				<span lang="EN-US">MySQL</span>
+				<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">和</span>
+				<span lang="EN-US">Oracle</span>
+				<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">的</span>
+				<span lang="EN-US">JDBC</span>
+				<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">库、以及</span>
+				<span lang="EN-US">Hibernate</span>
+				<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">的</span>
+				<span lang="EN-US">hibernate3.jar</span>
+				<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">加入到项目的库引用中。</span>
+		</p>
+		<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt 36pt; TEXT-INDENT: -36pt; mso-list: l0 level1 lfo2; tab-stops: list 36.0pt">
+				<span lang="EN-US" style="mso-bidi-font-family: 宋体">
+						<span style="mso-list: Ignore">（1）<span style="FONT: 7pt 'Times New Roman'">       </span></span>
+				</span>
+				<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">找到缺少的</span>
+				<span lang="EN-US">jar</span>
+				<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">包</span>
+		</p>
+		<p class="a" style="MARGIN: 0cm 0cm 0pt 39pt">
+				<span lang="EN-US" style="FONT-SIZE: 7.5pt; FONT-FAMILY: Wingdings; mso-bidi-font-family: Wingdings; mso-fareast-font-family: Wingdings; mso-bidi-font-size: 10.5pt">
+						<span style="mso-list: Ignore">l<span style="FONT: 7pt 'Times New Roman'">           </span></span>
+				</span>
+				<span lang="EN-US">mysql</span>
+				<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">的</span>
+				<span lang="EN-US">jdbc</span>
+				<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">包，在</span>
+				<span lang="EN-US">D:\jbpm-starters-kit-<st1:chsdate isrocdate="False" islunardate="False" day="30" month="12" year="1899" w:st="on">3.1.1</st1:chsdate>\jbpm-db\mysql\lib</span>
+				<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">目录里</span>
+		</p>
+		<p class="a" style="MARGIN: 0cm 0cm 0pt 39pt">
+				<span lang="EN-US" style="FONT-SIZE: 7.5pt; FONT-FAMILY: Wingdings; mso-bidi-font-family: Wingdings; mso-fareast-font-family: Wingdings; mso-bidi-font-size: 10.5pt">
+						<span style="mso-list: Ignore">l<span style="FONT: 7pt 'Times New Roman'">           </span></span>
+				</span>
+				<span lang="EN-US">oracle</span>
+				<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">的</span>
+				<span lang="EN-US">jdbc</span>
+				<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">包，</span>
+				<span lang="EN-US">jbmp</span>
+				<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">中没有包含（可能是没拿到</span>
+				<span lang="EN-US">oracle</span>
+				<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">授权），我们可以自已去</span>
+				<span lang="EN-US">oracle</span>
+				<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">网站上下载，或者去</span>
+				<span lang="EN-US">oracle</span>
+				<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">安装目录</span>
+				<span lang="EN-US">D:\oracle\ora92\jdbc\lib</span>
+				<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">找</span>
+				<span lang="EN-US">ojdbc14.jar</span>
+				<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">（我们公司用的是</span>
+				<span lang="EN-US">Oracle9i</span>
+				<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">）</span>
+		</p>
+		<p class="a" style="MARGIN: 0cm 0cm 0pt 39pt">
+				<span lang="EN-US" style="FONT-SIZE: 7.5pt; FONT-FAMILY: Wingdings; mso-bidi-font-family: Wingdings; mso-fareast-font-family: Wingdings; mso-bidi-font-size: 10.5pt">
+						<span style="mso-list: Ignore">l<span style="FONT: 7pt 'Times New Roman'">           </span></span>
+				</span>
+				<span lang="EN-US">Hibernate3.jar</span>
+				<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">在目录</span>
+				<span lang="EN-US">D:\jbpm-starters-kit-<st1:chsdate isrocdate="False" islunardate="False" day="30" month="12" year="1899" w:st="on">3.1.1</st1:chsdate>\jbpm.3\lib\hibernate</span>
+				<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">里。</span>
+		</p>
+		<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt 36pt; TEXT-INDENT: -36pt; mso-list: l0 level1 lfo2; tab-stops: list 36.0pt">
+				<span lang="EN-US" style="mso-bidi-font-family: 宋体">
+						<span style="mso-list: Ignore">（2）<span style="FONT: 7pt 'Times New Roman'">       </span></span>
+				</span>
+				<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">在项目里创建一个</span>
+				<span lang="EN-US">lib</span>
+				<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">目录，将这三个</span>
+				<span lang="EN-US">jar</span>
+				<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">复制到</span>
+				<span lang="EN-US">lib</span>
+				<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">目录。</span>
+		</p>
+		<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt 36pt; TEXT-INDENT: -36pt; mso-list: l0 level1 lfo2; tab-stops: list 36.0pt">
+				<span lang="EN-US" style="mso-bidi-font-family: 宋体">
+						<span style="mso-list: Ignore">（3）<span style="FONT: 7pt 'Times New Roman'">       </span></span>
+				</span>
+				<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">如下图设置三</span>
+				<span lang="EN-US">jar</span>
+				<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">包的库引用</span>
+		</p>
+		<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt">
+				<span lang="EN-US">
+				</span>
+		</p>
+		<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt">
+				<span lang="EN-US">
+						<o:p>
+								<img height="269" alt="20060823_image005.jpg" src="/images/blogjava_net/chengang/jbpm/20060823_image005.jpg" width="445" border="0" /> </o:p>
+				</span>
+		</p>
+		<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt">
+				<span lang="EN-US">
+						<o:p> </o:p>
+				</span>
+		</p>
+		<h3 style="MARGIN: 12pt 0cm 6pt">
+				<font size="3">
+						<font face="宋体, MS Song">
+								<span lang="EN-US">6.4</span>　开始<span lang="EN-US">HellorWorld</span></font>
+				</font>
+		</h3>
+		<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt">
+				<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">这里是一个很简单的请假流程，请假人提交假单给经理审批，经理审批后结束。要说明的是，这个流程并不严谨，比如经理不通过流程应该到哪？不过这并不防碍拿它来做示例，螃蟹还得一个一个的吃。我们先拿这一杆子捅到底的流程做一个最简单的示例，从整体上对</span>
+				<span lang="EN-US">jBPM</span>
+				<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">工作流开发有概念先。然后我们再慢慢丰富。</span>
+		</p>
+		<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt">
+				<span lang="EN-US">
+						<o:p> </o:p>
+				</span>
+		</p>
+		<p class="4" style="MARGIN: 6pt 0cm">
+				<span lang="EN-US">1</span>
+				<span style="FONT-FAMILY: 楷体_GB2312; mso-ascii-font-family: 'Times New Roman'">、定义流程</span>
+		</p>
+		<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt">
+				<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">流程的定义文件是</span>
+				<span lang="EN-US">processdefinition.xml</span>
+				<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">，这个是一个关键文件，</span>
+				<span lang="EN-US">jBPM</span>
+				<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">的很大一部份内容都是关于它的。在这里我们把原来自动生成的内容，稍做改动：</span>
+		</p>
+		<div style="BORDER-RIGHT: medium none; PADDING-RIGHT: 0cm; BORDER-TOP: windowtext 1pt solid; PADDING-LEFT: 0cm; BACKGROUND: #fff4e9; PADDING-BOTTOM: 1pt; BORDER-LEFT: medium none; PADDING-TOP: 1pt; BORDER-BOTTOM: windowtext 1pt solid; mso-element: para-border-div">
+				<p class="a0" style="MARGIN: 0cm 0cm 0pt">
+						<span lang="EN-US">
+								<font face="Courier New" size="2">&lt;?<span style="COLOR: #3f7f7f">xml </span><span style="COLOR: #7f007f">version</span><span style="COLOR: black">=</span><span style="COLOR: #2a00ff">"1.0" </span><span style="COLOR: #7f007f">encoding</span><span style="COLOR: black">=</span><span style="COLOR: #2a00ff">"GBK"</span>?&gt;</font>
+						</span>
+				</p>
+				<p class="a0" style="MARGIN: 0cm 0cm 0pt">
+						<span lang="EN-US">
+								<o:p>
+										<font face="Courier New" size="2"> </font>
+								</o:p>
+						</span>
+				</p>
+				<p class="a0" style="MARGIN: 0cm 0cm 0pt">
+						<span lang="EN-US">
+								<font face="Courier New" size="2">&lt;process-definition <span style="COLOR: #7f007f">xmlns</span><span style="COLOR: black">=</span><span style="COLOR: #2a00ff">"urn:jbpm.org:jpdl-3.1" </span><span style="COLOR: #7f007f">name</span><span style="COLOR: black">=</span><span style="COLOR: #2a00ff">"helloworld"</span>&gt;</font>
+						</span>
+				</p>
+				<p class="a0" style="MARGIN: 0cm 0cm 0pt">
+						<font size="2">
+								<font face="Courier New">
+										<span lang="EN-US" style="COLOR: black">
+												<span style="mso-tab-count: 1">    </span>
+										</span>
+										<span lang="EN-US">&lt;!-- </span>
+								</font>
+								<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Courier New'; mso-hansi-font-family: 'Courier New'">申请</span>
+								<span lang="EN-US">
+										<font face="Courier New">--&gt;</font>
+								</span>
+						</font>
+				</p>
+				<p class="a0" style="MARGIN: 0cm 0cm 0pt">
+						<font size="2">
+								<font face="Courier New">
+										<span lang="EN-US" style="COLOR: black">
+												<span style="mso-tab-count: 1">    </span>
+										</span>
+										<span lang="EN-US">&lt;<span style="COLOR: #3f7f7f">start-state </span><span style="COLOR: #7f007f">name</span><span style="COLOR: black">=</span><span style="COLOR: #2a00ff">"request"</span>&gt;</span>
+								</font>
+						</font>
+				</p>
+				<p class="a0" style="MARGIN: 0cm 0cm 0pt">
+						<font size="2">
+								<font face="Courier New">
+										<span lang="EN-US" style="COLOR: black">
+												<span style="mso-tab-count: 2">        </span>
+										</span>
+										<span lang="EN-US">&lt;<span style="COLOR: #3f7f7f">task</span>&gt;</span>
+								</font>
+						</font>
+				</p>
+				<p class="a0" style="MARGIN: 0cm 0cm 0pt">
+						<span lang="EN-US">
+								<font size="2">
+										<font face="Courier New">
+												<span style="mso-tab-count: 3">            </span>&lt;<span style="COLOR: #3f7f7f">controller</span>&gt;</font>
+								</font>
+						</span>
+				</p>
+				<p class="a0" style="MARGIN: 0cm 0cm 0pt">
+						<span lang="EN-US">
+								<font size="2">
+										<font face="Courier New">
+												<span style="mso-tab-count: 4">                </span>&lt;<span style="COLOR: #3f7f7f">variable </span><span style="COLOR: #7f007f">name</span>=<span style="COLOR: #2a00ff">"name" </span>/&gt;</font>
+								</font>
+						</span>
+				</p>
+				<p class="a0" style="MARGIN: 0cm 0cm 0pt">
+						<span lang="EN-US">
+								<font size="2">
+										<font face="Courier New">
+												<span style="mso-tab-count: 4">                </span>&lt;<span style="COLOR: #3f7f7f">variable </span><span style="COLOR: #7f007f">name</span>=<span style="COLOR: #2a00ff">"day" </span>/&gt;</font>
+								</font>
+						</span>
+				</p>
+				<p class="a0" style="MARGIN: 0cm 0cm 0pt">
+						<span lang="EN-US">
+								<font size="2">
+										<font face="Courier New">
+												<span style="mso-tab-count: 4">                </span>&lt;<span style="COLOR: #3f7f7f">variable </span><span style="COLOR: #7f007f">name</span>=<span style="COLOR: #2a00ff">"note" </span>/&gt;</font>
+								</font>
+						</span>
+				</p>
+				<p class="a0" style="MARGIN: 0cm 0cm 0pt">
+						<font size="2">
+								<font face="Courier New">
+										<span lang="EN-US" style="COLOR: black">
+												<span style="mso-tab-count: 3">            </span>
+										</span>
+										<span lang="EN-US">&lt;/<span style="COLOR: #3f7f7f">controller</span>&gt;</span>
+								</font>
+						</font>
+				</p>
+				<p class="a0" style="MARGIN: 0cm 0cm 0pt">
+						<font size="2">
+								<font face="Courier New">
+										<span lang="EN-US" style="COLOR: black">
+												<span style="mso-tab-count: 2">        </span>
+										</span>
+										<span lang="EN-US">&lt;/<span style="COLOR: #3f7f7f">task</span>&gt;</span>
+								</font>
+						</font>
+				</p>
+				<p class="a0" style="MARGIN: 0cm 0cm 0pt">
+						<font size="2">
+								<font face="Courier New">
+										<span lang="EN-US" style="COLOR: black">
+												<span style="mso-tab-count: 2">        </span>
+										</span>
+										<span lang="EN-US">&lt;!-- </span>
+								</font>
+								<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Courier New'; mso-hansi-font-family: 'Courier New'">流程转向</span>
+								<span lang="EN-US">
+										<font face="Courier New">--&gt;</font>
+								</span>
+						</font>
+				</p>
+				<p class="a0" style="MARGIN: 0cm 0cm 0pt">
+						<span lang="EN-US">
+								<font size="2">
+										<font face="Courier New">
+												<span style="mso-tab-count: 2">        </span>&lt;<span style="COLOR: #3f7f7f">transition </span><span style="COLOR: #7f007f">name</span>=<span style="COLOR: #2a00ff">"to_confirm" </span><span style="COLOR: #7f007f">to</span>=<span style="COLOR: #2a00ff">"confirm"</span>&gt;</font>
+								</font>
+						</span>
+				</p>
+				<p class="a0" style="MARGIN: 0cm 0cm 0pt">
+						<span lang="EN-US">
+								<font size="2">
+										<font face="Courier New">
+												<span style="mso-tab-count: 3">            </span>&lt;<span style="COLOR: #3f7f7f">action </span><span style="COLOR: #7f007f">name</span>=<span style="COLOR: #2a00ff">"requestAction"</span></font>
+								</font>
+						</span>
+				</p>
+				<p class="a0" style="MARGIN: 0cm 0cm 0pt">
+						<span lang="EN-US">
+								<font size="2">
+										<font face="Courier New">
+												<span style="mso-tab-count: 4">                </span>
+												<span style="COLOR: #7f007f">class</span>
+												<span style="COLOR: black">=</span>"cn.com.chengang.jbpm.RequestAction"&gt;</font>
+								</font>
+						</span>
+				</p>
+				<p class="a0" style="MARGIN: 0cm 0cm 0pt">
+						<font size="2">
+								<span lang="EN-US">
+										<font face="Courier New">
+												<span style="mso-tab-count: 4">                </span>&lt;<span style="COLOR: #3f7f7f">reason</span>&gt;</font>
+								</span>
+								<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Courier New'; mso-hansi-font-family: 'Courier New'">我要请假</span>
+								<span lang="EN-US">
+										<font face="Courier New">&lt;/<span style="COLOR: #3f7f7f">reason</span>&gt;</font>
+								</span>
+						</font>
+				</p>
+				<p class="a0" style="MARGIN: 0cm 0cm 0pt">
+						<font size="2">
+								<font face="Courier New">
+										<span lang="EN-US" style="COLOR: black">
+												<span style="mso-tab-count: 1">    </span>
+												<span style="mso-tab-count: 2">        </span>
+										</span>
+										<span lang="EN-US">&lt;/<span style="COLOR: #3f7f7f">action</span>&gt;</span>
+								</font>
+						</font>
+				</p>
+				<p class="a0" style="MARGIN: 0cm 0cm 0pt">
+						<font size="2">
+								<font face="Courier New">
+										<span lang="EN-US" style="COLOR: black">
+												<span style="mso-tab-count: 2">        </span>
+										</span>
+										<span lang="EN-US">&lt;/<span style="COLOR: #3f7f7f">transition</span>&gt;</span>
+								</font>
+						</font>
+				</p>
+				<p class="a0" style="MARGIN: 0cm 0cm 0pt">
+						<font size="2">
+								<font face="Courier New">
+										<span lang="EN-US" style="COLOR: black">
+												<span style="mso-tab-count: 1">    </span>
+										</span>
+										<span lang="EN-US">&lt;/<span style="COLOR: #3f7f7f">start-state</span>&gt;</span>
+								</font>
+						</font>
+				</p>
+				<p class="a0" style="MARGIN: 0cm 0cm 0pt">
+						<font size="2">
+								<font face="Courier New">
+										<span lang="EN-US" style="COLOR: black">
+												<span style="mso-tab-count: 1">    </span>
+										</span>
+										<span lang="EN-US">&lt;!-- </span>
+								</font>
+								<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Courier New'; mso-hansi-font-family: 'Courier New'">审批</span>
+								<span lang="EN-US">
+										<font face="Courier New">--&gt;</font>
+								</span>
+						</font>
+				</p>
+				<p class="a0" style="MARGIN: 0cm 0cm 0pt">
+						<font size="2">
+								<font face="Courier New">
+										<span lang="EN-US" style="COLOR: black">
+												<span style="mso-tab-count: 1">    </span>
+										</span>
+										<span lang="EN-US">&lt;<span style="COLOR: #3f7f7f">state </span><span style="COLOR: #7f007f">name</span><span style="COLOR: black">=</span><span style="COLOR: #2a00ff">"confirm"</span>&gt;</span>
+								</font>
+						</font>
+				</p>
+				<p class="a0" style="MARGIN: 0cm 0cm 0pt">
+						<span lang="EN-US">
+								<font size="2">
+										<font face="Courier New">
+												<span style="mso-tab-count: 2">        </span>&lt;<span style="COLOR: #3f7f7f">transition </span><span style="COLOR: #7f007f">name</span>=<span style="COLOR: #2a00ff">"to_end" </span><span style="COLOR: #7f007f">to</span>=<span style="COLOR: #2a00ff">"end"</span>&gt;</font>
+								</font>
+						</span>
+				</p>
+				<p class="a0" style="MARGIN: 0cm 0cm 0pt">
+						<span lang="EN-US">
+								<font size="2">
+										<font face="Courier New">
+												<span style="mso-tab-count: 3">            </span>&lt;<span style="COLOR: #3f7f7f">action </span><span style="COLOR: #7f007f">name</span>=<span style="COLOR: #2a00ff">"finishAction"</span></font>
+								</font>
+						</span>
+				</p>
+				<p class="a0" style="MARGIN: 0cm 0cm 0pt">
+						<span lang="EN-US">
+								<font size="2">
+										<font face="Courier New">
+												<span style="mso-tab-count: 4">                </span>
+												<span style="COLOR: #7f007f">class</span>
+												<span style="COLOR: black">=</span>"cn.com.chengang.jbpm.ConfirmAction" /&gt;</font>
+								</font>
+						</span>
+				</p>
+				<p class="a0" style="MARGIN: 0cm 0cm 0pt">
+						<font size="2">
+								<font face="Courier New">
+										<span lang="EN-US" style="COLOR: black">
+												<span style="mso-tab-count: 2">        </span>
+										</span>
+										<span lang="EN-US">&lt;/<span style="COLOR: #3f7f7f">transition</span>&gt;</span>
+								</font>
+						</font>
+				</p>
+				<p class="a0" style="MARGIN: 0cm 0cm 0pt">
+						<font size="2">
+								<font face="Courier New">
+										<span lang="EN-US" style="COLOR: black">
+												<span style="mso-tab-count: 1">    </span>
+										</span>
+										<span lang="EN-US">&lt;/<span style="COLOR: #3f7f7f">state</span>&gt;</span>
+								</font>
+						</font>
+				</p>
+				<p class="a0" style="MARGIN: 0cm 0cm 0pt">
+						<font size="2">
+								<font face="Courier New">
+										<span lang="EN-US" style="COLOR: black">
+												<span style="mso-tab-count: 1">    </span>
+										</span>
+										<span lang="EN-US">&lt;!-- </span>
+								</font>
+								<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Courier New'; mso-hansi-font-family: 'Courier New'">结束</span>
+								<span lang="EN-US">
+										<font face="Courier New">--&gt;</font>
+								</span>
+						</font>
+				</p>
+				<p class="a0" style="MARGIN: 0cm 0cm 0pt">
+						<font size="2">
+								<font face="Courier New">
+										<span lang="EN-US" style="COLOR: black">
+												<span style="mso-tab-count: 1">    </span>
+										</span>
+										<span lang="EN-US">&lt;<span style="COLOR: #3f7f7f">end-state </span><span style="COLOR: #7f007f">name</span><span style="COLOR: black">=</span><span style="COLOR: #2a00ff">"end" </span>/&gt;</span>
+								</font>
+						</font>
+				</p>
+				<p class="a0" style="MARGIN: 0cm 0cm 0pt">
+						<span lang="EN-US">
+								<font face="Courier New" size="2">&lt;/process-definition&gt;</font>
+						</span>
+				</p>
+		</div>
+		<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt">
+				<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">
+						<br />说明：</span>
+		</p>
+		<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt">
+				<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">流程的名称改成了</span>
+				<span lang="EN-US">helloworld</span>
+				<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">。（呵呵，也就是这里和</span>
+				<span lang="EN-US">helloworld</span>
+				<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">有关了）</span>
+		</p>
+		<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt">
+				<span lang="EN-US">&lt;controller&gt;</span>
+				<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">标签定义了三个数据：姓名、请假天数、说明。</span>
+		</p>
+		<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt">
+				<span lang="EN-US">&lt;transition&gt;</span>
+				<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">标签定了</span>
+				<span lang="EN-US">request</span>
+				<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">节点的一个流程转向，这里是转到</span>
+				<span lang="EN-US">confirm</span>
+				<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">节点。</span>
+		</p>
+		<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt">
+				<span lang="EN-US">&lt;action&gt;</span>
+				<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">标签定义了流程由一个节点转到另一个节点时，所要执行的动作，动作封装在一个</span>
+				<span lang="EN-US">ActionHandler</span>
+				<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">类中。比如这里当</span>
+				<span lang="EN-US">request</span>
+				<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">到</span>
+				<span lang="EN-US">confirm</span>
+				<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">结点时将执行</span>
+				<span lang="EN-US">RequestAction</span>
+				<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">类的</span>
+				<span lang="EN-US">execute</span>
+				<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">方法。</span>
+		</p>
+		<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt">
+				<span lang="EN-US">FinishAction</span>
+				<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">下面还有一个</span>
+				<span lang="EN-US">&lt;reason&gt;</span>
+				<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">（请假理由），它对应于</span>
+				<span lang="EN-US">FinshAction</span>
+				<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">的属性</span>
+				<span lang="EN-US">String reason</span>
+				<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">。</span>
+		</p>
+		<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt">
+				<span lang="EN-US">
+						<o:p> </o:p>
+				</span>
+		</p>
+		<p class="4" style="MARGIN: 6pt 0cm">
+				<span lang="EN-US">2</span>
+				<span style="FONT-FAMILY: 楷体_GB2312; mso-ascii-font-family: 'Times New Roman'">、　编写</span>
+				<span lang="EN-US">ActionHandler</span>
+		</p>
+		<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt">
+				<span lang="EN-US">
+						<span style="mso-tab-count: 1">       </span>
+				</span>
+				<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">在上面</span>
+				<span lang="EN-US">processdefinition.xml</span>
+				<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">里我们定义了两个</span>
+				<span lang="EN-US">ActionHandler</span>
+				<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">：</span>
+				<span lang="EN-US">RequestAction</span>
+				<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">、</span>
+				<span lang="EN-US">ConfirmAction</span>
+				<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">。其代码如下：</span>
+		</p>
+		<div style="BORDER-RIGHT: medium none; PADDING-RIGHT: 0cm; BORDER-TOP: windowtext 1pt solid; PADDING-LEFT: 0cm; BACKGROUND: #fff4e9; PADDING-BOTTOM: 1pt; BORDER-LEFT: medium none; PADDING-TOP: 1pt; BORDER-BOTTOM: windowtext 1pt solid; mso-element: para-border-div">
+				<p class="a0" style="MARGIN: 0cm 0cm 0pt">
+						<font size="2">
+								<font face="Courier New">
+										<b>
+												<span lang="EN-US" style="COLOR: #7f0055">package</span>
+										</b>
+										<span lang="EN-US">cn.com.chengang.jbpm;</span>
+								</font>
+						</font>
+				</p>
+				<p class="a0" style="MARGIN: 0cm 0cm 0pt">
+						<span lang="EN-US">
+								<o:p>
+										<font face="Courier New" size="2"> </font>
+								</o:p>
+						</span>
+				</p>
+				<p class="a0" style="MARGIN: 0cm 0cm 0pt">
+						<font size="2">
+								<font face="Courier New">
+										<b>
+												<span lang="EN-US" style="COLOR: #7f0055">import</span>
+										</b>
+										<span lang="EN-US">org.jbpm.graph.def.ActionHandler;</span>
+								</font>
+						</font>
+				</p>
+				<p class="a0" style="MARGIN: 0cm 0cm 0pt">
+						<font size="2">
+								<font face="Courier New">
+										<b>
+												<span lang="EN-US" style="COLOR: #7f0055">import</span>
+										</b>
+										<span lang="EN-US">org.jbpm.graph.exe.ExecutionContext;</span>
+								</font>
+						</font>
+				</p>
+				<p class="a0" style="MARGIN: 0cm 0cm 0pt">
+						<span lang="EN-US">
+								<o:p>
+										<font face="Courier New" size="2"> </font>
+								</o:p>
+						</span>
+				</p>
+				<p class="a0" style="MARGIN: 0cm 0cm 0pt">
+						<font size="2">
+								<font face="Courier New">
+										<b>
+												<span lang="EN-US" style="COLOR: #7f0055">public</span>
+										</b>
+										<span lang="EN-US">
+												<b>
+														<span style="COLOR: #7f0055">class</span>
+												</b>RequestAction <b><span style="COLOR: #7f0055">implements</span></b> ActionHandler {</span>
+								</font>
+						</font>
+				</p>
+				<p class="a0" style="MARGIN: 0cm 0cm 0pt">
+						<span lang="EN-US">
+								<o:p>
+										<font face="Courier New" size="2"> </font>
+								</o:p>
+						</span>
+				</p>
+				<p class="a0" style="MARGIN: 0cm 0cm 0pt">
+						<span lang="EN-US">
+								<font size="2">
+										<font face="Courier New">
+												<span style="mso-tab-count: 1">    </span>
+												<b>private</b>
+												<b>static</b>
+												<b>final</b>
+												<b>long</b>
+												<i>
+														<span style="COLOR: #0000c0">serialVersionUID</span>
+												</i>= <st1:chmetcnv w:st="on" tcsc="0" numbertype="1" negative="False" hasspace="False" sourcevalue="1" unitname="l">1L</st1:chmetcnv>;</font>
+								</font>
+						</span>
+				</p>
+				<p class="a0" style="MARGIN: 0cm 0cm 0pt">
+						<span lang="EN-US">
+								<o:p>
+										<font face="Courier New" size="2"> </font>
+								</o:p>
+						</span>
+				</p>
+				<p class="a0" style="MARGIN: 0cm 0cm 0pt">
+						<span lang="EN-US">
+								<font size="2">
+										<font face="Courier New">
+												<span style="mso-tab-count: 1">    </span>
+												<b>
+														<span style="COLOR: #7f0055">private</span>
+												</b>String <span style="COLOR: #0000c0">reason</span>;</font>
+								</font>
+						</span>
+				</p>
+				<p class="a0" style="MARGIN: 0cm 0cm 0pt">
+						<span lang="EN-US">
+								<o:p>
+										<font face="Courier New" size="2"> </font>
+								</o:p>
+						</span>
+				</p>
+				<p class="a0" style="MARGIN: 0cm 0cm 0pt">
+						<span lang="EN-US">
+								<font size="2">
+										<font face="Courier New">
+												<span style="mso-tab-count: 1">    </span>
+												<b>
+														<span style="COLOR: #7f0055">public</span>
+												</b>String <span style="BACKGROUND: silver; mso-highlight: silver">getReason</span>() {</font>
+								</font>
+						</span>
+				</p>
+				<p class="a0" style="MARGIN: 0cm 0cm 0pt">
+						<span lang="EN-US">
+								<font size="2">
+										<font face="Courier New">
+												<span style="mso-tab-count: 2">        </span>
+												<b>return</b>
+												<span style="COLOR: #0000c0">reason</span>;</font>
+								</font>
+						</span>
+				</p>
+				<p class="a0" style="MARGIN: 0cm 0cm 0pt">
+						<span lang="EN-US">
+								<font size="2">
+										<font face="Courier New">
+												<span style="mso-tab-count: 1">    </span>}</font>
+								</font>
+						</span>
+				</p>
+				<p class="a0" style="MARGIN: 0cm 0cm 0pt">
+						<span lang="EN-US">
+								<o:p>
+										<font face="Courier New" size="2"> </font>
+								</o:p>
+						</span>
+				</p>
+				<p class="a0" style="MARGIN: 0cm 0cm 0pt">
+						<span lang="EN-US">
+								<font size="2">
+										<font face="Courier New">
+												<span style="mso-tab-count: 1">    </span>
+												<b>
+														<span style="COLOR: #7f0055">public</span>
+												</b>
+												<b>
+														<span style="COLOR: #7f0055">void</span>
+												</b>setReason(String reason) {</font>
+								</font>
+						</span>
+				</p>
+				<p class="a0" style="MARGIN: 0cm 0cm 0pt">
+						<span lang="EN-US">
+								<font size="2">
+										<font face="Courier New">
+												<span style="mso-tab-count: 2">        </span>
+												<b>
+														<span style="COLOR: #7f0055">this</span>
+												</b>.<span style="COLOR: #0000c0">reason</span> = reason;</font>
+								</font>
+						</span>
+				</p>
+				<p class="a0" style="MARGIN: 0cm 0cm 0pt">
+						<span lang="EN-US">
+								<font size="2">
+										<font face="Courier New">
+												<span style="mso-tab-count: 1">    </span>}</font>
+								</font>
+						</span>
+				</p>
+				<p class="a0" style="MARGIN: 0cm 0cm 0pt">
+						<span lang="EN-US">
+								<o:p>
+										<font face="Courier New" size="2"> </font>
+								</o:p>
+						</span>
+				</p>
+				<p class="a0" style="MARGIN: 0cm 0cm 0pt">
+						<span lang="EN-US">
+								<font size="2">
+										<font face="Courier New">
+												<span style="mso-tab-count: 1">    </span>
+												<b>
+														<span style="COLOR: #7f0055">public</span>
+												</b>
+												<b>
+														<span style="COLOR: #7f0055">void</span>
+												</b>execute(ExecutionContext context) <b><span style="COLOR: #7f0055">throws</span></b> Exception {</font>
+								</font>
+						</span>
+				</p>
+				<p class="a0" style="MARGIN: 0cm 0cm 0pt">
+						<span lang="EN-US">
+								<font size="2">
+										<font face="Courier New">
+												<span style="mso-tab-count: 2">        </span>context.getContextInstance().setVariable(<span style="COLOR: #2a00ff">"note"</span>, <span style="COLOR: #0000c0">reason</span>);</font>
+								</font>
+						</span>
+				</p>
+				<p class="a0" style="MARGIN: 0cm 0cm 0pt">
+						<span lang="EN-US">
+								<font size="2">
+										<font face="Courier New">
+												<span style="mso-tab-count: 1">    </span>}</font>
+								</font>
+						</span>
+				</p>
+				<p class="a0" style="MARGIN: 0cm 0cm 0pt">
+						<span lang="EN-US">
+								<o:p>
+										<font face="Courier New" size="2"> </font>
+								</o:p>
+						</span>
+				</p>
+				<p class="a0" style="MARGIN: 0cm 0cm 0pt">
+						<span lang="EN-US">
+								<font face="Courier New" size="2">}</font>
+						</span>
+				</p>
+		</div>
+		<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt">
+				<span lang="EN-US">
+						<o:p> </o:p>
+				</span>
+		</p>
+		<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt">
+				<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">说明：</span>
+				<span lang="EN-US">ExecutionContext</span>
+				<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">是一个贯通流程的容器。它是个大宝箱，里面啥玩意都有，后面将更深入的提到。这里的</span>
+				<span lang="EN-US">reasion</span>
+				<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">就是</span>
+				<span lang="EN-US">processdefinition.xml</span>
+				<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">中的</span>
+				<span lang="EN-US">”</span>
+				<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">我要请假</span>
+				<span lang="EN-US">”</span>
+		</p>
+		<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt">
+				<span lang="EN-US">
+						<o:p> </o:p>
+				</span>
+		</p>
+		<div style="BORDER-RIGHT: medium none; PADDING-RIGHT: 0cm; BORDER-TOP: windowtext 1pt solid; PADDING-LEFT: 0cm; BACKGROUND: #fff4e9; PADDING-BOTTOM: 1pt; BORDER-LEFT: medium none; PADDING-TOP: 1pt; BORDER-BOTTOM: windowtext 1pt solid; mso-element: para-border-div">
+				<p class="a0" style="MARGIN: 0cm 0cm 0pt">
+						<span lang="EN-US">
+								<o:p>
+										<font face="Courier New" size="2"> </font>
+								</o:p>
+						</span>
+				</p>
+				<p class="a0" style="MARGIN: 0cm 0cm 0pt">
+						<font size="2">
+								<font face="Courier New">
+										<b>
+												<span lang="EN-US" style="COLOR: #7f0055">package</span>
+										</b>
+										<span lang="EN-US">cn.com.chengang.jbpm;</span>
+								</font>
+						</font>
+				</p>
+				<p class="a0" style="MARGIN: 0cm 0cm 0pt">
+						<span lang="EN-US">
+								<o:p>
+										<font face="Courier New" size="2"> </font>
+								</o:p>
+						</span>
+				</p>
+				<p class="a0" style="MARGIN: 0cm 0cm 0pt">
+						<font size="2">
+								<font face="Courier New">
+										<b>
+												<span lang="EN-US" style="COLOR: #7f0055">import</span>
+										</b>
+										<span lang="EN-US">org.jbpm.graph.def.ActionHandler;</span>
+								</font>
+						</font>
+				</p>
+				<p class="a0" style="MARGIN: 0cm 0cm 0pt">
+						<font size="2">
+								<font face="Courier New">
+										<b>
+												<span lang="EN-US" style="COLOR: #7f0055">import</span>
+										</b>
+										<span lang="EN-US">org.jbpm.graph.exe.ExecutionContext;</span>
+								</font>
+						</font>
+				</p>
+				<p class="a0" style="MARGIN: 0cm 0cm 0pt">
+						<span lang="EN-US">
+								<o:p>
+										<font face="Courier New" size="2"> </font>
+								</o:p>
+						</span>
+				</p>
+				<p class="a0" style="MARGIN: 0cm 0cm 0pt">
+						<font size="2">
+								<font face="Courier New">
+										<b>
+												<span lang="EN-US" style="COLOR: #7f0055">public</span>
+										</b>
+										<span lang="EN-US">
+												<b>
+														<span style="COLOR: #7f0055">class</span>
+												</b>ConfirmAction <b><span style="COLOR: #7f0055">implements</span></b> ActionHandler {</span>
+								</font>
+						</font>
+				</p>
+				<p class="a0" style="MARGIN: 0cm 0cm 0pt">
+						<span lang="EN-US">
+								<o:p>
+										<font face="Courier New" size="2"> </font>
+								</o:p>
+						</span>
+				</p>
+				<p class="a0" style="MARGIN: 0cm 0cm 0pt">
+						<font size="2">
+								<font face="Courier New">
+										<span lang="EN-US" style="COLOR: black">
+												<span style="mso-tab-count: 1">    </span>
+										</span>
+										<b>
+												<span lang="EN-US">private</span>
+										</b>
+										<span lang="EN-US" style="COLOR: black">
+										</span>
+										<b>
+												<span lang="EN-US">static</span>
+										</b>
+										<span lang="EN-US" style="COLOR: black">
+										</span>
+										<b>
+												<span lang="EN-US">final</span>
+										</b>
+										<span lang="EN-US" style="COLOR: black">
+										</span>
+										<b>
+												<span lang="EN-US">long</span>
+										</b>
+										<span lang="EN-US" style="COLOR: black">
+										</span>
+										<i>
+												<span lang="EN-US" style="COLOR: #0000c0">serialVersionUID</span>
+										</i>
+										<span lang="EN-US" style="COLOR: black">= <st1:chmetcnv w:st="on" tcsc="0" numbertype="1" negative="False" hasspace="False" sourcevalue="1" unitname="l">1L</st1:chmetcnv>;</span>
+								</font>
+						</font>
+				</p>
+				<p class="a0" style="MARGIN: 0cm 0cm 0pt">
+						<span lang="EN-US">
+								<o:p>
+										<font face="Courier New" size="2"> </font>
+								</o:p>
+						</span>
+				</p>
+				<p class="a0" style="MARGIN: 0cm 0cm 0pt">
+						<span lang="EN-US">
+								<font size="2">
+										<font face="Courier New">
+												<span style="mso-tab-count: 1">    </span>
+												<b>
+														<span style="COLOR: #7f0055">public</span>
+												</b>
+												<b>
+														<span style="COLOR: #7f0055">void</span>
+												</b>execute(ExecutionContext context) <b><span style="COLOR: #7f0055">throws</span></b> Exception {</font>
+								</font>
+						</span>
+				</p>
+				<p class="a0" style="MARGIN: 0cm 0cm 0pt">
+						<font size="2">
+								<span lang="EN-US">
+										<font face="Courier New">
+												<span style="mso-tab-count: 2">        </span>context.getContextInstance().setVariable(<span style="COLOR: #2a00ff">"note"</span>, <span style="COLOR: #2a00ff">"</span></font>
+								</span>
+								<span style="COLOR: #2a00ff; FONT-FAMILY: 宋体; mso-ascii-font-family: 'Courier New'; mso-hansi-font-family: 'Courier New'">准假</span>
+								<font face="Courier New">
+										<span lang="EN-US" style="COLOR: #2a00ff">"</span>
+										<span lang="EN-US">);</span>
+								</font>
+						</font>
+				</p>
+				<p class="a0" style="MARGIN: 0cm 0cm 0pt">
+						<span lang="EN-US">
+								<font size="2">
+										<font face="Courier New">
+												<span style="mso-tab-count: 1">    </span>}</font>
+								</font>
+						</span>
+				</p>
+				<p class="a0" style="MARGIN: 0cm 0cm 0pt">
+						<span lang="EN-US">
+								<o:p>
+										<font face="Courier New" size="2"> </font>
+								</o:p>
+						</span>
+				</p>
+				<p class="a0" style="MARGIN: 0cm 0cm 0pt">
+						<span lang="EN-US">
+								<font face="Courier New" size="2">}</font>
+						</span>
+				</p>
+		</div>
+		<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt">
+				<span lang="EN-US">
+						<o:p> </o:p>
+				</span>
+		</p>
+		<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt">
+				<span lang="EN-US">OK</span>
+				<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">，后台的程序就算写完了（前台客户端的程序还没写），下面开始部署。</span>
+		</p>
+		<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt">
+				<span lang="EN-US">
+						<o:p> </o:p>
+				</span>
+		</p>
+		<h3 style="MARGIN: 12pt 0cm 6pt">
+				<font size="3">
+						<font face="宋体, MS Song">
+								<span lang="EN-US">6.5</span>　部署<span lang="EN-US">processdefinition.xml</span></font>
+				</font>
+		</h3>
+		<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt">
+				<span lang="EN-US">
+						<span style="mso-tab-count: 1">       </span>
+				</span>
+				<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">我们要把</span>
+				<span lang="EN-US">processdefinition.xml</span>
+				<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">的流程定义的数据部署到数据库中，因为</span>
+				<span lang="EN-US">jBPM</span>
+				<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">在正式运行的时候不是去读</span>
+				<span lang="EN-US">processdefinition.xml</span>
+				<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">文件，而是去读数据库中的流程定义。</span>
+				<span lang="EN-US">
+						<span style="mso-tab-count: 1">
+						</span>
+				</span>
+				<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">这里写了一个个</span>
+				<span lang="EN-US">JUnit</span>
+				<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">程序来部署</span>
+				<span lang="EN-US">processdefinition.xml</span>
+				<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">，当然你用普通的</span>
+				<span lang="EN-US">Java Main</span>
+				<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">也可以。</span>
+		</p>
+		<div style="BORDER-RIGHT: medium none; PADDING-RIGHT: 0cm; BORDER-TOP: windowtext 1pt solid; PADDING-LEFT: 0cm; BACKGROUND: #fff4e9; PADDING-BOTTOM: 1pt; BORDER-LEFT: medium none; PADDING-TOP: 1pt; BORDER-BOTTOM: windowtext 1pt solid; mso-element: para-border-div">
+				<p class="a0" style="MARGIN: 0cm 0cm 0pt">
+						<font size="2">
+								<font face="Courier New">
+										<b>
+												<span lang="EN-US" style="COLOR: #7f0055">package</span>
+										</b>
+										<span lang="EN-US">com.sample;</span>
+								</font>
+						</font>
+				</p>
+				<p class="a0" style="MARGIN: 0cm 0cm 0pt">
+						<span lang="EN-US">
+								<o:p>
+										<font face="Courier New" size="2"> </font>
+								</o:p>
+						</span>
+				</p>
+				<p class="a0" style="MARGIN: 0cm 0cm 0pt">
+						<font size="2">
+								<font face="Courier New">
+										<b>
+												<span lang="EN-US" style="COLOR: #7f0055">import</span>
+										</b>
+										<span lang="EN-US">java.io.FileInputStream;</span>
+								</font>
+						</font>
+				</p>
+				<p class="a0" style="MARGIN: 0cm 0cm 0pt">
+						<font size="2">
+								<font face="Courier New">
+										<b>
+												<span lang="EN-US" style="COLOR: #7f0055">import</span>
+										</b>
+										<span lang="EN-US">java.io.FileNotFoundException;</span>
+								</font>
+						</font>
+				</p>
+				<p class="a0" style="MARGIN: 0cm 0cm 0pt">
+						<font size="2">
+								<font face="Courier New">
+										<b>
+												<span lang="EN-US" style="COLOR: #7f0055">import</span>
+										</b>
+										<span lang="EN-US">java.io.InputStream;</span>
+								</font>
+						</font>
+				</p>
+				<p class="a0" style="MARGIN: 0cm 0cm 0pt">
+						<span lang="EN-US">
+								<o:p>
+										<font face="Courier New" size="2"> </font>
+								</o:p>
+						</span>
+				</p>
+				<p class="a0" style="MARGIN: 0cm 0cm 0pt">
+						<font size="2">
+								<font face="Courier New">
+										<b>
+												<span lang="EN-US" style="COLOR: #7f0055">import</span>
+										</b>
+										<span lang="EN-US">junit.framework.TestCase;</span>
+								</font>
+						</font>
+				</p>
+				<p class="a0" style="MARGIN: 0cm 0cm 0pt">
+						<span lang="EN-US">
+								<o:p>
+										<font face="Courier New" size="2"> </font>
+								</o:p>
+						</span>
+				</p>
+				<p class="a0" style="MARGIN: 0cm 0cm 0pt">
+						<font size="2">
+								<font face="Courier New">
+										<b>
+												<span lang="EN-US" style="COLOR: #7f0055">import</span>
+										</b>
+										<span lang="EN-US">org.jbpm.JbpmConfiguration;</span>
+								</font>
+						</font>
+				</p>
+				<p class="a0" style="MARGIN: 0cm 0cm 0pt">
+						<font size="2">
+								<font face="Courier New">
+										<b>
+												<span lang="EN-US" style="COLOR: #7f0055">import</span>
+										</b>
+										<span lang="EN-US">org.jbpm.JbpmContext;</span>
+								</font>
+						</font>
+				</p>
+				<p class="a0" style="MARGIN: 0cm 0cm 0pt">
+						<font size="2">
+								<font face="Courier New">
+										<b>
+												<span lang="EN-US" style="COLOR: #7f0055">import</span>
+										</b>
+										<span lang="EN-US">org.jbpm.graph.def.ProcessDefinition;</span>
+								</font>
+						</font>
+				</p>
+				<p class="a0" style="MARGIN: 0cm 0cm 0pt">
+						<span lang="EN-US">
+								<o:p>
+										<font face="Courier New" size="2"> </font>
+								</o:p>
+						</span>
+				</p>
+				<p class="a0" style="MARGIN: 0cm 0cm 0pt">
+						<span lang="EN-US">
+								<font face="Courier New" size="2">/**</font>
+						</span>
+				</p>
+				<p class="a0" style="MARGIN: 0cm 0cm 0pt">
+						<font size="2">
+								<span lang="EN-US">
+										<font face="Courier New">
+												<span style="mso-spacerun: yes"> </span>* </font>
+								</span>
+								<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Courier New'; mso-hansi-font-family: 'Courier New'">部署</span>
+								<span lang="EN-US">
+										<font face="Courier New">processdefinition.xml</font>
+								</span>
+						</font>
+				</p>
+				<p class="a0" style="MARGIN: 0cm 0cm 0pt">
+						<span lang="EN-US">
+								<font size="2">
+										<font face="Courier New">
+												<span style="mso-spacerun: yes"> </span>
+												<span style="COLOR: #3f5fbf">*</span>
+										</font>
+								</font>
+						</span>
+				</p>
+				<p class="a0" style="MARGIN: 0cm 0cm 0pt">
+						<span lang="EN-US">
+								<font size="2">
+										<font face="Courier New">
+												<span style="mso-spacerun: yes"> </span>* <b><span style="COLOR: #7f9fbf">&#64;author</span></b> chengang</font>
+								</font>
+						</span>
+				</p>
+				<p class="a0" style="MARGIN: 0cm 0cm 0pt">
+						<span lang="EN-US">
+								<font size="2">
+										<font face="Courier New">
+												<span style="mso-spacerun: yes"> </span>
+												<span style="COLOR: #3f5fbf">*</span>
+										</font>
+								</font>
+						</span>
+				</p>
+				<p class="a0" style="MARGIN: 0cm 0cm 0pt">
+						<span lang="EN-US">
+								<font size="2">
+										<font face="Courier New">
+												<span style="mso-spacerun: yes"> </span>
+												<span style="COLOR: #3f5fbf">*/</span>
+										</font>
+								</font>
+						</span>
+				</p>
+				<p class="a0" style="MARGIN: 0cm 0cm 0pt">
+						<font size="2">
+								<font face="Courier New">
+										<b>
+												<span lang="EN-US" style="COLOR: #7f0055">public</span>
+										</b>
+										<span lang="EN-US">
+												<b>
+														<span style="COLOR: #7f0055">class</span>
+												</b>DeployProcessTest <b><span style="COLOR: #7f0055">extends</span></b> TestCase {</span>
+								</font>
+						</font>
+				</p>
+				<p class="a0" style="MARGIN: 0cm 0cm 0pt">
+						<span lang="EN-US">
+								<font size="2">
+										<font face="Courier New">
+												<span style="mso-tab-count: 1">    </span>/**</font>
+								</font>
+						</span>
+				</p>
+				<p class="a0" style="MARGIN: 0cm 0cm 0pt">
+						<font size="2">
+								<span lang="EN-US">
+										<font face="Courier New">
+												<span style="mso-tab-count: 1">    </span>
+												<span style="mso-spacerun: yes"> </span>* </font>
+								</span>
+								<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Courier New'; mso-hansi-font-family: 'Courier New'">在本方法执行完毕后，检查</span>
+								<span lang="EN-US">
+										<font face="Courier New">jbpm_processdefinition</font>
+								</span>
+								<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Courier New'; mso-hansi-font-family: 'Courier New'">表会多了一条记录</span>
+						</font>
+				</p>
+				<p class="a0" style="MARGIN: 0cm 0cm 0pt">
+						<span lang="EN-US">
+								<font size="2">
+										<font face="Courier New">
+												<span style="mso-tab-count: 1">    </span>
+												<span style="mso-spacerun: yes"> </span>
+												<span style="COLOR: #3f5fbf">*</span>
+										</font>
+								</font>
+						</span>
+				</p>
+				<p class="a0" style="MARGIN: 0cm 0cm 0pt">
+						<span lang="EN-US">
+								<font size="2">
+										<font face="Courier New">
+												<span style="mso-tab-count: 1">    </span>
+												<span style="mso-spacerun: yes"> </span>* <b><span style="COLOR: #7f9fbf">&#64;throws</span></b> FileNotFoundException</font>
+								</font>
+						</span>
+				</p>
+				<p class="a0" style="MARGIN: 0cm 0cm 0pt">
+						<span lang="EN-US">
+								<font size="2">
+										<font face="Courier New">
+												<span style="mso-tab-count: 1">    </span>
+												<span style="mso-spacerun: yes"> </span>
+												<span style="COLOR: #3f5fbf">*/</span>
+										</font>
+								</font>
+						</span>
+				</p>
+				<p class="a0" style="MARGIN: 0cm 0cm 0pt">
+						<span lang="EN-US">
+								<font size="2">
+										<font face="Courier New">
+												<span style="mso-tab-count: 1">    </span>
+												<b>
+														<span style="COLOR: #7f0055">public</span>
+												</b>
+												<b>
+														<span style="COLOR: #7f0055">void</span>
+												</b>testDeployProcessDefinition() <b><span style="COLOR: #7f0055">throws</span></b> FileNotFoundException {</font>
+								</font>
+						</span>
+				</p>
+				<p class="a0" style="MARGIN: 0cm 0cm 0pt">
+						<font size="2">
+								<span lang="EN-US">
+										<font face="Courier New">
+												<span style="mso-tab-count: 2">        </span>// </font>
+								</span>
+								<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Courier New'; mso-hansi-font-family: 'Courier New'">从</span>
+								<span lang="EN-US">
+										<font face="Courier New">jbpm.cfg.xml</font>
+								</span>
+								<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Courier New'; mso-hansi-font-family: 'Courier New'">取得</span>
+								<span lang="EN-US">
+										<font face="Courier New">jbpm</font>
+								</span>
+								<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Courier New'; mso-hansi-font-family: 'Courier New'">的配置</span>
+						</font>
+				</p>
+				<p class="a0" style="MARGIN: 0cm 0cm 0pt">
+						<span lang="EN-US">
+								<font size="2">
+										<font face="Courier New">
+												<span style="mso-tab-count: 2">        </span>JbpmConfiguration config = JbpmConfiguration.<i>getInstance</i>();</font>
+								</font>
+						</span>
+				</p>
+				<p class="a0" style="MARGIN: 0cm 0cm 0pt">
+						<font size="2">
+								<span lang="EN-US">
+										<font face="Courier New">
+												<span style="mso-tab-count: 2">        </span>// </font>
+								</span>
+								<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Courier New'; mso-hansi-font-family: 'Courier New'">创建一个</span>
+								<span lang="EN-US">
+										<font face="Courier New">jbpm</font>
+								</span>
+								<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Courier New'; mso-hansi-font-family: 'Courier New'">容器</span>
+						</font>
+				</p>
+				<p class="a0" style="MARGIN: 0cm 0cm 0pt">
+						<span lang="EN-US">
+								<font size="2">
+										<font face="Courier New">
+												<span style="mso-tab-count: 2">        </span>JbpmContext <span style="BACKGROUND: silver; mso-highlight: silver">jbpmContext</span> = config.createJbpmContext();</font>
+								</font>
+						</span>
+				</p>
+				<p class="a0" style="MARGIN: 0cm 0cm 0pt">
+						<font size="2">
+								<span lang="EN-US">
+										<font face="Courier New">
+												<span style="mso-tab-count: 2">        </span>// </font>
+								</span>
+								<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Courier New'; mso-hansi-font-family: 'Courier New'">由</span>
+								<span lang="EN-US">
+										<font face="Courier New">processdefinition.xml</font>
+								</span>
+								<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Courier New'; mso-hansi-font-family: 'Courier New'">生成相对应的流程定义类</span>
+								<span lang="EN-US">
+										<font face="Courier New">ProcessDefinition</font>
+								</span>
+						</font>
+				</p>
+				<p class="a0" style="MARGIN: 0cm 0cm 0pt">
+						<span lang="EN-US">
+								<font size="2">
+										<font face="Courier New">
+												<span style="mso-tab-count: 2">        </span>InputStream is = <b><span style="COLOR: #7f0055">new</span></b> FileInputStream(<span style="COLOR: #2a00ff">"processes/simple/processdefinition.xml"</span>);</font>
+								</font>
+						</span>
+				</p>
+				<p class="a0" style="MARGIN: 0cm 0cm 0pt">
+						<span lang="EN-US">
+								<font size="2">
+										<font face="Courier New">
+												<span style="mso-tab-count: 2">        </span>ProcessDefinition processDefinition = ProcessDefinition.<i>parseXmlInputStream</i>(is);</font>
+								</font>
+						</span>
+				</p>
+				<p class="a0" style="MARGIN: 0cm 0cm 0pt">
+						<font size="2">
+								<span lang="EN-US">
+										<font face="Courier New">
+												<span style="mso-tab-count: 2">        </span>// </font>
+								</span>
+								<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Courier New'; mso-hansi-font-family: 'Courier New'">利用容器的方法将流程定义数据部署到数据库上</span>
+						</font>
+				</p>
+				<p class="a0" style="MARGIN: 0cm 0cm 0pt">
+						<span lang="EN-US">
+								<font size="2">
+										<font face="Courier New">
+												<span style="mso-tab-count: 2">        </span>
+												<span style="BACKGROUND: silver; mso-highlight: silver">jbpmContext</span>.deployProcessDefinition(processDefinition);</font>
+								</font>
+						</span>
+				</p>
+				<p class="a0" style="MARGIN: 0cm 0cm 0pt">
+						<font size="2">
+								<span lang="EN-US">
+										<font face="Courier New">
+												<span style="mso-tab-count: 2">        </span>// </font>
+								</span>
+								<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Courier New'; mso-hansi-font-family: 'Courier New'">关闭</span>
+								<span lang="EN-US">
+										<font face="Courier New">jbpmContext</font>
+								</span>
+						</font>
+				</p>
+				<p class="a0" style="MARGIN: 0cm 0cm 0pt">
+						<span lang="EN-US">
+								<font size="2">
+										<font face="Courier New">
+												<span style="mso-tab-count: 2">        </span>
+												<span style="BACKGROUND: silver; mso-highlight: silver">jbpmContext</span>.close();</font>
+								</font>
+						</span>
+				</p>
+				<p class="a0" style="MARGIN: 0cm 0cm 0pt">
+						<span lang="EN-US">
+								<font size="2">
+										<font face="Courier New">
+												<span style="mso-tab-count: 1">    </span>}</font>
+								</font>
+						</span>
+				</p>
+				<p class="a0" style="MARGIN: 0cm 0cm 0pt">
+						<span lang="EN-US">
+								<o:p>
+										<font face="Courier New" size="2"> </font>
+								</o:p>
+						</span>
+				</p>
+				<p class="a0" style="MARGIN: 0cm 0cm 0pt">
+						<span lang="EN-US">
+								<font face="Courier New" size="2">}</font>
+						</span>
+				</p>
+		</div>
+		<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt">
+				<span lang="EN-US">
+						<o:p> </o:p>
+				</span>
+		</p>
+		<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; TEXT-INDENT: 20pt">
+				<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">运行此程序，在控制台打印了一些日志，通过。如果出错，仔佃阅读出错信息以判断错误原因，并确定你按照前面两节：“修改</span>
+				<span lang="EN-US">hibernate.cfg.xml</span>
+				<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">”和“完善库引用”的内容做好了设置。</span>
+		</p>
+		<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt">
+				<span lang="EN-US">
+						<o:p> </o:p>
+				</span>
+		</p>
+		<h3 style="MARGIN: 12pt 0cm 6pt">
+				<font size="3">
+						<font face="宋体, MS Song">
+								<span lang="EN-US">6.6</span>　从数据库中的查看部署效果</font>
+				</font>
+		</h3>
+		<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; TEXT-INDENT: 20pt">
+				<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">无论是</span>
+				<span lang="EN-US">MySQL</span>
+				<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">还是</span>
+				<span lang="EN-US">Oracle</span>
+				<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">，查询</span>
+				<span lang="EN-US">jbpm_processdefinition</span>
+				<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">表，你会发现多了一条记录，如下图</span>
+				<span lang="EN-US">(</span>
+				<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">以</span>
+				<span lang="EN-US">PLSQL Developer</span>
+				<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">的显示为例</span>
+				<span lang="EN-US">)</span>
+		</p>
+		<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt">
+				<span lang="EN-US">
+				</span>
+		</p>
+		<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt">
+				<span lang="EN-US">
+						<o:p>
+								<img height="208" alt="20060823_image006.jpg" src="/images/blogjava_net/chengang/jbpm/20060823_image006.jpg" width="507" border="0" />
+								<br /> </o:p>
+				</span>
+		</p>
+		<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt">
+				<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">依次检查各表我们可以发现有如下变化：</span>
+		</p>
+		<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt">
+				<span lang="EN-US">
+				</span>
+		</p>
+		<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt">
+				<span lang="EN-US">
+				</span>
+		</p>
+		<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt">
+				<span lang="EN-US">
+				</span>
+		</p>
+		<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt">
+				<span lang="EN-US">
+				</span>
+		</p>
+		<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt">
+				<span lang="EN-US">
+				</span>
+		</p>
+		<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt">
+				<span lang="EN-US">
+				</span>
+		</p>
+		<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt">
+				<span lang="EN-US">
+						<o:p>
+								<img height="161" alt="20060823_image007.jpg" src="/images/blogjava_net/chengang/jbpm/20060823_image007.jpg" width="369" border="0" />
+								<br />
+								<img height="153" alt="20060823_image008.jpg" src="/images/blogjava_net/chengang/jbpm/20060823_image008.jpg" width="564" border="0" />
+								<br />
+								<img height="149" alt="20060823_image009.jpg" src="/images/blogjava_net/chengang/jbpm/20060823_image009.jpg" width="351" border="0" />
+								<br />
+								<img height="151" alt="20060823_image010.jpg" src="/images/blogjava_net/chengang/jbpm/20060823_image010.jpg" width="404" border="0" />
+								<br />
+								<img height="136" alt="20060823_image011.jpg" src="/images/blogjava_net/chengang/jbpm/20060823_image011.jpg" width="522" border="0" />
+								<br />
+								<img height="153" alt="20060823_image012.jpg" src="/images/blogjava_net/chengang/jbpm/20060823_image012.jpg" width="332" border="0" />
+								<br /> </o:p>
+				</span>
+		</p>
+		<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt">
+				<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">并由此简单判断出各表的作用，表中各字段的作用由字段名也能知晓一二。</span>
+		</p>
+		<p>
+		</p>
+		<table class="MsoTableGrid" style="BORDER-RIGHT: medium none; BORDER-TOP: medium none; BORDER-LEFT: medium none; BORDER-BOTTOM: medium none; BORDER-COLLAPSE: collapse; mso-padding-alt: 0cm 5.4pt 0cm 5.4pt; mso-border-alt: solid windowtext .5pt; mso-yfti-tbllook: 480; mso-border-insideh: .5pt solid windowtext; mso-border-insidev: .5pt solid windowtext" cellspacing="0" cellpadding="0" border="1">
+				<tbody>
+						<tr style="mso-yfti-irow: 0; mso-yfti-firstrow: yes">
+								<td style="BORDER-RIGHT: windowtext 1pt solid; PADDING-RIGHT: 5.4pt; BORDER-TOP: windowtext 1pt solid; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0cm; BORDER-LEFT: windowtext 1pt solid; WIDTH: 110pt; PADDING-TOP: 0cm; BORDER-BOTTOM: windowtext 1pt solid; BACKGROUND-COLOR: transparent; mso-border-alt: solid windowtext .5pt" valign="top" width="147">
+										<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt">
+												<span lang="EN-US">jbpm_processdefinition</span>
+										</p>
+								</td>
+								<td style="BORDER-RIGHT: windowtext 1pt solid; PADDING-RIGHT: 5.4pt; BORDER-TOP: windowtext 1pt solid; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0cm; BORDER-LEFT: #f2f2f2; WIDTH: 316.1pt; PADDING-TOP: 0cm; BORDER-BOTTOM: windowtext 1pt solid; BACKGROUND-COLOR: transparent; mso-border-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt" valign="top" width="421">
+										<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt">
+												<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">一个流程定义文件对应一条记录，可记录多个流程定义文件，可记录一个流程定义文件的对个版本。</span>
+										</p>
+								</td>
+						</tr>
+						<tr style="mso-yfti-irow: 1">
+								<td style="BORDER-RIGHT: windowtext 1pt solid; PADDING-RIGHT: 5.4pt; BORDER-TOP: #f2f2f2; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0cm; BORDER-LEFT: windowtext 1pt solid; WIDTH: 110pt; PADDING-TOP: 0cm; BORDER-BOTTOM: windowtext 1pt solid; BACKGROUND-COLOR: transparent; mso-border-alt: solid windowtext .5pt; mso-border-top-alt: solid windowtext .5pt" valign="top" width="147">
+										<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt">
+												<span lang="EN-US">jbpm_action</span>
+										</p>
+								</td>
+								<td style="BORDER-RIGHT: windowtext 1pt solid; PADDING-RIGHT: 5.4pt; BORDER-TOP: #f2f2f2; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0cm; BORDER-LEFT: #f2f2f2; WIDTH: 316.1pt; PADDING-TOP: 0cm; BORDER-BOTTOM: windowtext 1pt solid; BACKGROUND-COLOR: transparent; mso-border-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt; mso-border-top-alt: solid windowtext .5pt" valign="top" width="421">
+										<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt">
+												<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">记录</span>
+												<span lang="EN-US">ActionHandler</span>
+												<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">的对象实例（以名称为标识）</span>
+										</p>
+								</td>
+						</tr>
+						<tr style="mso-yfti-irow: 2">
+								<td style="BORDER-RIGHT: windowtext 1pt solid; PADDING-RIGHT: 5.4pt; BORDER-TOP: #f2f2f2; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0cm; BORDER-LEFT: windowtext 1pt solid; WIDTH: 110pt; PADDING-TOP: 0cm; BORDER-BOTTOM: windowtext 1pt solid; BACKGROUND-COLOR: transparent; mso-border-alt: solid windowtext .5pt; mso-border-top-alt: solid windowtext .5pt" valign="top" width="147">
+										<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt">
+												<span lang="EN-US">jbpm_delegation</span>
+										</p>
+								</td>
+								<td style="BORDER-RIGHT: windowtext 1pt solid; PADDING-RIGHT: 5.4pt; BORDER-TOP: #f2f2f2; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0cm; BORDER-LEFT: #f2f2f2; WIDTH: 316.1pt; PADDING-TOP: 0cm; BORDER-BOTTOM: windowtext 1pt solid; BACKGROUND-COLOR: transparent; mso-border-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt; mso-border-top-alt: solid windowtext .5pt" valign="top" width="421">
+										<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt">
+												<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">记录了</span>
+												<span lang="EN-US">ActionHandler</span>
+												<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">全类名，以便于用反射方式来加载</span>
+										</p>
+								</td>
+						</tr>
+						<tr style="mso-yfti-irow: 3">
+								<td style="BORDER-RIGHT: windowtext 1pt solid; PADDING-RIGHT: 5.4pt; BORDER-TOP: #f2f2f2; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0cm; BORDER-LEFT: windowtext 1pt solid; WIDTH: 110pt; PADDING-TOP: 0cm; BORDER-BOTTOM: windowtext 1pt solid; BACKGROUND-COLOR: transparent; mso-border-alt: solid windowtext .5pt; mso-border-top-alt: solid windowtext .5pt" valign="top" width="147">
+										<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt">
+												<span lang="EN-US">jbpm_envent</span>
+										</p>
+								</td>
+								<td style="BORDER-RIGHT: windowtext 1pt solid; PADDING-RIGHT: 5.4pt; BORDER-TOP: #f2f2f2; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0cm; BORDER-LEFT: #f2f2f2; WIDTH: 316.1pt; PADDING-TOP: 0cm; BORDER-BOTTOM: windowtext 1pt solid; BACKGROUND-COLOR: transparent; mso-border-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt; mso-border-top-alt: solid windowtext .5pt" valign="top" width="421">
+										<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt">
+												<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">它的</span>
+												<span lang="EN-US">transition</span>
+												<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">引用了</span>
+												<span lang="EN-US">Jbpm_transition</span>
+												<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">表的</span>
+												<span lang="EN-US">id</span>
+												<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">，再看其它字段，估计此表是表示流程转向事件的一个实例，或者是一个各表之间的联接表。</span>
+										</p>
+								</td>
+						</tr>
+						<tr style="mso-yfti-irow: 4">
+								<td style="BORDER-RIGHT: windowtext 1pt solid; PADDING-RIGHT: 5.4pt; BORDER-TOP: #f2f2f2; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0cm; BORDER-LEFT: windowtext 1pt solid; WIDTH: 110pt; PADDING-TOP: 0cm; BORDER-BOTTOM: windowtext 1pt solid; BACKGROUND-COLOR: transparent; mso-border-alt: solid windowtext .5pt; mso-border-top-alt: solid windowtext .5pt" valign="top" width="147">
+										<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt">
+												<span lang="EN-US">jbpm_node</span>
+										</p>
+								</td>
+								<td style="BORDER-RIGHT: windowtext 1pt solid; PADDING-RIGHT: 5.4pt; BORDER-TOP: #f2f2f2; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0cm; BORDER-LEFT: #f2f2f2; WIDTH: 316.1pt; PADDING-TOP: 0cm; BORDER-BOTTOM: windowtext 1pt solid; BACKGROUND-COLOR: transparent; mso-border-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt; mso-border-top-alt: solid windowtext .5pt" valign="top" width="421">
+										<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt">
+												<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">流程结点</span>
+										</p>
+								</td>
+						</tr>
+						<tr style="mso-yfti-irow: 5">
+								<td style="BORDER-RIGHT: windowtext 1pt solid; PADDING-RIGHT: 5.4pt; BORDER-TOP: #f2f2f2; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0cm; BORDER-LEFT: windowtext 1pt solid; WIDTH: 110pt; PADDING-TOP: 0cm; BORDER-BOTTOM: windowtext 1pt solid; BACKGROUND-COLOR: transparent; mso-border-alt: solid windowtext .5pt; mso-border-top-alt: solid windowtext .5pt" valign="top" width="147">
+										<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt">
+												<span lang="EN-US">jbpm_transition</span>
+										</p>
+								</td>
+								<td style="BORDER-RIGHT: windowtext 1pt solid; PADDING-RIGHT: 5.4pt; BORDER-TOP: #f2f2f2; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0cm; BORDER-LEFT: #f2f2f2; WIDTH: 316.1pt; PADDING-TOP: 0cm; BORDER-BOTTOM: windowtext 1pt solid; BACKGROUND-COLOR: transparent; mso-border-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt; mso-border-top-alt: solid windowtext .5pt" valign="top" width="421">
+										<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt">
+												<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">流程的转向定义</span>
+										</p>
+								</td>
+						</tr>
+						<tr style="mso-yfti-irow: 6; mso-yfti-lastrow: yes">
+								<td style="BORDER-RIGHT: windowtext 1pt solid; PADDING-RIGHT: 5.4pt; BORDER-TOP: #f2f2f2; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0cm; BORDER-LEFT: windowtext 1pt solid; WIDTH: 110pt; PADDING-TOP: 0cm; BORDER-BOTTOM: windowtext 1pt solid; BACKGROUND-COLOR: transparent; mso-border-alt: solid windowtext .5pt; mso-border-top-alt: solid windowtext .5pt" valign="top" width="147">
+										<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt">
+												<span lang="EN-US">jbpm_variableaccess</span>
+										</p>
+								</td>
+								<td style="BORDER-RIGHT: windowtext 1pt solid; PADDING-RIGHT: 5.4pt; BORDER-TOP: #f2f2f2; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0cm; BORDER-LEFT: #f2f2f2; WIDTH: 316.1pt; PADDING-TOP: 0cm; BORDER-BOTTOM: windowtext 1pt solid; BACKGROUND-COLOR: transparent; mso-border-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt; mso-border-top-alt: solid windowtext .5pt" valign="top" width="421">
+										<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt">
+												<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">流程中携带的变量。</span>
+												<span lang="EN-US">ACCESS</span>
+												<span style="FONT-FAMILY: 宋体; mso-ascii-font-family: 'Times New Roman'; mso-hansi-font-family: 'Times New Roman'">字段是这些变量的读写权限</span>
+										</p>
+								</td>
+						</tr>
+				</tbody>
+		</table>
+		<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt">
+				<span lang="EN-US">
+						<o:p> </o:p>
+				</span>
+		</p>
+		<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt">
+				<span lang="EN-US">
+						<o:p> </o:p>
+				</span>
+		</p>
+		<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt">
+				<span lang="EN-US">
+						<o:p> <font face="宋体"><strong>作者简介<br /></strong>陈刚，广西桂林人，著作有《Eclipse从入门到精通》<br />您可以通过其博客了解更多信息和文章：</font><a href="http://www.chengang.com.cn/"><font face="宋体" color="#000033">http://www.ChenGang.com.cn</font></a></o:p> </span>
+				<span lang="EN-US">
+						<o:p> </o:p>
+				</span>
+		</p>
+		<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt">
+				<span lang="EN-US">
+						<o:p> </o:p> </span>
+				<span lang="EN-US">
+						<o:p> </o:p>
+				</span>
+		</p>
+
+		</div>
+		<p class="postfoot">
+			posted on 2006-08-23 19:26 <a href='http://www.blogjava.net/chengang/'>陈刚</a> 阅读(44773) <a href='#Post'>评论(36)</a> &nbsp;<a href="http://www.blogjava.net/chengang/admin/EditPosts.aspx?postid=65346">编辑</a> &nbsp;<a href="http://www.blogjava.net/chengang/AddToFavorite.aspx?id=65346">收藏</a>  所属分类: <a href='http://www.blogjava.net/chengang/category/12967.html'>jBPM</a> 
+		</p>
+	</div>
+	<img src ="http://www.blogjava.net/chengang/aggbug/65346.html?webview=1" width = "1" height = "1" />
+	
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+xmlns:dc="http://purl.org/dc/elements/1.1/"
+xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+<rdf:Description
+rdf:about="http://www.blogjava.net/chengang/archive/2006/08/23/65346.html"
+dc:identifier="http://www.blogjava.net/chengang/archive/2006/08/23/65346.html"
+dc:title="jBPM开发入门指南(3) "
+trackback:ping="http://www.blogjava.net/chengang/services/trackbacks/65346.aspx" />
+</rdf:RDF>
+-->
+
+	<script type="text/javascript">
+//<![CDATA[
+Sys.WebForms.PageRequestManager._initialize('AjaxHolder$scriptmanager1', document.getElementById('Form1'));
+Sys.WebForms.PageRequestManager.getInstance()._updateControls(['tAjaxHolder$UpdatePanel1'], [], [], 90);
+//]]>
+</script>
+
+<div id="AjaxHolder_UpdatePanel1">
+	    
+    <a name="pagedcomment"></a>
+<a name = "评论" />
+<div id="comments">
+<h3>评论</h3>
+	
+	
+			<div class="post">
+				<h2>
+					<a title="permalink: re: jBPM开发入门指南(3) " href="/chengang/archive/2006/08/23/65346.html#66431">#</a>&nbsp;<a name="66431"></a>re: jBPM开发入门指南(3) &nbsp;&nbsp;<a onclick="return SetReplyAuhor(&quot;Rami&quot;)" href="/chengang/archive/2006/08/23/65346.html#post">回复</a>&nbsp;&nbsp;<a title="查看该作者发表过的评论" href="http://www.blogjava.net/comment?author=Rami" target="_blank">更多评论</a>
+					<a id="AjaxHolder_Comments_CommentList_ctl00_DeleteLink" href="javascript:__doPostBack('AjaxHolder$Comments$CommentList$ctl00$DeleteLink','')"></a>&nbsp;&nbsp;<a id="AjaxHolder_Comments_CommentList_ctl00_EditLink"></a>
+				</h2>
+				你好,<br> 能请教一个问题吗?<br>我按照你的例子能够把它部署到ECLIPSE的测试环境中,但是我用那个Test就出现了如下的问题不知为什么?<br>&quot;org.hibernate.MappingException: Named query not known: GraphSession.findLatestProcessDefinitionQuery&quot;<br>还有一个问题就是,如果我用ECLIPSE的jbpm的工具生成了processdefinition.xml(业务流程),那么我怎样才能使用它呢?我怎样和业务数据,用户,权限结合在一起呢?<br>谢谢!
+				<div class="postfoot">
+					2006-08-29 14:27 | <a id="AjaxHolder_Comments_CommentList_ctl00_NameLink" href="http://www.blogjava.net/hgq0011" target="_blank">Rami</a>
+				</div>
+			</div>
+		
+			<div class="post">
+				<h2>
+					<a title="permalink: re: jBPM开发入门指南(3) " href="/chengang/archive/2006/08/23/65346.html#67005">#</a>&nbsp;<a name="67005"></a>re: jBPM开发入门指南(3) &nbsp;&nbsp;<a onclick="return SetReplyAuhor(&quot;陈刚&quot;)" href="/chengang/archive/2006/08/23/65346.html#post">回复</a>&nbsp;&nbsp;<a title="查看该作者发表过的评论" href="http://www.blogjava.net/comment?author=%e9%99%88%e5%88%9a" target="_blank">更多评论</a>
+					<a id="AjaxHolder_Comments_CommentList_ctl01_DeleteLink" href="javascript:__doPostBack('AjaxHolder$Comments$CommentList$ctl01$DeleteLink','')"></a>&nbsp;&nbsp;<a id="AjaxHolder_Comments_CommentList_ctl01_EditLink"></a>
+				</h2>
+				&#64;Rami<br>你的第一个问题，我判断不出原因。org.hibernate.MappingException也许是数据库的问题<br>第二问题，jbpm的工具生成了processdefinition.xml和手写的processdefinition.xml是一样的，文章中已经给出了使用方法了呀。<br>
+				<div class="postfoot">
+					2006-09-01 09:25 | <a id="AjaxHolder_Comments_CommentList_ctl01_NameLink" href="http://www.blogjava.net/chengang/" target="_blank">陈刚</a>
+				</div>
+			</div>
+		
+			<div class="post">
+				<h2>
+					<a title="permalink: re: jBPM开发入门指南(3) " href="/chengang/archive/2006/08/23/65346.html#67763">#</a>&nbsp;<a name="67763"></a>re: jBPM开发入门指南(3) &nbsp;&nbsp;<a onclick="return SetReplyAuhor(&quot;车轱辘&quot;)" href="/chengang/archive/2006/08/23/65346.html#post">回复</a>&nbsp;&nbsp;<a title="查看该作者发表过的评论" href="http://www.blogjava.net/comment?author=%e8%bd%a6%e8%bd%b1%e8%be%98" target="_blank">更多评论</a>
+					<a id="AjaxHolder_Comments_CommentList_ctl02_DeleteLink" href="javascript:__doPostBack('AjaxHolder$Comments$CommentList$ctl02$DeleteLink','')"></a>&nbsp;&nbsp;<a id="AjaxHolder_Comments_CommentList_ctl02_EditLink"></a>
+				</h2>
+				我按照例子一步步配置，运行的时候出现几个错误：<br>1 NodeTypes : node 'page' will not be available. class 'org.jboss.seam.pageflow.Page' couldn't be loaded<br>2 WARN  JpdlXmlReader : process xml warning: warning: no swimlane or assignment specified for task '&lt;task xmlns=&quot;urn:jbpm.org:jpdl-3.1&quot; blocking=&quot;false&quot; signalling=&quot;true&quot; priority=&quot;normal&quot;&gt; <br>还请赐教
+				<div class="postfoot">
+					2006-09-05 11:07 | <a id="AjaxHolder_Comments_CommentList_ctl02_NameLink" target="_blank">车轱辘</a>
+				</div>
+			</div>
+		
+			<div class="post">
+				<h2>
+					<a title="permalink: re: jBPM开发入门指南(1) " href="/chengang/archive/2006/08/23/65346.html#69135">#</a>&nbsp;<a name="69135"></a>re: jBPM开发入门指南(1) &nbsp;&nbsp;<a onclick="return SetReplyAuhor(&quot;小东&quot;)" href="/chengang/archive/2006/08/23/65346.html#post">回复</a>&nbsp;&nbsp;<a title="查看该作者发表过的评论" href="http://www.blogjava.net/comment?author=%e5%b0%8f%e4%b8%9c" target="_blank">更多评论</a>
+					<a id="AjaxHolder_Comments_CommentList_ctl03_DeleteLink" href="javascript:__doPostBack('AjaxHolder$Comments$CommentList$ctl03$DeleteLink','')"></a>&nbsp;&nbsp;<a id="AjaxHolder_Comments_CommentList_ctl03_EditLink"></a>
+				</h2>
+				我按照你的re: jBPM开发入门指南(1) 中的步骤做了但是就是出不来界面
+				<div class="postfoot">
+					2006-09-12 13:26 | <a id="AjaxHolder_Comments_CommentList_ctl03_NameLink" target="_blank">小东</a>
+				</div>
+			</div>
+		
+			<div class="post">
+				<h2>
+					<a title="permalink: re: jBPM开发入门指南(3) " href="/chengang/archive/2006/08/23/65346.html#69815">#</a>&nbsp;<a name="69815"></a>re: jBPM开发入门指南(3) &nbsp;&nbsp;<a onclick="return SetReplyAuhor(&quot;jeffen2006&quot;)" href="/chengang/archive/2006/08/23/65346.html#post">回复</a>&nbsp;&nbsp;<a title="查看该作者发表过的评论" href="http://www.blogjava.net/comment?author=jeffen2006" target="_blank">更多评论</a>
+					<a id="AjaxHolder_Comments_CommentList_ctl04_DeleteLink" href="javascript:__doPostBack('AjaxHolder$Comments$CommentList$ctl04$DeleteLink','')"></a>&nbsp;&nbsp;<a id="AjaxHolder_Comments_CommentList_ctl04_EditLink"></a>
+				</h2>
+				按照你的例子作了一下，感觉好像醍醐灌顶，很多疑问都解决了！多谢了！<br>我开始学java的时候就买了你的eclipse入门到精通。希望你以后多发些jbpm的好文。
+				<div class="postfoot">
+					2006-09-15 10:13 | <a id="AjaxHolder_Comments_CommentList_ctl04_NameLink" href="http://blog.csdn.net/jeffen2006/" target="_blank">jeffen2006</a>
+				</div>
+			</div>
+		
+			<div class="post">
+				<h2>
+					<a title="permalink: re: jBPM开发入门指南(3) " href="/chengang/archive/2006/08/23/65346.html#69878">#</a>&nbsp;<a name="69878"></a>re: jBPM开发入门指南(3) &nbsp;&nbsp;<a onclick="return SetReplyAuhor(&quot;goushijie&quot;)" href="/chengang/archive/2006/08/23/65346.html#post">回复</a>&nbsp;&nbsp;<a title="查看该作者发表过的评论" href="http://www.blogjava.net/comment?author=goushijie" target="_blank">更多评论</a>
+					<a id="AjaxHolder_Comments_CommentList_ctl05_DeleteLink" href="javascript:__doPostBack('AjaxHolder$Comments$CommentList$ctl05$DeleteLink','')"></a>&nbsp;&nbsp;<a id="AjaxHolder_Comments_CommentList_ctl05_EditLink"></a>
+				</h2>
+				我用eclipse 插件定义了一个流程，并且hibernate的配置文件改为oracle了，但用插件部署之后，我的数据库中并没有增加一条记录，部署提示成功。
+				<div class="postfoot">
+					2006-09-15 14:06 | <a id="AjaxHolder_Comments_CommentList_ctl05_NameLink" target="_blank">goushijie</a>
+				</div>
+			</div>
+		
+			<div class="post">
+				<h2>
+					<a title="permalink: re: jBPM开发入门指南(3) " href="/chengang/archive/2006/08/23/65346.html#70333">#</a>&nbsp;<a name="70333"></a>re: jBPM开发入门指南(3) &nbsp;&nbsp;<a onclick="return SetReplyAuhor(&quot;ppxiaofei&quot;)" href="/chengang/archive/2006/08/23/65346.html#post">回复</a>&nbsp;&nbsp;<a title="查看该作者发表过的评论" href="http://www.blogjava.net/comment?author=ppxiaofei" target="_blank">更多评论</a>
+					<a id="AjaxHolder_Comments_CommentList_ctl06_DeleteLink" href="javascript:__doPostBack('AjaxHolder$Comments$CommentList$ctl06$DeleteLink','')"></a>&nbsp;&nbsp;<a id="AjaxHolder_Comments_CommentList_ctl06_EditLink"></a>
+				</h2>
+				你好，请教一个问题，可以吗？<br>我在执行DeployProcessTest时出错，提示cannot open connection。<br>已经在项目属性的库引用中将oracle14.jar和hibernate3.jar包设置，并且路径设在项目根目录下的lib文件夹中。<br>而且修改了\bin文件夹下的hibernate.config.xml文件中的数据库连接设置。<br>我不清楚连接不上还有可能哪里出问题？谢谢
+				<div class="postfoot">
+					2006-09-18 16:27 | <a id="AjaxHolder_Comments_CommentList_ctl06_NameLink" target="_blank">ppxiaofei</a>
+				</div>
+			</div>
+		
+			<div class="post">
+				<h2>
+					<a title="permalink: re: jBPM开发入门指南(3) " href="/chengang/archive/2006/08/23/65346.html#88451">#</a>&nbsp;<a name="88451"></a>re: jBPM开发入门指南(3) &nbsp;&nbsp;<a onclick="return SetReplyAuhor(&quot;小林[匿名]&quot;)" href="/chengang/archive/2006/08/23/65346.html#post">回复</a>&nbsp;&nbsp;<a title="查看该作者发表过的评论" href="http://www.blogjava.net/comment?author=%e5%b0%8f%e6%9e%97%5b%e5%8c%bf%e5%90%8d%5d" target="_blank">更多评论</a>
+					<a id="AjaxHolder_Comments_CommentList_ctl07_DeleteLink" href="javascript:__doPostBack('AjaxHolder$Comments$CommentList$ctl07$DeleteLink','')"></a>&nbsp;&nbsp;<a id="AjaxHolder_Comments_CommentList_ctl07_EditLink"></a>
+				</h2>
+				我提交完“我要请假”后，出现在mysql里的却是乱码，然后它就告诉我说找不到“我要请假”，请问这个怎么解决
+				<div class="postfoot">
+					2006-12-18 10:37 | <a id="AjaxHolder_Comments_CommentList_ctl07_NameLink" target="_blank">小林[匿名]</a>
+				</div>
+			</div>
+		
+			<div class="post">
+				<h2>
+					<a title="permalink: re: jBPM开发入门指南(3) " href="/chengang/archive/2006/08/23/65346.html#94209">#</a>&nbsp;<a name="94209"></a>re: jBPM开发入门指南(3) &nbsp;&nbsp;<a onclick="return SetReplyAuhor(&quot;风人园&quot;)" href="/chengang/archive/2006/08/23/65346.html#post">回复</a>&nbsp;&nbsp;<a title="查看该作者发表过的评论" href="http://www.blogjava.net/comment?author=%e9%a3%8e%e4%ba%ba%e5%9b%ad" target="_blank">更多评论</a>
+					<a id="AjaxHolder_Comments_CommentList_ctl08_DeleteLink" href="javascript:__doPostBack('AjaxHolder$Comments$CommentList$ctl08$DeleteLink','')"></a>&nbsp;&nbsp;<a id="AjaxHolder_Comments_CommentList_ctl08_EditLink"></a>
+				</h2>
+				问一个问题，我配置完后进行部署，但是log提示找不到database 'jbpm'<br>我用mysql作数据库，需要手动创建database吗？还是程序会自动生成数据库中的相关数据库和表
+				<div class="postfoot">
+					2007-01-16 13:58 | <a id="AjaxHolder_Comments_CommentList_ctl08_NameLink" href="http://www.blogjava.net/wuxufeng8080/" target="_blank">风人园</a>
+				</div>
+			</div>
+		
+			<div class="post">
+				<h2>
+					<a title="permalink: re: jBPM开发入门指南(3) " href="/chengang/archive/2006/08/23/65346.html#101384">#</a>&nbsp;<a name="101384"></a>re: jBPM开发入门指南(3) &nbsp;&nbsp;<a onclick="return SetReplyAuhor(&quot;liyanhui&quot;)" href="/chengang/archive/2006/08/23/65346.html#post">回复</a>&nbsp;&nbsp;<a title="查看该作者发表过的评论" href="http://www.blogjava.net/comment?author=liyanhui" target="_blank">更多评论</a>
+					<a id="AjaxHolder_Comments_CommentList_ctl09_DeleteLink" href="javascript:__doPostBack('AjaxHolder$Comments$CommentList$ctl09$DeleteLink','')"></a>&nbsp;&nbsp;<a id="AjaxHolder_Comments_CommentList_ctl09_EditLink"></a>
+				</h2>
+				你好：<br>　　我从您给的地址下载后解压缩得到的包是jbpm-starters-kit-3.1.4<br>它和jbpm-starters-kit-3.1.１有什么区别吗？我把D:\jbpm-starters-kit-3.1.4下的jbpm包也改为jbpm.3,但是我在执行ant mysql.scripts命令时，还会出现那样的错误，并且是三个．这是那里的问题呢？是因为jbpm的版本不同吗？如果是３.１.４版本怎么改呢？谢谢！！！<br><br>D:\jbpm-starters-kit-3.1.4\jbpm-db&gt;ant mysql.scripts<br>Buildfile: build.xml<br><br>mysql.scripts:<br><br>prepare:<br><br>compile.jbpm:<br><br>compile.identity:<br><br>compile.jbpm.test:<br>    [javac] Compiling 65 source files to D:\jbpm-starters-kit-3.1.4\jbpm.3\build<br>\classes.jbpm.test<br>    [javac] D:\jbpm-starters-kit-3.1.4\jbpm.3\src\java.jbpm.test\org\jbpm\msg\co<br>mmand\AsyncExecutionDbTest.java:143: cannot resolve symbol<br>    [javac] symbol  : method getStackTrace ()<br>    [javac] location: class org.jbpm.msg.command.CommandExecutorThread<br>    [javac]         commandExecutor.getStackTrace();<br>    [javac]                        ^<br>    [javac] D:\jbpm-starters-kit-3.1.4\jbpm.3\src\java.jbpm.test\org\jbpm\msg\co<br>mmand\AsyncExecutionDbTest.java:144: cannot resolve symbol<br>    [javac] symbol  : method getState ()<br>    [javac] location: class org.jbpm.msg.command.CommandExecutorThread<br>    [javac]         log.debug(&quot;command executor state: &quot;+commandExecutor.getStat<br>e());<br>    [javac]                                                             ^<br>    [javac] D:\jbpm-starters-kit-3.1.4\jbpm.3\src\java.jbpm.test\org\jbpm\msg\co<br>mmand\AsyncExecutionDbTest.java:146: cannot resolve symbol<br>    [javac] symbol  : method getStackTrace ()<br>    [javac] location: class org.jbpm.msg.command.CommandExecutorThread<br>    [javac]         StackTraceElement[] commandExecutorStackTrace = commandExecu<br>tor.getStackTrace();<br>    [javac]<br>   ^<br>    [javac] 3 errors<br><br>BUILD FAILED<br>D:\jbpm-starters-kit-3.1.4\jbpm-db\build.xml:361: The following error occurred w<br>hile executing this line:<br>D:\jbpm-starters-kit-3.1.4\jbpm-db\build.xml:68: The following error occurred wh<br>ile executing this line:<br>D:\jbpm-starters-kit-3.1.4\jbpm.3\build.xml:58: Compile failed; see the compiler<br> error output for details.<br><br>Total time: 21 seconds<br>D:\jbpm-starters-kit-3.1.4\jbpm-db&gt;<br>
+				<div class="postfoot">
+					2007-03-02 10:01 | <a id="AjaxHolder_Comments_CommentList_ctl09_NameLink" target="_blank">liyanhui</a>
+				</div>
+			</div>
+		
+			<div class="post">
+				<h2>
+					<a title="permalink: re: jBPM开发入门指南(3) " href="/chengang/archive/2006/08/23/65346.html#103804">#</a>&nbsp;<a name="103804"></a>re: jBPM开发入门指南(3) &nbsp;&nbsp;<a onclick="return SetReplyAuhor(&quot;wzy&quot;)" href="/chengang/archive/2006/08/23/65346.html#post">回复</a>&nbsp;&nbsp;<a title="查看该作者发表过的评论" href="http://www.blogjava.net/comment?author=wzy" target="_blank">更多评论</a>
+					<a id="AjaxHolder_Comments_CommentList_ctl10_DeleteLink" href="javascript:__doPostBack('AjaxHolder$Comments$CommentList$ctl10$DeleteLink','')"></a>&nbsp;&nbsp;<a id="AjaxHolder_Comments_CommentList_ctl10_EditLink"></a>
+				</h2>
+				你好,<br>请问这种方式部署到数据库后,流程所引用到的class并没有发布到数据库.<br>这个与.par打包方式发布有所区别呢.<br>哪种方式比较好呢
+				<div class="postfoot">
+					2007-03-14 16:05 | <a id="AjaxHolder_Comments_CommentList_ctl10_NameLink" target="_blank">wzy</a>
+				</div>
+			</div>
+		
+			<div class="post">
+				<h2>
+					<a title="permalink: re: jBPM开发入门指南(3) " href="/chengang/archive/2006/08/23/65346.html#103835">#</a>&nbsp;<a name="103835"></a>re: jBPM开发入门指南(3) &nbsp;&nbsp;<a onclick="return SetReplyAuhor(&quot;wzy&quot;)" href="/chengang/archive/2006/08/23/65346.html#post">回复</a>&nbsp;&nbsp;<a title="查看该作者发表过的评论" href="http://www.blogjava.net/comment?author=wzy" target="_blank">更多评论</a>
+					<a id="AjaxHolder_Comments_CommentList_ctl11_DeleteLink" href="javascript:__doPostBack('AjaxHolder$Comments$CommentList$ctl11$DeleteLink','')"></a>&nbsp;&nbsp;<a id="AjaxHolder_Comments_CommentList_ctl11_EditLink"></a>
+				</h2>
+				发现一个问题,将流程定义发布到数据库时,在流程中<br>&lt;reason&gt; 我要请假 &lt;/reason&gt; <br>这里的&quot; 我要请假 &quot;前后的空格会自动去掉,在资料库中是<br>&lt;reason xmlns=&quot;urn:jbpm.org:jpdl-3.1&quot;&gt;我要请假&lt;/reason&gt;
+				<div class="postfoot">
+					2007-03-14 17:12 | <a id="AjaxHolder_Comments_CommentList_ctl11_NameLink" target="_blank">wzy</a>
+				</div>
+			</div>
+		
+			<div class="post">
+				<h2>
+					<a title="permalink: re: jBPM开发入门指南(3) " href="/chengang/archive/2006/08/23/65346.html#112999">#</a>&nbsp;<a name="112999"></a>re: jBPM开发入门指南(3) &nbsp;&nbsp;<a onclick="return SetReplyAuhor(&quot;yollywu&quot;)" href="/chengang/archive/2006/08/23/65346.html#post">回复</a>&nbsp;&nbsp;<a title="查看该作者发表过的评论" href="http://www.blogjava.net/comment?author=yollywu" target="_blank">更多评论</a>
+					<a id="AjaxHolder_Comments_CommentList_ctl12_DeleteLink" href="javascript:__doPostBack('AjaxHolder$Comments$CommentList$ctl12$DeleteLink','')"></a>&nbsp;&nbsp;<a id="AjaxHolder_Comments_CommentList_ctl12_EditLink"></a>
+				</h2>
+				成功了，呵呵
+				<div class="postfoot">
+					2007-04-23 17:32 | <a id="AjaxHolder_Comments_CommentList_ctl12_NameLink" target="_blank">yollywu</a>
+				</div>
+			</div>
+		
+			<div class="post">
+				<h2>
+					<a title="permalink: re: jBPM开发入门指南(3) [未登录]" href="/chengang/archive/2006/08/23/65346.html#118281">#</a>&nbsp;<a name="118281"></a>re: jBPM开发入门指南(3) [未登录]&nbsp;&nbsp;<a onclick="return SetReplyAuhor(&quot;yxw&quot;)" href="/chengang/archive/2006/08/23/65346.html#post">回复</a>&nbsp;&nbsp;<a title="查看该作者发表过的评论" href="http://www.blogjava.net/comment?author=yxw" target="_blank">更多评论</a>
+					<a id="AjaxHolder_Comments_CommentList_ctl13_DeleteLink" href="javascript:__doPostBack('AjaxHolder$Comments$CommentList$ctl13$DeleteLink','')"></a>&nbsp;&nbsp;<a id="AjaxHolder_Comments_CommentList_ctl13_EditLink"></a>
+				</h2>
+				这是 运行 您的代码出现的bug<br>Hibernate: <br>    /* named HQL query GraphSession.findLatestProcessDefinitionQuery */ select<br>        processdef0_.ID_ as ID1_4_,<br>        processdef0_.NAME_ as NAME2_4_,<br>        processdef0_.VERSION_ as VERSION3_4_,<br>        processdef0_.ISTERMINATIONIMPLICIT_ as ISTERMIN4_4_,<br>        processdef0_.STARTSTATE_ as STARTSTATE5_4_ <br>    from<br>        JBPM_PROCESSDEFINITION processdef0_ <br>    where<br>        processdef0_.NAME_=? <br>    order by<br>        processdef0_.VERSION_ desc limit ?<br>10:40:35,390 [main] WARN  JDBCExceptionReporter : SQL Error: 1064, SQLState: 42000<br>10:40:35,390 [main] ERROR JDBCExceptionReporter : You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '?' at line 1<br>org.hibernate.exception.SQLGrammarException: could not execute query<br>	at org.hibernate.exception.SQLStateConverter.convert(SQLStateConverter.java:65)<br>	at org.hibernate.exception.JDBCExceptionHelper.convert(JDBCExceptionHelper.java:43)<br>	at org.hibernate.loader.Loader.doList(Loader.java:2153)<br>	at org.hibernate.loader.Loader.listIgnoreQueryCache(Loader.java:2029)<br>	at org.hibernate.loader.Loader.list(Loader.java:2024)<br>	at org.hibernate.loader.hql.QueryLoader.list(QueryLoader.java:369)<br>	at org.hibernate.hql.ast.QueryTranslatorImpl.list(QueryTranslatorImpl.java:300)<br>	at org.hibernate.engine.query.HQLQueryPlan.performList(HQLQueryPlan.java:146)<br>	at org.hibernate.impl.SessionImpl.list(SessionImpl.java:1093)<br>	at org.hibernate.impl.QueryImpl.list(QueryImpl.java:79)<br>	at org.hibernate.impl.AbstractQueryImpl.uniqueResult(AbstractQueryImpl.java:745)<br>	at org.jbpm.db.GraphSession.findLatestProcessDefinition(GraphSession.java:153)<br>	at org.jbpm.db.GraphSession.deployProcessDefinition(GraphSession.java:67)<br>	at org.jbpm.JbpmContext.deployProcessDefinition(JbpmContext.java:173)<br>	at com.businessFlow.DeployProcessTest.testDeployProcessDefinition(DeployProcessTest.java:31)<br>	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)<br>	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)<br>	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)<br>	at java.lang.reflect.Method.invoke(Method.java:585)<br>	at junit.framework.TestCase.runTest(TestCase.java:154)<br>	at junit.framework.TestCase.runBare(TestCase.java:127)<br>	at junit.framework.TestResult$1.protect(TestResult.java:106)<br>	at junit.framework.TestResult.runProtected(TestResult.java:124)<br>	at junit.framework.TestResult.run(TestResult.java:109)<br>	at junit.framework.TestCase.run(TestCase.java:118)<br>	at junit.framework.TestSuite.runTest(TestSuite.java:208)<br>	at junit.framework.TestSuite.run(TestSuite.java:203)<br>	at org.eclipse.jdt.internal.junit.runner.junit3.JUnit3TestReference.run(JUnit3TestReference.java:128)<br>	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38)<br>	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:460)<br>	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:673)<br>	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:386)<br>	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:196)<br>Caused by: java.sql.SQLException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '?' at line 1<br>	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:2851)<br>	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:1534)<br>	at com.mysql.jdbc.ServerPreparedStatement.serverPrepare(ServerPreparedStatement.java:1485)<br>	at com.mysql.jdbc.ServerPreparedStatement.&lt;init&gt;(ServerPreparedStatement.java:151)<br>	at com.mysql.jdbc.Connection.prepareStatement(Connection.java:1309)<br>	at com.mysql.jdbc.Connection.prepareStatement(Connection.java:1281)<br>	at org.hibernate.jdbc.AbstractBatcher.getPreparedStatement(AbstractBatcher.java:442)<br>	at org.hibernate.jdbc.AbstractBatcher.getPreparedStatement(AbstractBatcher.java:368)<br>	at org.hibernate.jdbc.AbstractBatcher.prepareQueryStatement(AbstractBatcher.java:105)<br>	at org.hibernate.loader.Loader.prepareQueryStatement(Loader.java:1561)<br>	at org.hibernate.loader.Loader.doQuery(Loader.java:661)<br>	at org.hibernate.loader.Loader.doQueryAndInitializeNonLazyCollections(Loader.java:224)<br>	at org.hibernate.loader.Loader.doList(Loader.java:2150)<br>	... 30 more<br>10:40:35,593 [main] ERROR GraphSession : org.hibernate.exception.SQLGrammarException: could not execute query
+				<div class="postfoot">
+					2007-05-18 10:46 | <a id="AjaxHolder_Comments_CommentList_ctl13_NameLink" target="_blank">yxw</a>
+				</div>
+			</div>
+		
+			<div class="post">
+				<h2>
+					<a title="permalink: re: jBPM开发入门指南(3) [未登录]" href="/chengang/archive/2006/08/23/65346.html#118297">#</a>&nbsp;<a name="118297"></a>re: jBPM开发入门指南(3) [未登录]&nbsp;&nbsp;<a onclick="return SetReplyAuhor(&quot;yxw&quot;)" href="/chengang/archive/2006/08/23/65346.html#post">回复</a>&nbsp;&nbsp;<a title="查看该作者发表过的评论" href="http://www.blogjava.net/comment?author=yxw" target="_blank">更多评论</a>
+					<a id="AjaxHolder_Comments_CommentList_ctl14_DeleteLink" href="javascript:__doPostBack('AjaxHolder$Comments$CommentList$ctl14$DeleteLink','')"></a>&nbsp;&nbsp;<a id="AjaxHolder_Comments_CommentList_ctl14_EditLink"></a>
+				</h2>
+				用HSQL就没有问题;用mysql就有上面的问题
+				<div class="postfoot">
+					2007-05-18 11:35 | <a id="AjaxHolder_Comments_CommentList_ctl14_NameLink" target="_blank">yxw</a>
+				</div>
+			</div>
+		
+			<div class="post">
+				<h2>
+					<a title="permalink: re: jBPM开发入门指南(3) " href="/chengang/archive/2006/08/23/65346.html#129359">#</a>&nbsp;<a name="129359"></a>re: jBPM开发入门指南(3) &nbsp;&nbsp;<a onclick="return SetReplyAuhor(&quot;小云&quot;)" href="/chengang/archive/2006/08/23/65346.html#post">回复</a>&nbsp;&nbsp;<a title="查看该作者发表过的评论" href="http://www.blogjava.net/comment?author=%e5%b0%8f%e4%ba%91" target="_blank">更多评论</a>
+					<a id="AjaxHolder_Comments_CommentList_ctl15_DeleteLink" href="javascript:__doPostBack('AjaxHolder$Comments$CommentList$ctl15$DeleteLink','')"></a>&nbsp;&nbsp;<a id="AjaxHolder_Comments_CommentList_ctl15_EditLink"></a>
+				</h2>
+				&#64;ppxiaofei<br>应该是数据库名或者密码有错误
+				<div class="postfoot">
+					2007-07-10 15:44 | <a id="AjaxHolder_Comments_CommentList_ctl15_NameLink" target="_blank">小云</a>
+				</div>
+			</div>
+		
+			<div class="post">
+				<h2>
+					<a title="permalink: re: jBPM开发入门指南(3) " href="/chengang/archive/2006/08/23/65346.html#137128">#</a>&nbsp;<a name="137128"></a>re: jBPM开发入门指南(3) &nbsp;&nbsp;<a onclick="return SetReplyAuhor(&quot;Gone with the Wind&quot;)" href="/chengang/archive/2006/08/23/65346.html#post">回复</a>&nbsp;&nbsp;<a title="查看该作者发表过的评论" href="http://www.blogjava.net/comment?author=Gone+with+the+Wind" target="_blank">更多评论</a>
+					<a id="AjaxHolder_Comments_CommentList_ctl16_DeleteLink" href="javascript:__doPostBack('AjaxHolder$Comments$CommentList$ctl16$DeleteLink','')"></a>&nbsp;&nbsp;<a id="AjaxHolder_Comments_CommentList_ctl16_EditLink"></a>
+				</h2>
+				我用的jbpm-starters-kit-3.1.4和myeclipse5.5，现在还没发现有什么冲突。
+				<div class="postfoot">
+					2007-08-16 10:04 | <a id="AjaxHolder_Comments_CommentList_ctl16_NameLink" target="_blank">Gone with the Wind</a>
+				</div>
+			</div>
+		
+			<div class="post">
+				<h2>
+					<a title="permalink: re: jBPM开发入门指南(3) " href="/chengang/archive/2006/08/23/65346.html#142567">#</a>&nbsp;<a name="142567"></a>re: jBPM开发入门指南(3) &nbsp;&nbsp;<a onclick="return SetReplyAuhor(&quot;liumingrui&quot;)" href="/chengang/archive/2006/08/23/65346.html#post">回复</a>&nbsp;&nbsp;<a title="查看该作者发表过的评论" href="http://www.blogjava.net/comment?author=liumingrui" target="_blank">更多评论</a>
+					<a id="AjaxHolder_Comments_CommentList_ctl17_DeleteLink" href="javascript:__doPostBack('AjaxHolder$Comments$CommentList$ctl17$DeleteLink','')"></a>&nbsp;&nbsp;<a id="AjaxHolder_Comments_CommentList_ctl17_EditLink"></a>
+				</h2>
+				谢谢！！<br>非常感谢！！<br>除了这些我还想说！！<br>非常非常感谢！！<br>受益了！！<br>谢谢陈同志！！<br>
+				<div class="postfoot">
+					2007-09-04 11:27 | <a id="AjaxHolder_Comments_CommentList_ctl17_NameLink" href="http://lmr_001@126.com" target="_blank">liumingrui</a>
+				</div>
+			</div>
+		
+			<div class="post">
+				<h2>
+					<a title="permalink: re: jBPM开发入门指南(3) " href="/chengang/archive/2006/08/23/65346.html#155572">#</a>&nbsp;<a name="155572"></a>re: jBPM开发入门指南(3) &nbsp;&nbsp;<a onclick="return SetReplyAuhor(&quot;livingbody&quot;)" href="/chengang/archive/2006/08/23/65346.html#post">回复</a>&nbsp;&nbsp;<a title="查看该作者发表过的评论" href="http://www.blogjava.net/comment?author=livingbody" target="_blank">更多评论</a>
+					<a id="AjaxHolder_Comments_CommentList_ctl18_DeleteLink" href="javascript:__doPostBack('AjaxHolder$Comments$CommentList$ctl18$DeleteLink','')"></a>&nbsp;&nbsp;<a id="AjaxHolder_Comments_CommentList_ctl18_EditLink"></a>
+				</h2>
+				我按你说的作，出错了，不知道如何进行，好打击人啊，看别人都做好了，郁闷。我的信箱livingbody&#64;gmail.com，有消息给我说下。<br>3:30:17,781 [main] DEBUG DbPersistenceService : creating hibernate session<br>13:30:17,843 [main] DEBUG DbPersistenceService : beginning hibernate transaction<br>13:30:17,859 [main] DEBUG DbPersistenceService : begun hibernate transaction org.hibernate.transaction.JDBCTransaction&#64;14323d5<br>13:30:17,937 [main] WARN  JDBCExceptionReporter : SQL Error: 1054, SQLState: 42S22<br>13:30:17,937 [main] ERROR JDBCExceptionReporter : Unknown column 'processdef0_.DESCRIPTION_' in 'field list'<br>org.hibernate.exception.SQLGrammarException: could not execute query<br>	at org.hibernate.exception.SQLStateConverter.convert(SQLStateConverter.java:67)<br>	at org.hibernate.exception.JDBCExceptionHelper.convert(JDBCExceptionHelper.java:43)<br>	at org.hibernate.loader.Loader.doList(Loader.java:2223)<br>	at org.hibernate.loader.Loader.listIgnoreQueryCache(Loader.java:2104)<br>	at org.hibernate.loader.Loader.list(Loader.java:2099)<br>	at org.hibernate.loader.hql.QueryLoader.list(QueryLoader.java:378)<br>	at org.hibernate.hql.ast.QueryTranslatorImpl.list(QueryTranslatorImpl.java:338)<br>	at org.hibernate.engine.query.HQLQueryPlan.performList(HQLQueryPlan.java:172)<br>	at org.hibernate.impl.SessionImpl.list(SessionImpl.java:1121)<br>	at org.hibernate.impl.QueryImpl.list(QueryImpl.java:79)<br>	at org.hibernate.impl.AbstractQueryImpl.uniqueResult(AbstractQueryImpl.java:811)<br>	at org.jbpm.db.GraphSession.findLatestProcessDefinition(GraphSession.java:153)<br>	at org.jbpm.db.GraphSession.deployProcessDefinition(GraphSession.java:67)<br>	at org.jbpm.JbpmContext.deployProcessDefinition(JbpmContext.java:173)<br>	at com.sample.DeployProcessTest.testDeployProcessDefinition(DeployProcessTest.java:63)<br>	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)<br>	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)<br>	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)<br>	at java.lang.reflect.Method.invoke(Unknown Source)<br>	at junit.framework.TestCase.runTest(TestCase.java:154)<br>	at junit.framework.TestCase.runBare(TestCase.java:127)<br>	at junit.framework.TestResult$1.protect(TestResult.java:106)<br>	at junit.framework.TestResult.runProtected(TestResult.java:124)<br>	at junit.framework.TestResult.run(TestResult.java:109)<br>	at junit.framework.TestCase.run(TestCase.java:118)<br>	at junit.framework.TestSuite.runTest(TestSuite.java:208)<br>	at junit.framework.TestSuite.run(TestSuite.java:203)<br>	at org.eclipse.jdt.internal.junit.runner.junit3.JUnit3TestReference.run(JUnit3TestReference.java:130)<br>	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38)<br>	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:460)<br>	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:673)<br>	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:386)<br>	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:196)<br>Caused by: com.mysql.jdbc.exceptions.MySQLSyntaxErrorException: Unknown column 'processdef0_.DESCRIPTION_' in 'field list'<br>	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:936)<br>	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:2870)<br>	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:1573)<br>	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:1665)<br>	at com.mysql.jdbc.Connection.execSQL(Connection.java:3176)<br>	at com.mysql.jdbc.PreparedStatement.executeInternal(PreparedStatement.java:1153)<br>	at com.mysql.jdbc.PreparedStatement.executeQuery(PreparedStatement.java:1266)<br>	at org.hibernate.jdbc.AbstractBatcher.getResultSet(AbstractBatcher.java:186)<br>	at org.hibernate.loader.Loader.getResultSet(Loader.java:1787)<br>	at org.hibernate.loader.Loader.doQuery(Loader.java:674)<br>	at org.hibernate.loader.Loader.doQueryAndInitializeNonLazyCollections(Loader.java:236)<br>	at org.hibernate.loader.Loader.doList(Loader.java:2220)<br>	... 30 more<br>13:30:18,140 [main] ERROR GraphSession : org.hibernate.exception.SQLGrammarException: could not execute query<br>
+				<div class="postfoot">
+					2007-10-24 13:31 | <a id="AjaxHolder_Comments_CommentList_ctl18_NameLink" target="_blank">livingbody</a>
+				</div>
+			</div>
+		
+			<div class="post">
+				<h2>
+					<a title="permalink: re: jBPM开发入门指南(3) " href="/chengang/archive/2006/08/23/65346.html#160025">#</a>&nbsp;<a name="160025"></a>re: jBPM开发入门指南(3) &nbsp;&nbsp;<a onclick="return SetReplyAuhor(&quot;kidhu&quot;)" href="/chengang/archive/2006/08/23/65346.html#post">回复</a>&nbsp;&nbsp;<a title="查看该作者发表过的评论" href="http://www.blogjava.net/comment?author=kidhu" target="_blank">更多评论</a>
+					<a id="AjaxHolder_Comments_CommentList_ctl19_DeleteLink" href="javascript:__doPostBack('AjaxHolder$Comments$CommentList$ctl19$DeleteLink','')"></a>&nbsp;&nbsp;<a id="AjaxHolder_Comments_CommentList_ctl19_EditLink"></a>
+				</h2>
+				您好<br>照著您的方式演練時候發生了錯誤<br>希望能指點指點<br>錯誤代碼如下：<br>18:02:32,867 [main] ERROR JDBCExceptionReporter : Table not found in statement [select top ? processdef0_.ID_ as ID1_4_, processdef0_.NAME_ as NAME2_4_, processdef0_.VERSION_ as VERSION3_4_, processdef0_.ISTERMINATIONIMPLICIT_ as ISTERMIN4_4_, processdef0_.STARTSTATE_ as STARTSTATE5_4_ from JBPM_PROCESSDEFINITION processdef0_ where processdef0_.NAME_=? order by processdef0_.VERSION_ desc]<br>org.hibernate.exception.SQLGrammarException: could not execute query<br>	at org.hibernate.exception.SQLStateConverter.convert(SQLStateConverter.java:65)<br>	at org.hibernate.exception.JDBCExceptionHelper.convert(JDBCExceptionHelper.java:43)<br>	at org.hibernate.loader.Loader.doList(Loader.java:2153)<br>	at org.hibernate.loader.Loader.listIgnoreQueryCache(Loader.java:2029)<br>	at org.hibernate.loader.Loader.list(Loader.java:2024)<br>	at org.hibernate.loader.hql.QueryLoader.list(QueryLoader.java:369)<br>	at org.hibernate.hql.ast.QueryTranslatorImpl.list(QueryTranslatorImpl.java:300)<br>	at org.hibernate.engine.query.HQLQueryPlan.performList(HQLQueryPlan.java:146)<br>	at org.hibernate.impl.SessionImpl.list(SessionImpl.java:1093)<br>	at org.hibernate.impl.QueryImpl.list(QueryImpl.java:79)<br>	at org.hibernate.impl.AbstractQueryImpl.uniqueResult(AbstractQueryImpl.java:745)<br>	at org.jbpm.db.GraphSession.findLatestProcessDefinition(GraphSession.java:153)<br>	at org.jbpm.db.GraphSession.deployProcessDefinition(GraphSession.java:67)<br>	at org.jbpm.JbpmContext.deployProcessDefinition(JbpmContext.java:173)<br>	at com.sample.DeployProcessTest.testDeployProcessDefinition(DeployProcessTest.java:38)<br>	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)<br>	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)<br>	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)<br>	at java.lang.reflect.Method.invoke(Method.java:585)<br>	at junit.framework.TestCase.runTest(TestCase.java:154)<br>	at junit.framework.TestCase.runBare(TestCase.java:127)<br>	at junit.framework.TestResult$1.protect(TestResult.java:106)<br>	at junit.framework.TestResult.runProtected(TestResult.java:124)<br>	at junit.framework.TestResult.run(TestResult.java:109)<br>	at junit.framework.TestCase.run(TestCase.java:118)<br>	at junit.framework.TestSuite.runTest(TestSuite.java:208)<br>	at junit.framework.TestSuite.run(TestSuite.java:203)<br>	at org.eclipse.jdt.internal.junit.runner.junit3.JUnit3TestReference.run(JUnit3TestReference.java:128)<br>	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38)<br>	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:460)<br>	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:673)<br>	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:386)<br>	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:196)<br>Caused by: java.sql.SQLException: Table not found in statement [select top ? processdef0_.ID_ as ID1_4_, processdef0_.NAME_ as NAME2_4_, processdef0_.VERSION_ as VERSION3_4_, processdef0_.ISTERMINATIONIMPLICIT_ as ISTERMIN4_4_, processdef0_.STARTSTATE_ as STARTSTATE5_4_ from JBPM_PROCESSDEFINITION processdef0_ where processdef0_.NAME_=? order by processdef0_.VERSION_ desc]<br>	at org.hsqldb.jdbc.Util.throwError(Unknown Source)<br>	at org.hsqldb.jdbc.jdbcPreparedStatement.&lt;init&gt;(Unknown Source)<br>	at org.hsqldb.jdbc.jdbcConnection.prepareStatement(Unknown Source)<br>	at org.hibernate.jdbc.AbstractBatcher.getPreparedStatement(AbstractBatcher.java:442)<br>	at org.hibernate.jdbc.AbstractBatcher.getPreparedStatement(AbstractBatcher.java:368)<br>	at org.hibernate.jdbc.AbstractBatcher.prepareQueryStatement(AbstractBatcher.java:105)<br>	at org.hibernate.loader.Loader.prepareQueryStatement(Loader.java:1561)<br>	at org.hibernate.loader.Loader.doQuery(Loader.java:661)<br>	at org.hibernate.loader.Loader.doQueryAndInitializeNonLazyCollections(Loader.java:224)<br>	at org.hibernate.loader.Loader.doList(Loader.java:2150)<br>	... 30 more<br>18:05:24,634 [main] ERROR GraphSession : org.hibernate.exception.SQLGrammarException: could not execute query<br><br><br>還望您給予教誨～<br>急啊
+				<div class="postfoot">
+					2007-11-12 18:14 | <a id="AjaxHolder_Comments_CommentList_ctl19_NameLink" href="http://earningkimo@yahoo.com.tw" target="_blank">kidhu</a>
+				</div>
+			</div>
+		
+			<div class="post">
+				<h2>
+					<a title="permalink: re: jBPM开发入门指南(3) " href="/chengang/archive/2006/08/23/65346.html#176122">#</a>&nbsp;<a name="176122"></a>re: jBPM开发入门指南(3) &nbsp;&nbsp;<a onclick="return SetReplyAuhor(&quot;hw&quot;)" href="/chengang/archive/2006/08/23/65346.html#post">回复</a>&nbsp;&nbsp;<a title="查看该作者发表过的评论" href="http://www.blogjava.net/comment?author=hw" target="_blank">更多评论</a>
+					<a id="AjaxHolder_Comments_CommentList_ctl20_DeleteLink" href="javascript:__doPostBack('AjaxHolder$Comments$CommentList$ctl20$DeleteLink','')"></a>&nbsp;&nbsp;<a id="AjaxHolder_Comments_CommentList_ctl20_EditLink"></a>
+				</h2>
+				&#64;车轱辘<br>我也是这个问题，也在找答案
+				<div class="postfoot">
+					2008-01-18 11:00 | <a id="AjaxHolder_Comments_CommentList_ctl20_NameLink" target="_blank">hw</a>
+				</div>
+			</div>
+		
+			<div class="post">
+				<h2>
+					<a title="permalink: re: jBPM开发入门指南(3) " href="/chengang/archive/2006/08/23/65346.html#198477">#</a>&nbsp;<a name="198477"></a>re: jBPM开发入门指南(3) &nbsp;&nbsp;<a onclick="return SetReplyAuhor(&quot;jbpm初学&quot;)" href="/chengang/archive/2006/08/23/65346.html#post">回复</a>&nbsp;&nbsp;<a title="查看该作者发表过的评论" href="http://www.blogjava.net/comment?author=jbpm%e5%88%9d%e5%ad%a6" target="_blank">更多评论</a>
+					<a id="AjaxHolder_Comments_CommentList_ctl21_DeleteLink" href="javascript:__doPostBack('AjaxHolder$Comments$CommentList$ctl21$DeleteLink','')"></a>&nbsp;&nbsp;<a id="AjaxHolder_Comments_CommentList_ctl21_EditLink"></a>
+				</h2>
+				org.hibernate.MappingException: Named query not known: GraphSession.findLatestProcessDefinitionQuery&quot; <br>报这个异常，没法解决
+				<div class="postfoot">
+					2008-05-05 15:44 | <a id="AjaxHolder_Comments_CommentList_ctl21_NameLink" target="_blank">jbpm初学</a>
+				</div>
+			</div>
+		
+			<div class="post">
+				<h2>
+					<a title="permalink: re: jBPM开发入门指南(3) " href="/chengang/archive/2006/08/23/65346.html#217746">#</a>&nbsp;<a name="217746"></a>re: jBPM开发入门指南(3) &nbsp;&nbsp;<a onclick="return SetReplyAuhor(&quot;Dones&quot;)" href="/chengang/archive/2006/08/23/65346.html#post">回复</a>&nbsp;&nbsp;<a title="查看该作者发表过的评论" href="http://www.blogjava.net/comment?author=Dones" target="_blank">更多评论</a>
+					<a id="AjaxHolder_Comments_CommentList_ctl22_DeleteLink" href="javascript:__doPostBack('AjaxHolder$Comments$CommentList$ctl22$DeleteLink','')"></a>&nbsp;&nbsp;<a id="AjaxHolder_Comments_CommentList_ctl22_EditLink"></a>
+				</h2>
+				同样，是这个MySQL报错：<br>痛苦啊。。。。<br><br><br>16:23:30,078 [main] DEBUG NullableType : binding 'helloworld' to parameter: 1<br>16:23:30,078 [main] WARN  JDBCExceptionReporter : SQL Error: 1054, SQLState: 42S22<br>16:23:30,078 [main] ERROR JDBCExceptionReporter : Unknown column 'processdef0_.DESCRIPTION_' in 'field list'<br>16:23:30,078 [main] ERROR GraphSession : org.hibernate.exception.SQLGrammarException: could not execute query<br>
+				<div class="postfoot">
+					2008-07-27 00:30 | <a id="AjaxHolder_Comments_CommentList_ctl22_NameLink" target="_blank">Dones</a>
+				</div>
+			</div>
+		
+			<div class="post">
+				<h2>
+					<a title="permalink: re: jBPM开发入门指南(3) " href="/chengang/archive/2006/08/23/65346.html#223578">#</a>&nbsp;<a name="223578"></a>re: jBPM开发入门指南(3) &nbsp;&nbsp;<a onclick="return SetReplyAuhor(&quot;22&quot;)" href="/chengang/archive/2006/08/23/65346.html#post">回复</a>&nbsp;&nbsp;<a title="查看该作者发表过的评论" href="http://www.blogjava.net/comment?author=22" target="_blank">更多评论</a>
+					<a id="AjaxHolder_Comments_CommentList_ctl23_DeleteLink" href="javascript:__doPostBack('AjaxHolder$Comments$CommentList$ctl23$DeleteLink','')"></a>&nbsp;&nbsp;<a id="AjaxHolder_Comments_CommentList_ctl23_EditLink"></a>
+				</h2>
+				急急急！！！<br>照你的做下去出现一下异常：<br>1、org.hibernate.HibernateException: Could not instantiate cache implementation<br><br>2、Caused by: org.hibernate.cache.NoCachingEnabledException: Second-level cache is not enabled for usage [hibernate.cache.use_second_level_cache | hibernate.cache.use_query_cache]<br><br>能给说一下是怎么回事呢
+				<div class="postfoot">
+					2008-08-21 20:22 | <a id="AjaxHolder_Comments_CommentList_ctl23_NameLink" target="_blank">22</a>
+				</div>
+			</div>
+		
+			<div class="post">
+				<h2>
+					<a title="permalink: re: jBPM开发入门指南(3) " href="/chengang/archive/2006/08/23/65346.html#227806">#</a>&nbsp;<a name="227806"></a>re: jBPM开发入门指南(3) &nbsp;&nbsp;<a onclick="return SetReplyAuhor(&quot;zkx&quot;)" href="/chengang/archive/2006/08/23/65346.html#post">回复</a>&nbsp;&nbsp;<a title="查看该作者发表过的评论" href="http://www.blogjava.net/comment?author=zkx" target="_blank">更多评论</a>
+					<a id="AjaxHolder_Comments_CommentList_ctl24_DeleteLink" href="javascript:__doPostBack('AjaxHolder$Comments$CommentList$ctl24$DeleteLink','')"></a>&nbsp;&nbsp;<a id="AjaxHolder_Comments_CommentList_ctl24_EditLink"></a>
+				</h2>
+				多谢,最近在项目中刚好用到工作流,所以找了些资料研究,按照你的方法配成功了,多谢,希望以后能出好文章,支持:)
+				<div class="postfoot">
+					2008-09-08 21:19 | <a id="AjaxHolder_Comments_CommentList_ctl24_NameLink" target="_blank">zkx</a>
+				</div>
+			</div>
+		
+			<div class="post">
+				<h2>
+					<a title="permalink: re: jBPM开发入门指南(3) [未登录]" href="/chengang/archive/2006/08/23/65346.html#230596">#</a>&nbsp;<a name="230596"></a>re: jBPM开发入门指南(3) [未登录]&nbsp;&nbsp;<a onclick="return SetReplyAuhor(&quot;小鸟&quot;)" href="/chengang/archive/2006/08/23/65346.html#post">回复</a>&nbsp;&nbsp;<a title="查看该作者发表过的评论" href="http://www.blogjava.net/comment?author=%e5%b0%8f%e9%b8%9f" target="_blank">更多评论</a>
+					<a id="AjaxHolder_Comments_CommentList_ctl25_DeleteLink" href="javascript:__doPostBack('AjaxHolder$Comments$CommentList$ctl25$DeleteLink','')"></a>&nbsp;&nbsp;<a id="AjaxHolder_Comments_CommentList_ctl25_EditLink"></a>
+				</h2>
+				楼主的文章很好啊，我照着例子做一路顺畅。再次感谢楼主了
+				<div class="postfoot">
+					2008-09-23 11:23 | <a id="AjaxHolder_Comments_CommentList_ctl25_NameLink" target="_blank">小鸟</a>
+				</div>
+			</div>
+		
+			<div class="post">
+				<h2>
+					<a title="permalink: re: jBPM开发入门指南(3) " href="/chengang/archive/2006/08/23/65346.html#240562">#</a>&nbsp;<a name="240562"></a>re: jBPM开发入门指南(3) &nbsp;&nbsp;<a onclick="return SetReplyAuhor(&quot;天蓝色&quot;)" href="/chengang/archive/2006/08/23/65346.html#post">回复</a>&nbsp;&nbsp;<a title="查看该作者发表过的评论" href="http://www.blogjava.net/comment?author=%e5%a4%a9%e8%93%9d%e8%89%b2" target="_blank">更多评论</a>
+					<a id="AjaxHolder_Comments_CommentList_ctl26_DeleteLink" href="javascript:__doPostBack('AjaxHolder$Comments$CommentList$ctl26$DeleteLink','')"></a>&nbsp;&nbsp;<a id="AjaxHolder_Comments_CommentList_ctl26_EditLink"></a>
+				</h2>
+				select * from jbpm_processdefinition<br>出现 Der Typ von Feld 'ISTERMINATIONIMPLICIT_'wird nocht untestttzt 的错误提示框<br>
+				<div class="postfoot">
+					2008-11-14 16:43 | <a id="AjaxHolder_Comments_CommentList_ctl26_NameLink" target="_blank">天蓝色</a>
+				</div>
+			</div>
+		
+			<div class="post">
+				<h2>
+					<a title="permalink: re: jBPM开发入门指南(3) " href="/chengang/archive/2006/08/23/65346.html#243861">#</a>&nbsp;<a name="243861"></a>re: jBPM开发入门指南(3) &nbsp;&nbsp;<a onclick="return SetReplyAuhor(&quot;hoho&quot;)" href="/chengang/archive/2006/08/23/65346.html#post">回复</a>&nbsp;&nbsp;<a title="查看该作者发表过的评论" href="http://www.blogjava.net/comment?author=hoho" target="_blank">更多评论</a>
+					<a id="AjaxHolder_Comments_CommentList_ctl27_DeleteLink" href="javascript:__doPostBack('AjaxHolder$Comments$CommentList$ctl27$DeleteLink','')"></a>&nbsp;&nbsp;<a id="AjaxHolder_Comments_CommentList_ctl27_EditLink"></a>
+				</h2>
+				我是用的jbpm-starters-kit-3.1.4，导出的项目结构与作者给的不同。<br>InputStream is = new FileInputStream(&quot;processes/simple/processdefinition.xml&quot;); <br>这个下的路径当然要改下。<br><br>还有mysql的异常可能要在eclipse里建立数据库连接。就是在myecipse database explorer视图下建立mysql数据库。
+				<div class="postfoot">
+					2008-12-02 10:37 | <a id="AjaxHolder_Comments_CommentList_ctl27_NameLink" target="_blank">hoho</a>
+				</div>
+			</div>
+		
+			<div class="post">
+				<h2>
+					<a title="permalink: re: jBPM开发入门指南(3) " href="/chengang/archive/2006/08/23/65346.html#245307">#</a>&nbsp;<a name="245307"></a>re: jBPM开发入门指南(3) &nbsp;&nbsp;<a onclick="return SetReplyAuhor(&quot;hexh2003&quot;)" href="/chengang/archive/2006/08/23/65346.html#post">回复</a>&nbsp;&nbsp;<a title="查看该作者发表过的评论" href="http://www.blogjava.net/comment?author=hexh2003" target="_blank">更多评论</a>
+					<a id="AjaxHolder_Comments_CommentList_ctl28_DeleteLink" href="javascript:__doPostBack('AjaxHolder$Comments$CommentList$ctl28$DeleteLink','')"></a>&nbsp;&nbsp;<a id="AjaxHolder_Comments_CommentList_ctl28_EditLink"></a>
+				</h2>
+				&#64;22<br>&lt;property name=&quot;hibernate.cache.provider_class&quot;&gt;org.hibernate.cache.HashtableCacheProvider&lt;/property&gt; <br>加到hibernate配置中
+				<div class="postfoot">
+					2008-12-09 18:39 | <a id="AjaxHolder_Comments_CommentList_ctl28_NameLink" target="_blank">hexh2003</a>
+				</div>
+			</div>
+		
+			<div class="post">
+				<h2>
+					<a title="permalink: re: jBPM开发入门指南(3) " href="/chengang/archive/2006/08/23/65346.html#248478">#</a>&nbsp;<a name="248478"></a>re: jBPM开发入门指南(3) &nbsp;&nbsp;<a onclick="return SetReplyAuhor(&quot;johnyong&quot;)" href="/chengang/archive/2006/08/23/65346.html#post">回复</a>&nbsp;&nbsp;<a title="查看该作者发表过的评论" href="http://www.blogjava.net/comment?author=johnyong" target="_blank">更多评论</a>
+					<a id="AjaxHolder_Comments_CommentList_ctl29_DeleteLink" href="javascript:__doPostBack('AjaxHolder$Comments$CommentList$ctl29$DeleteLink','')"></a>&nbsp;&nbsp;<a id="AjaxHolder_Comments_CommentList_ctl29_EditLink"></a>
+				</h2>
+				我想请问下，能不能自定义流程配置文件，我说的不是直接编辑xml而是希望在前台能自己定义配置文件<br>初步想法是通过dom4j来做xml的读写，生成新的配置文件，就是不知道，是不是要重新部署才能持久化到数据库中去，如果那样的话感觉好像就不能在前台由客户自定义了，请指教！！
+				<div class="postfoot">
+					2008-12-26 15:48 | <a id="AjaxHolder_Comments_CommentList_ctl29_NameLink" target="_blank">johnyong</a>
+				</div>
+			</div>
+		
+			<div class="post">
+				<h2>
+					<a title="permalink: re: jBPM开发入门指南(3) " href="/chengang/archive/2006/08/23/65346.html#268824">#</a>&nbsp;<a name="268824"></a>re: jBPM开发入门指南(3) &nbsp;&nbsp;<a onclick="return SetReplyAuhor(&quot;李荣&quot;)" href="/chengang/archive/2006/08/23/65346.html#post">回复</a>&nbsp;&nbsp;<a title="查看该作者发表过的评论" href="http://www.blogjava.net/comment?author=%e6%9d%8e%e8%8d%a3" target="_blank">更多评论</a>
+					<a id="AjaxHolder_Comments_CommentList_ctl30_DeleteLink" href="javascript:__doPostBack('AjaxHolder$Comments$CommentList$ctl30$DeleteLink','')"></a>&nbsp;&nbsp;<a id="AjaxHolder_Comments_CommentList_ctl30_EditLink"></a>
+				</h2>
+				  MYSQL运行通过谢谢，刚学对这个不理解。
+				<div class="postfoot">
+					2009-05-04 15:28 | <a id="AjaxHolder_Comments_CommentList_ctl30_NameLink" target="_blank">李荣</a>
+				</div>
+			</div>
+		
+			<div class="post">
+				<h2>
+					<a title="permalink: re: jBPM开发入门指南(3) " href="/chengang/archive/2006/08/23/65346.html#270059">#</a>&nbsp;<a name="270059"></a>re: jBPM开发入门指南(3) &nbsp;&nbsp;<a onclick="return SetReplyAuhor(&quot;annymous&quot;)" href="/chengang/archive/2006/08/23/65346.html#post">回复</a>&nbsp;&nbsp;<a title="查看该作者发表过的评论" href="http://www.blogjava.net/comment?author=annymous" target="_blank">更多评论</a>
+					<a id="AjaxHolder_Comments_CommentList_ctl31_DeleteLink" href="javascript:__doPostBack('AjaxHolder$Comments$CommentList$ctl31$DeleteLink','')"></a>&nbsp;&nbsp;<a id="AjaxHolder_Comments_CommentList_ctl31_EditLink"></a>
+				</h2>
+				&#64;ppxiaofei 出现你说说的问题最大的可能性是jar包未被应用，单单在工程文件里建一个lib包不够，还要将jar包应用，具体做法是在java build path选项里面有个add jars选项，你要将ojdbc14.jar引用一下。<br>
+				<div class="postfoot">
+					2009-05-11 15:44 | <a id="AjaxHolder_Comments_CommentList_ctl31_NameLink" target="_blank">annymous</a>
+				</div>
+			</div>
+		
+			<div class="post">
+				<h2>
+					<a title="permalink: re: jBPM开发入门指南(3) " href="/chengang/archive/2006/08/23/65346.html#278316">#</a>&nbsp;<a name="278316"></a>re: jBPM开发入门指南(3) &nbsp;&nbsp;<a onclick="return SetReplyAuhor(&quot;rov&quot;)" href="/chengang/archive/2006/08/23/65346.html#post">回复</a>&nbsp;&nbsp;<a title="查看该作者发表过的评论" href="http://www.blogjava.net/comment?author=rov" target="_blank">更多评论</a>
+					<a id="AjaxHolder_Comments_CommentList_ctl32_DeleteLink" href="javascript:__doPostBack('AjaxHolder$Comments$CommentList$ctl32$DeleteLink','')"></a>&nbsp;&nbsp;<a id="AjaxHolder_Comments_CommentList_ctl32_EditLink"></a>
+				</h2>
+				<br>org.hibernate.exception.GenericJDBCException: could not insert: [org.jbpm.graph.def.ProcessDefinition]<br>	at org.hibernate.exception.SQLStateConverter.handledNonSpecificException(SQLStateConverter.java:126)<br>	at org.hibernate.exception.SQLStateConverter.convert(SQLStateConverter.java:114)<br>	at org.hibernate.exception.JDBCExceptionHelper.convert(JDBCExceptionHelper.java:66)<br>	at org.hibernate.id.insert.AbstractReturningDelegate.performInsert(AbstractReturningDelegate.java:64)<br>	at org.hibernate.persister.entity.AbstractEntityPersister.insert(AbstractEntityPersister.java:2186)<br>	at org.hibernate.persister.entity.AbstractEntityPersister.insert(AbstractEntityPersister.java:2666)<br>	at org.hibernate.action.EntityIdentityInsertAction.execute(EntityIdentityInsertAction.java:71)<br>	at org.hibernate.engine.ActionQueue.execute(ActionQueue.java:279)<br>	at org.hibernate.event.def.AbstractSaveEventListener.performSaveOrReplicate(AbstractSaveEventListener.java:321)<br>	at org.hibernate.event.def.AbstractSaveEventListener.performSave(AbstractSaveEventListener.java:204)<br>	at org.hibernate.event.def.AbstractSaveEventListener.saveWithGeneratedId(AbstractSaveEventListener.java:130)<br>	at org.hibernate.event.def.DefaultSaveOrUpdateEventListener.saveWithGeneratedOrRequestedId(DefaultSaveOrUpdateEventListener.java:210)<br>	at org.hibernate.event.def.DefaultSaveEventListener.saveWithGeneratedOrRequestedId(DefaultSaveEventListener.java:56)<br>	at org.hibernate.event.def.DefaultSaveOrUpdateEventListener.entityIsTransient(DefaultSaveOrUpdateEventListener.java:195)<br>	at org.hibernate.event.def.DefaultSaveEventListener.performSaveOrUpdate(DefaultSaveEventListener.java:50)<br>	at org.hibernate.event.def.DefaultSaveOrUpdateEventListener.onSaveOrUpdate(DefaultSaveOrUpdateEventListener.java:93)<br>	at org.hibernate.impl.SessionImpl.fireSave(SessionImpl.java:562)<br>	at org.hibernate.impl.SessionImpl.save(SessionImpl.java:550)<br>	at org.hibernate.impl.SessionImpl.save(SessionImpl.java:546)<br>	at org.jbpm.db.GraphSession.deployProcessDefinition(GraphSession.java:77)<br>	at org.jbpm.JbpmContext.deployProcessDefinition(JbpmContext.java:173)<br>	at com.rov.sample.DeployProcessTest.testDeployProcessDefinition(DeployProcessTest.java:19)<br>	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)<br>	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)<br>	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)<br>	at java.lang.reflect.Method.invoke(Unknown Source)<br>	at junit.framework.TestCase.runTest(TestCase.java:154)<br>	at junit.framework.TestCase.runBare(TestCase.java:127)<br>	at junit.framework.TestResult$1.protect(TestResult.java:106)<br>	at junit.framework.TestResult.runProtected(TestResult.java:124)<br>	at junit.framework.TestResult.run(TestResult.java:109)<br>	at junit.framework.TestCase.run(TestCase.java:118)<br>	at junit.framework.TestSuite.runTest(TestSuite.java:208)<br>	at junit.framework.TestSuite.run(TestSuite.java:203)<br>	at org.eclipse.jdt.internal.junit.runner.junit3.JUnit3TestReference.run(JUnit3TestReference.java:130)<br>	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38)<br>	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:460)<br>	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:673)<br>	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:386)<br>	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:196)<br>Caused by: java.sql.SQLException: Field 'CLASS_' doesn't have a default value<br>	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:2975)<br>	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:1600)<br>	at com.mysql.jdbc.ServerPreparedStatement.serverExecute(ServerPreparedStatement.java:1129)<br>	at com.mysql.jdbc.ServerPreparedStatement.executeInternal(ServerPreparedStatement.java:681)<br>	at com.mysql.jdbc.PreparedStatement.executeUpdate(PreparedStatement.java:1368)<br>	at com.mysql.jdbc.PreparedStatement.executeUpdate(PreparedStatement.java:1283)<br>	at com.mysql.jdbc.PreparedStatement.executeUpdate(PreparedStatement.java:1268)<br>	at org.hibernate.id.IdentityGenerator$GetGeneratedKeysDelegate.executeAndExtract(IdentityGenerator.java:94)<br>	at org.hibernate.id.insert.AbstractReturningDelegate.performInsert(AbstractReturningDelegate.java:57)<br>	... 36 more<br><br>
+				<div class="postfoot">
+					2009-05-28 11:56 | <a id="AjaxHolder_Comments_CommentList_ctl32_NameLink" target="_blank">rov</a>
+				</div>
+			</div>
+		
+			<div class="post">
+				<h2>
+					<a title="permalink: re: jBPM开发入门指南(3) " href="/chengang/archive/2006/08/23/65346.html#292836">#</a>&nbsp;<a name="292836"></a>re: jBPM开发入门指南(3) &nbsp;&nbsp;<a onclick="return SetReplyAuhor(&quot;bike&quot;)" href="/chengang/archive/2006/08/23/65346.html#post">回复</a>&nbsp;&nbsp;<a title="查看该作者发表过的评论" href="http://www.blogjava.net/comment?author=bike" target="_blank">更多评论</a>
+					<a id="AjaxHolder_Comments_CommentList_ctl33_DeleteLink" href="javascript:__doPostBack('AjaxHolder$Comments$CommentList$ctl33$DeleteLink','')"></a>&nbsp;&nbsp;<a id="AjaxHolder_Comments_CommentList_ctl33_EditLink"></a>
+				</h2>
+				非常感谢..
+				<div class="postfoot">
+					2009-08-27 16:06 | <a id="AjaxHolder_Comments_CommentList_ctl33_NameLink" target="_blank">bike</a>
+				</div>
+			</div>
+		
+			<div class="post">
+				<h2>
+					<a title="permalink: re: jBPM开发入门指南(3) [未登录]" href="/chengang/archive/2006/08/23/65346.html#297901">#</a>&nbsp;<a name="297901"></a>re: jBPM开发入门指南(3) [未登录]&nbsp;&nbsp;<a onclick="return SetReplyAuhor(&quot;black&quot;)" href="/chengang/archive/2006/08/23/65346.html#post">回复</a>&nbsp;&nbsp;<a title="查看该作者发表过的评论" href="http://www.blogjava.net/comment?author=black" target="_blank">更多评论</a>
+					<a id="AjaxHolder_Comments_CommentList_ctl34_DeleteLink" href="javascript:__doPostBack('AjaxHolder$Comments$CommentList$ctl34$DeleteLink','')"></a>&nbsp;&nbsp;<a id="AjaxHolder_Comments_CommentList_ctl34_EditLink"></a>
+				</h2>
+				你好，我运行junit的时候说org.jbpm.JbpmException: couldn't find process definition 'HelloWorld'<br>	at org.jbpm.db.GraphSession.findLatestProcessDefinition(GraphSession.java:170)<br>	at org.jbpm.db.GraphSession.deployProcessDefinition(GraphSession.java:67)<br>	at org.jbpm.JbpmContext.deployProcessDefinition(JbpmContext.java:173)<br>	at com.sample.DeployProcessTest.testDeployProcessDefinition(DeployProcessTest.java:42)<br>	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)<br>	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)<br>	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)<br>	at java.lang.reflect.Method.invoke(Method.java:585)<br>	at junit.framework.TestCase.runTest(TestCase.java:154)<br>	at junit.framework.TestCase.runBare(TestCase.java:127)<br>	at junit.framework.TestResult$1.protect(TestResult.java:106)<br>	at junit.framework.TestResult.runProtected(TestResult.java:124)<br>	at junit.framework.TestResult.run(TestResult.java:109)<br>	at junit.framework.TestCase.run(TestCase.java:118)<br>	at junit.framework.TestSuite.runTest(TestSuite.java:208)<br>	at junit.framework.TestSuite.run(TestSuite.java:203)<br>	at org.eclipse.jdt.internal.junit.runner.junit3.JUnit3TestReference.run(JUnit3TestReference.java:130)<br>	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38)<br>	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:467)<br>	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:683)<br>	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:390)<br>	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:197)<br>Caused by: org.hibernate.exception.SQLGrammarException: could not execute query<br>	at org.hibernate.exception.SQLStateConverter.convert(SQLStateConverter.java:65)<br>	at org.hibernate.exception.JDBCExceptionHelper.convert(JDBCExceptionHelper.java:43)<br>	at org.hibernate.loader.Loader.doList(Loader.java:2153)<br>	at org.hibernate.loader.Loader.listIgnoreQueryCache(Loader.java:2029)<br>	at org.hibernate.loader.Loader.list(Loader.java:2024)<br>	at org.hibernate.loader.hql.QueryLoader.list(QueryLoader.java:369)<br>	at org.hibernate.hql.ast.QueryTranslatorImpl.list(QueryTranslatorImpl.java:300)<br>	at org.hibernate.engine.query.HQLQueryPlan.performList(HQLQueryPlan.java:146)<br>	at org.hibernate.impl.SessionImpl.list(SessionImpl.java:1093)<br>	at org.hibernate.impl.QueryImpl.list(QueryImpl.java:79)<br>	at org.hibernate.impl.AbstractQueryImpl.uniqueResult(AbstractQueryImpl.java:745)<br>	at org.jbpm.db.GraphSession.findLatestProcessDefinition(GraphSession.java:153)<br>	... 21 more<br>Caused by: java.sql.SQLException: Table not found in statement [select top ? processdef0_.ID_ as ID1_4_, processdef0_.NAME_ as NAME2_4_, processdef0_.VERSION_ as VERSION3_4_, processdef0_.ISTERMINATIONIMPLICIT_ as ISTERMIN4_4_, processdef0_.STARTSTATE_ as STARTSTATE5_4_ from JBPM_PROCESSDEFINITION processdef0_ where processdef0_.NAME_=? order by processdef0_.VERSION_ desc]<br>	at org.hsqldb.jdbc.Util.throwError(Unknown Source)<br>	at org.hsqldb.jdbc.jdbcPreparedStatement.&lt;init&gt;(Unknown Source)<br>	at org.hsqldb.jdbc.jdbcConnection.prepareStatement(Unknown Source)<br>	at org.hibernate.jdbc.AbstractBatcher.getPreparedStatement(AbstractBatcher.java:442)<br>	at org.hibernate.jdbc.AbstractBatcher.getPreparedStatement(AbstractBatcher.java:368)<br>	at org.hibernate.jdbc.AbstractBatcher.prepareQueryStatement(AbstractBatcher.java:105)<br>	at org.hibernate.loader.Loader.prepareQueryStatement(Loader.java:1561)<br>	at org.hibernate.loader.Loader.doQuery(Loader.java:661)<br>	at org.hibernate.loader.Loader.doQueryAndInitializeNonLazyCollections(Loader.java:224)<br>	at org.hibernate.loader.Loader.doList(Loader.java:2150)<br>	... 30 more<br><br>这是什么原因？我都是一步一步按照这个来的
+				<div class="postfoot">
+					2009-10-12 15:40 | <a id="AjaxHolder_Comments_CommentList_ctl34_NameLink" target="_blank">black</a>
+				</div>
+			</div>
+		
+			<div class="post">
+				<h2>
+					<a title="permalink: re: jBPM开发入门指南(3) [未登录]" href="/chengang/archive/2006/08/23/65346.html#297949">#</a>&nbsp;<a name="297949"></a>re: jBPM开发入门指南(3) [未登录]<a name="Post"></a>&nbsp;&nbsp;<a onclick="return SetReplyAuhor(&quot;black&quot;)" href="/chengang/archive/2006/08/23/65346.html#post">回复</a>&nbsp;&nbsp;<a title="查看该作者发表过的评论" href="http://www.blogjava.net/comment?author=black" target="_blank">更多评论</a>
+					<a id="AjaxHolder_Comments_CommentList_ctl35_DeleteLink" href="javascript:__doPostBack('AjaxHolder$Comments$CommentList$ctl35$DeleteLink','')"></a>&nbsp;&nbsp;<a id="AjaxHolder_Comments_CommentList_ctl35_EditLink"></a>
+				</h2>
+				java.lang.NoClassDefFoundError: edu/emory/mathcs/backport/java/util/concurrent/BlockingQueue<br>	at net.sf.ehcache.config.ConfigurationHelper.createCache(ConfigurationHelper.java:418)<br>	at net.sf.ehcache.config.ConfigurationHelper.createDefaultCache(ConfigurationHelper.java:334)<br>	at net.sf.ehcache.CacheManager.configure(CacheManager.java:306)<br>	at net.sf.ehcache.CacheManager.init(CacheManager.java:226)<br>	at net.sf.ehcache.CacheManager.&lt;init&gt;(CacheManager.java:213)<br>	at net.sf.ehcache.CacheManager.create(CacheManager.java:394)<br>	at org.hibernate.cache.EhCacheProvider.start(EhCacheProvider.java:130)<br>	at org.hibernate.impl.SessionFactoryImpl.&lt;init&gt;(SessionFactoryImpl.java:172)<br>	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:1154)<br>	at org.jbpm.persistence.db.DbPersistenceServiceFactory.getSessionFactory(DbPersistenceServiceFactory.java:90)<br>	at org.jbpm.persistence.db.DbPersistenceService.getSessionFactory(DbPersistenceService.java:74)<br>	at org.jbpm.persistence.db.DbPersistenceService.getSession(DbPersistenceService.java:78)<br>	at org.jbpm.persistence.db.DbPersistenceService.getGraphSession(DbPersistenceService.java:227)<br>	at org.jbpm.JbpmContext.getGraphSession(JbpmContext.java:537)<br>	at org.jbpm.JbpmContext.deployProcessDefinition(JbpmContext.java:173)<br>	at com.sample.DeployProcessTest.testDeployProcessDefinition(DeployProcessTest.java:42)<br>	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)<br>	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)<br>	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)<br>	at java.lang.reflect.Method.invoke(Method.java:585)<br>	at junit.framework.TestCase.runTest(TestCase.java:154)<br>	at junit.framework.TestCase.runBare(TestCase.java:127)<br>	at junit.framework.TestResult$1.protect(TestResult.java:106)<br>	at junit.framework.TestResult.runProtected(TestResult.java:124)<br>	at junit.framework.TestResult.run(TestResult.java:109)<br>	at junit.framework.TestCase.run(TestCase.java:118)<br>	at junit.framework.TestSuite.runTest(TestSuite.java:208)<br>	at junit.framework.TestSuite.run(TestSuite.java:203)<br>	at org.eclipse.jdt.internal.junit.runner.junit3.JUnit3TestReference.run(JUnit3TestReference.java:130)<br>	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38)<br>	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:467)<br>	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:683)<br>	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:390)<br>	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:197)<br><br>这是什么错误？原先是有些jar包没加入，后来加了ehcache-1[1].5.0.jar就出现以上的错误
+				<div class="postfoot">
+					2009-10-12 18:48 | <a id="AjaxHolder_Comments_CommentList_ctl35_NameLink" target="_blank">black</a>
+				</div>
+			</div>
+		
+</div>
+
+<style>
+td { font-size: 12px }
+.commentTextBox 
+{ 
+    font-family : Verdana; 
+    font-size: 13px;
+ }
+</style>
+<!--Beging Temp Save-->
+<STYLE>.userData { BEHAVIOR: url(#default#userdata) }
+	</STYLE>
+<DIV class="userData" id="CommentsPersistDiv"></DIV>
+
+<script type="text/javascript">
+function pageLoad()
+{
+    Sys.WebForms.PageRequestManager.getInstance().add_initializeRequest(handleInitializeRequest);
+    //Sys.WebForms.PageRequestManager.getInstance().add_endRequest(handleEndRequest);
+}
+
+function handleInitializeRequest(sender, args)
+{
+    var prm = Sys.WebForms.PageRequestManager.getInstance();
+    var eid = args.get_postBackElement().id;
+    if (eid.indexOf("DeleteLink")>0) 
+    {
+       args.get_postBackElement().innerHTML = "<font color='red'>正在删除...</font>";         
+    }    
+    else if (eid.indexOf("btnSubmit")>0) 
+    {
+       document.getElementById("AjaxHolder_PostComment_ltSubmitMsg").innerHTML="正在提交...";
+       document.getElementById("AjaxHolder_PostComment_btnSubmit").disabled = true;       
+    }   
+    else if(eid.indexOf("refreshList")>0)
+    {
+        document.getElementById("AjaxHolder_PostComment_refreshList").innerHTML="<font color='red'>正在刷新...</font>";
+    }
+   
+}	
+
+function TempSave(ElementID)
+{
+	try
+	{
+	CommentsPersistDiv.setAttribute("CommentContent",document.getElementById(ElementID).value);
+	CommentsPersistDiv.save("CommentXMLStore");
+	}
+	catch(ex)
+	{
+	}
+	
+}
+function Restore(ElementID)
+{
+	CommentsPersistDiv.load("CommentXMLStore");
+	document.getElementById(ElementID).value=CommentsPersistDiv.getAttribute("CommentContent");
+}	
+			
+			
+</script>
+<!--Ene TempSave-->
+<div id="divRefreshComments" style="text-align:right;margin-right:10px;margin-bottom:5px;font-size:12px"><a href="/RequireRegister.aspx">新用户注册</a>&nbsp;&nbsp;<a id="AjaxHolder_PostComment_refreshList" href="javascript:__doPostBack('AjaxHolder$PostComment$refreshList','')">刷新评论列表</a>&nbsp;&nbsp;</div>
+<div class="commentform">
+<span id="AjaxHolder_PostComment_ltSubmitMsg" style="color:Red;"></span>
+<br />
+<a name="Feedback"></a>
+	<TABLE cellSpacing="1" cellPadding="1" border="0">
+		<tr>
+		<td id="AjaxHolder_PostComment_tdOnCommentForm" colspan="3" style="line-height:1.5">		
+		</td>
+	
+		</tr>
+		
+		<tr><td colSpan="3">只有注册用户<a href='http://www.blogjava.net/login.aspx?ReturnUrl=/chengang/archive/2006/08/23/65346.html'>登录</a>后才能发表评论。</td></tr>
+		<TR>
+			<TD colSpan="3"><!--该文被作者在 2006-08-25 08:35 编辑过--></TD>
+		</TR>
+		<!--
+		<TR>
+			<TD colSpan="3" height="5"></TD>
+		</TR>	
+		-->	
+		<TR>
+		<TD colSpan="3">
+		<br/>
+		
+<script type='text/javascript'>
+var googletag = googletag || {};
+googletag.cmd = googletag.cmd || [];
+(function() {
+var gads = document.createElement('script');
+gads.async = true;
+gads.type = 'text/javascript';
+var useSSL = 'https:' == document.location.protocol;
+gads.src = (useSSL ? 'https:' : 'http:') + 
+'//www.googletagservices.com/tag/js/gpt.js';
+var node = document.getElementsByTagName('script')[0];
+node.parentNode.insertBefore(gads, node);
+})();
+</script>
+
+<script type='text/javascript'>
+googletag.cmd.push(function() {
+googletag.defineSlot('/1090369/blogjava_blogpost_bottom', [300, 250], 'div-gpt-ad-1364133350381-0').addService(googletag.pubads());
+googletag.pubads().enableSingleRequest();
+googletag.enableServices();
+});
+</script>
+<!-- blogjava_blogpost_bottom -->
+<div id='div-gpt-ad-1364133350381-0' style='width:300px; height:250px;'>
+<script type='text/javascript'>
+googletag.cmd.push(function() { googletag.display('div-gpt-ad-1364133350381-0'); });
+</script>
+</div>
+<br/>
+
+		</TD>
+		</TR>
+		<tr>			
+		<td colspan="3">
+		
+		</td>
+		</tr>
+		<TR>
+		<TD colSpan="3"></TD>
+		</TR>
+		<TR>
+			<TD colSpan="3" height="1">网站导航:<div id="blogsite">
+			<a href="http://www.cnblogs.com" title="开发者的网上家园">博客园</a>&nbsp;&nbsp;
+			<a href="https://news.cnblogs.com">IT新闻</a>&nbsp;&nbsp;
+			<a href="http://kb.cnblogs.com">知识库</a>&nbsp;&nbsp;
+			<a href="http://www.cppblog.com">C++博客</a>&nbsp;&nbsp;
+			<a href="https://q.cnblogs.com">博问</a>&nbsp;&nbsp;
+			<a href="/chengang/archive/2006/08/23/65346.html?opt=admin">管理</a>
+			</div>
+		</TD>
+		</TR>
+		<TR>
+			<TD colSpan="3" height="5">
+<div id="divRelativePosts">
+相关文章:
+	
+			<ul style="margin-top:0px;padding-left:0px;">
+		
+			<li style='list-style:none;'>
+				<a id="AjaxHolder_PostComment_ctl07_RelativePostsList_ctl01_Hyperlink1" href="http://www.blogjava.net/chengang/archive/2006/09/16/70069.html">jBPM开发入门指南(5) </a>
+			</li>
+		
+			<li style='list-style:none;'>
+				<a id="AjaxHolder_PostComment_ctl07_RelativePostsList_ctl02_Hyperlink1" href="http://www.blogjava.net/chengang/archive/2006/08/24/65608.html">jBPM开发入门指南(4) </a>
+			</li>
+		
+			<li style='list-style:none;display:none'>
+				<a id="AjaxHolder_PostComment_ctl07_RelativePostsList_ctl03_Hyperlink1" href="http://www.blogjava.net/chengang/archive/2006/08/23/65346.html">jBPM开发入门指南(3) </a>
+			</li>
+		
+			<li style='list-style:none;'>
+				<a id="AjaxHolder_PostComment_ctl07_RelativePostsList_ctl04_Hyperlink1" href="http://www.blogjava.net/chengang/archive/2006/08/22/65132.html">jBPM开发入门指南(2) </a>
+			</li>
+		
+			<li style='list-style:none;'>
+				<a id="AjaxHolder_PostComment_ctl07_RelativePostsList_ctl05_Hyperlink1" href="http://www.blogjava.net/chengang/archive/2006/07/13/57986.html">jBPM开发入门指南(1)</a>
+			</li>
+		
+			</ul>
+		
+</div>
+</TD>
+		</TR>	
+		<TR>
+			<TD colSpan="3">&nbsp;</TD>
+		</TR>
+		<TR>
+			<TD colSpan="3" height="5"></TD>
+		</TR>
+		<TR>
+			<TD colSpan="3">
+				</TD>
+		</TR>		
+	</TABLE>	
+</div>
+<div id="AjaxHolder_PostComment_ValidationSummary1" style="color:Red;display:none;">
+
+	</div>
+
+</div>
+
+				
+			</div>
+		</td>
+	</tr>
+	<tr>
+		<td class="FooterCell">
+			
+<p id="footer">
+	Powered by: 
+	<br />
+	
+	<a id="Footer1_Hyperlink3" NAME="Hyperlink1" href="http://www.blogjava.net/" style="font-family:Verdana;font-size:12px;">BlogJava</a>
+	<br />
+	Copyright &copy; 陈刚
+</p>
+		</td>
+	</tr>
+</table>
+<div id="lefttemp" style="display:none">
+
+					
+<h3>导航</h3>
+<ul>
+	<li>
+		
+	<li>
+		<a id="MyLinks1_MyHomeLink" href="http://www.blogjava.net/chengang/">首页</a>
+	<li>
+		<a id="MyLinks1_NewPostLink" href="http://www.blogjava.net/chengang/admin/EditPosts.aspx?opt=1">新随笔</a>
+	<li>
+		<a id="MyLinks1_ContactLink" accesskey="9" href="http://www.blogjava.net/chengang/contact.aspx?id=1">联系</a>
+	<li>
+		<a id="MyLinks1_XMLLink" href="http://www.blogjava.net/chengang/rss"><img src="http://www.blogjava.net/images/xml.gif" alt="RSS 2.0 Feed" style="border-width:0px;" /></a><a id="MyLinks1_Syndication" href="http://www.blogjava.net/chengang/rss">聚合</a>
+	<li>
+		<a id="MyLinks1_Admin" href="http://www.blogjava.net/chengang/admin/EditPosts.aspx">管理</a></li>
+
+</ul>
+
+					
+					
+					
+		<h3>随笔分类<span style="font-size:11px;font-weight:normal">(117)</span></h3>
+		
+				<ul>
+			
+				<li><a id="SingleColumn1_Categories_CatList_ctl00_LinkList_ctl01_Link" href="http://www.blogjava.net/chengang/category/8012.html">Eclipse(16)</a><a id="SingleColumn1_Categories_CatList_ctl00_LinkList_ctl01_RssLink" title="Subscribe to Eclipse(16)" href="http://www.blogjava.net/chengang/category/8012.html/rss">(rss)</a></li>
+			
+				<li><a id="SingleColumn1_Categories_CatList_ctl00_LinkList_ctl02_Link" href="http://www.blogjava.net/chengang/category/8707.html">Eclipse从入门到精通(16)</a><a id="SingleColumn1_Categories_CatList_ctl00_LinkList_ctl02_RssLink" title="Subscribe to Eclipse从入门到精通(16)" href="http://www.blogjava.net/chengang/category/8707.html/rss">(rss)</a></li>
+			
+				<li><a id="SingleColumn1_Categories_CatList_ctl00_LinkList_ctl03_Link" href="http://www.blogjava.net/chengang/category/28246.html">Jakarta Commons(2)</a><a id="SingleColumn1_Categories_CatList_ctl00_LinkList_ctl03_RssLink" title="Subscribe to Jakarta Commons(2)" href="http://www.blogjava.net/chengang/category/28246.html/rss">(rss)</a></li>
+			
+				<li><a id="SingleColumn1_Categories_CatList_ctl00_LinkList_ctl04_Link" href="http://www.blogjava.net/chengang/category/8014.html">Java(11)</a><a id="SingleColumn1_Categories_CatList_ctl00_LinkList_ctl04_RssLink" title="Subscribe to Java(11)" href="http://www.blogjava.net/chengang/category/8014.html/rss">(rss)</a></li>
+			
+				<li><a id="SingleColumn1_Categories_CatList_ctl00_LinkList_ctl05_Link" href="http://www.blogjava.net/chengang/category/12967.html">jBPM(5)</a><a id="SingleColumn1_Categories_CatList_ctl00_LinkList_ctl05_RssLink" title="Subscribe to jBPM(5)" href="http://www.blogjava.net/chengang/category/12967.html/rss">(rss)</a></li>
+			
+				<li><a id="SingleColumn1_Categories_CatList_ctl00_LinkList_ctl06_Link" href="http://www.blogjava.net/chengang/category/8015.html">JMX(10)</a><a id="SingleColumn1_Categories_CatList_ctl00_LinkList_ctl06_RssLink" title="Subscribe to JMX(10)" href="http://www.blogjava.net/chengang/category/8015.html/rss">(rss)</a></li>
+			
+				<li><a id="SingleColumn1_Categories_CatList_ctl00_LinkList_ctl07_Link" href="http://www.blogjava.net/chengang/category/23634.html">Linux(6)</a><a id="SingleColumn1_Categories_CatList_ctl00_LinkList_ctl07_RssLink" title="Subscribe to Linux(6)" href="http://www.blogjava.net/chengang/category/23634.html/rss">(rss)</a></li>
+			
+				<li><a id="SingleColumn1_Categories_CatList_ctl00_LinkList_ctl08_Link" href="http://www.blogjava.net/chengang/category/20990.html">Rails&Ruby(24)</a><a id="SingleColumn1_Categories_CatList_ctl00_LinkList_ctl08_RssLink" title="Subscribe to Rails&amp;Ruby(24)" href="http://www.blogjava.net/chengang/category/20990.html/rss">(rss)</a></li>
+			
+				<li><a id="SingleColumn1_Categories_CatList_ctl00_LinkList_ctl09_Link" href="http://www.blogjava.net/chengang/category/8414.html">Test(4)</a><a id="SingleColumn1_Categories_CatList_ctl00_LinkList_ctl09_RssLink" title="Subscribe to Test(4)" href="http://www.blogjava.net/chengang/category/8414.html/rss">(rss)</a></li>
+			
+				<li><a id="SingleColumn1_Categories_CatList_ctl00_LinkList_ctl10_Link" href="http://www.blogjava.net/chengang/category/8013.html">技术其他(13)</a><a id="SingleColumn1_Categories_CatList_ctl00_LinkList_ctl10_RssLink" title="Subscribe to 技术其他(13)" href="http://www.blogjava.net/chengang/category/8013.html/rss">(rss)</a></li>
+			
+				<li><a id="SingleColumn1_Categories_CatList_ctl00_LinkList_ctl11_Link" href="http://www.blogjava.net/chengang/category/14925.html">数据结构(2)</a><a id="SingleColumn1_Categories_CatList_ctl00_LinkList_ctl11_RssLink" title="Subscribe to 数据结构(2)" href="http://www.blogjava.net/chengang/category/14925.html/rss">(rss)</a></li>
+			
+				<li><a id="SingleColumn1_Categories_CatList_ctl00_LinkList_ctl12_Link" href="http://www.blogjava.net/chengang/category/8413.html">项目日记(8)</a><a id="SingleColumn1_Categories_CatList_ctl00_LinkList_ctl12_RssLink" title="Subscribe to 项目日记(8)" href="http://www.blogjava.net/chengang/category/8413.html/rss">(rss)</a></li>
+			
+				</ul>
+			
+	
+
+<script language="JavaScript">
+function SearchGoogle(key,evt,site)
+		{
+			if(evt.keyCode==13 || evt.keyCode==0 || evt.type =='click')
+			{
+				key.focus();
+				var keystr = encodeURIComponent(key.value);
+				url = "http://www.google.com/search?q=";
+				url = url+keystr;
+				url += "&ie=UTF-8&oe=GB2312&hl=zh-CN&domains="+site+"&sitesearch="+site;
+				window.location=url;
+				return false;
+			}
+		}
+</script>
+<H3>搜索</H3>
+<ul>
+	<li>
+		<li><input style="WIDTH: 130px" type="text" name="q" id="q" onkeydown="return SearchGoogle(document.getElementById('q'),event,'www.blogjava.net/chengang')">&nbsp;<input onclick="SearchGoogle(document.getElementById('q'),event,'www.blogjava.net/chengang')" type="button" value="搜索" name="sa">
+	</li>
+</ul>
+
+<H3>积分与排名</H3>
+<ul>
+	<li>
+		积分 -
+		691592
+	<li>
+		排名 -
+		56
+	</li>
+</ul>
+
+<h3>最新评论
+	<a id="SingleColumn1__27e0f5f_RSSHyperlink1" href="http://www.blogjava.net/chengang/CommentsRSS.aspx"><img src="/images/xml.gif" style="border-width:0px;" /></a></h3>
+<div class="RecentComment">
+	
+			<ul>
+		
+			<li style="word-break:break-all">
+				<a id="SingleColumn1__27e0f5f_CommentList_ctl01_Hyperlink1" href="http://www.blogjava.net/chengang/archive/2015/05/26/57986.html#425313">1. re: jBPM开发入门指南(1)</a>
+			</li>
+			<li style="word-break:break-all">
+				@钟城<br>@陈勇<br>你们找到原因了么？我现在按照他的博客步奏做，也是一运行start.bat就闪退，根本没办法启动服务。
+			</li>
+			<li style="text-align:right;margin-right:4px">
+				--实习</li>
+		
+			<li style="word-break:break-all">
+				<a id="SingleColumn1__27e0f5f_CommentList_ctl02_Hyperlink1" href="http://www.blogjava.net/chengang/archive/2014/06/06/108666.html#414460">2. re: 怎么成为Eclipse插件开发的高手</a>
+			</li>
+			<li style="word-break:break-all">
+				狗屎
+			</li>
+			<li style="text-align:right;margin-right:4px">
+				--艹楼主</li>
+		
+			<li style="word-break:break-all">
+				<a id="SingleColumn1__27e0f5f_CommentList_ctl03_Hyperlink1" href="http://www.blogjava.net/chengang/archive/2014/05/20/43378.html#413863">3. re: 在Eclipse RCP中使用Spring解析问题</a>
+			</li>
+			<li style="word-break:break-all">
+				你好，我用你的方法，文件找到了。可是解析出现了不少问题，求指导
+			</li>
+			<li style="text-align:right;margin-right:4px">
+				--王传</li>
+		
+			<li style="word-break:break-all">
+				<a id="SingleColumn1__27e0f5f_CommentList_ctl04_Hyperlink1" href="http://www.blogjava.net/chengang/archive/2014/04/18/57986.html#412658">4. re: jBPM开发入门指南(1)[未登录]</a>
+			</li>
+			<li style="word-break:break-all">
+				jbpm-server 目录下的 start.bat不能启动，是什么问题？？
+			</li>
+			<li style="text-align:right;margin-right:4px">
+				--陈勇</li>
+		
+			<li style="word-break:break-all">
+				<a id="SingleColumn1__27e0f5f_CommentList_ctl05_Hyperlink1" href="http://www.blogjava.net/chengang/archive/2013/10/07/34061.html#404708">5. re: [JMX一步步来]　1、JMX的Hello World</a>
+			</li>
+			<li style="word-break:break-all">
+				54
+			</li>
+			<li style="text-align:right;margin-right:4px">
+				--12</li>
+		
+			</ul>
+		
+</div>
+
+<h3>阅读排行榜</h3>
+<div class="RecentComment">
+	
+			<ul style="word-break:break-all">
+		
+			<li>
+				<a id="SingleColumn1__1b68d3c_TopList_ctl01_Hyperlink1" href="http://www.blogjava.net/chengang/archive/2006/07/13/57986.html">1. jBPM开发入门指南(1)(73559)</a>
+			</li>
+		
+			<li>
+				<a id="SingleColumn1__1b68d3c_TopList_ctl02_Hyperlink1" href="http://www.blogjava.net/chengang/archive/2006/08/23/65346.html">2. jBPM开发入门指南(3) (44773)</a>
+			</li>
+		
+			<li>
+				<a id="SingleColumn1__1b68d3c_TopList_ctl03_Hyperlink1" href="http://www.blogjava.net/chengang/archive/2006/04/24/42868.html">3. 《Eclipse从入门到精通》常见问题解答 (37966)</a>
+			</li>
+		
+			<li>
+				<a id="SingleColumn1__1b68d3c_TopList_ctl04_Hyperlink1" href="http://www.blogjava.net/chengang/archive/2006/08/22/65132.html">4. jBPM开发入门指南(2) (35664)</a>
+			</li>
+		
+			<li>
+				<a id="SingleColumn1__1b68d3c_TopList_ctl05_Hyperlink1" href="http://www.blogjava.net/chengang/archive/2006/09/16/70069.html">5. jBPM开发入门指南(5) (32598)</a>
+			</li>
+		
+			</ul>
+		
+</div>
+
+
+</div>
+
+    
+<script type="text/javascript">
+//<![CDATA[
+var Page_ValidationSummaries =  new Array(document.getElementById("AjaxHolder_PostComment_ValidationSummary1"));
+//]]>
+</script>
+
+<script type="text/javascript">
+//<![CDATA[
+var AjaxHolder_PostComment_ValidationSummary1 = document.all ? document.all["AjaxHolder_PostComment_ValidationSummary1"] : document.getElementById("AjaxHolder_PostComment_ValidationSummary1");
+AjaxHolder_PostComment_ValidationSummary1.showmessagebox = "True";
+AjaxHolder_PostComment_ValidationSummary1.showsummary = "False";
+//]]>
+</script>
+
+
+<script type="text/javascript">
+//<![CDATA[
+
+document.getElementById('AjaxHolder_PostComment_ValidationSummary1').dispose = function() {
+    Array.remove(Page_ValidationSummaries, document.getElementById('AjaxHolder_PostComment_ValidationSummary1'));
+}
+Sys.Application.initialize();
+//]]>
+</script>
+</form>
+    <script type="text/javascript" src="/script/ShowHidden.js"></script>
+	<script type="text/javascript">
+	  var _gaq = _gaq || [];
+	  _gaq.push(['_setAccount', 'UA-476124-3']);
+	  _gaq.push(['_trackPageview']);
+
+	  (function() {
+		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	  })();
+	</script>
+</body>
+</html>

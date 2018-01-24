@@ -1,0 +1,12 @@
+local_html_dir: /Users/chen/workspace/oldblog/scr/
+pages: [
+    {
+        name: null,
+        url: "file:///Users/chen/workspace/oldblog/scr/${filename}",
+        xpaths: [
+            [1, 标题, "//DIV[@class='article']/TABLE[1]//DIV[@class='sysBr500 title']"],
+            [1, 时间, "//DIV[@class='article']/TABLE[1]//SPAN[@class='time']"],
+            [0, 内容, "//DIV[@class='article']/TABLE[1]//DIV[@class='sysBr500 text']"],
+        ]
+    }
+]

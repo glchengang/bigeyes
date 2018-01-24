@@ -1,0 +1,788 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head id="Head"><title>
+	让will_paginate的分页支持ajax - 子在川上曰 - BlogJava
+</title><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><meta id="metaKeywords" name="keywords" content="让will_paginate的分页支持ajax" /><link type="text/css" rel="stylesheet" href="/css/common.css" /><link id="MainCss" type="text/css" rel="stylesheet" href="http://www.blogjava.net/Skins/AnotherEon001/style.css" /><link id="RSSLink" title="RSS" type="application/rss+xml" rel="alternate" href="http://www.blogjava.net/chengang/rss.aspx" /></head>
+<body>
+    <form name="Form1" method="post" action="142077.html" id="Form1">
+<div>
+<input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="" />
+<input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="" />
+<input type="hidden" name="__VIEWSTATE" id="
+__VIEWSTATE" value="" />
+</div>
+
+<script type="text/javascript">
+//<![CDATA[
+var theForm = document.forms['Form1'];
+if (!theForm) {
+    theForm = document.Form1;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+</script>
+
+
+<script src="/WebResource.axd?d=hCqqcDq62xC48aLO1-oizzph91mftTcpBQYAMmX9y1_MEKckib0uai68YudFFqahbIRj8ZaZB19FpMr30&amp;t=635588906575142005" type="text/javascript"></script>
+
+<script language=JavaScript>
+									function ctlent(evt,id)
+											{
+												if(evt.ctrlKey && evt.keyCode == 13)
+												{	
+													try
+													{
+														TempSave(id);
+													}
+													catch(ex)
+													{
+													}
+													finally
+													{
+													    __doPostBack('AjaxHolder$PostComment$btnSubmit','')
+													}
+												}
+		
+												}</script>
+												<script language=JavaScript>function SetReplyAuhor(author){document.getElementById('AjaxHolder_PostComment_tbComment').value+="@"+author+"\n";document.getElementById('AjaxHolder_PostComment_tbComment').focus();return false}</script>
+<script src="/ScriptResource.axd?d=-BecoVNwDVCZ4TW3gB_ZzPWfgjCQ_C64O4hNc3pweA4UGq0B-lWFnUMMAtqURN0AZF_f7fxk9s5U1gsq0foUhwHdXezBbn_OgCN5EL300MOu7Jb-c7WU_a2OCK01&amp;t=634979389729873750" type="text/javascript"></script>
+<script src="/ScriptResource.axd?d=4npu1eCN6HUVuTPPO5YDuuBNC2hrBvTsGEVYQhhAo9CX_hfoT2Mz1UGnoo5C32pPXZvBizBLMnY0_szRgrGRkyv7-BsG0CvEejE8Vl3Xt8nd-D_58kXSDmaBFOFFj7w3EMKivQ2&amp;t=634979389729873750" type="text/javascript"></script>
+        
+<table width="100%" class="Framework" cellspacing="0" cellpadding="0">
+	<tr>
+		<td>
+			
+<div id="top">
+<h1><a id="Header1_HeaderTitle" class="headermaintitle" href="http://www.blogjava.net/chengang/">子在川上曰</a></h1>
+<div id="subtitle">　　逝者如斯夫不舍昼夜</div>
+</div>
+<div id="sub">
+<div class="BlogStats">随笔 - 113, 文章 - 0, 评论 - 941, 引用 - 0</div>
+</div>
+
+
+</td>
+	</tr>
+</table>
+<table width="100%" class="Framework" cellspacing="0" cellpadding="0">
+	<tr>
+		<td rowspan="2" class="LeftCell" >
+			<div id="leftmenu">
+				数据加载中……
+			</div>
+		</td>
+		<td class="MainCell">
+			<div id="main">
+				
+					
+	<div class="post">
+		<h2>
+			<a id="viewpost1_TitleUrl" href="http://www.blogjava.net/chengang/archive/2007/09/02/142077.html">让will_paginate的分页支持ajax</a>
+		</h2>
+		<div class="postbody">
+		关于will_paginate插件，请看这个帖子: http://mmm.javaeye.com/blog/116931。<br /><div align="center">文/陈刚 (www.chengang.com.cn)<br /></div>
+但一直搜不到它支持ajax分面的方法 ，于是我参考它分页方法的源代码(位于:vendor/plugins/will_paginate/lib/will_paginate/view_helpers.rb)，稍微改写，变成了一个支持ajax的分页方法。以下代码复制到application_helper里即可。<br /><br /><div style="border: 1px solid rgb(204, 204, 204); padding: 4px 5px 4px 4px; background-color: rgb(238, 238, 238); font-size: 13px; width: 98%;"><!--<br />
+<br />
+Code highlighting produced by Actipro CodeHighlighter (freeware)<br />
+http://www.CodeHighlighter.com/<br />
+<br />
+--><span style="color: rgb(0, 0, 0);"><br />
+  </span><span style="color: rgb(0, 128, 0);">#</span><span style="color: rgb(0, 128, 0);">-----------------------------------------</span><span style="color: rgb(0, 128, 0);"><br /></span><span style="color: rgb(0, 0, 0);">  </span><span style="color: rgb(0, 128, 0);">#</span><span style="color: rgb(0, 128, 0);"> will_paginate插件的ajax分页</span><span style="color: rgb(0, 128, 0);"><br /></span><span style="color: rgb(0, 0, 0);">  </span><span style="color: rgb(0, 128, 0);">#</span><span style="color: rgb(0, 128, 0);">-----------------------------------------</span><span style="color: rgb(0, 128, 0);"><br /></span><span style="color: rgb(0, 0, 0);">  &#64;&#64;pagination_options </span><span style="color: rgb(0, 0, 0);">=</span><span style="color: rgb(0, 0, 0);"> { </span><span style="color: rgb(0, 0, 0);">:</span><span style="color: rgb(0, 0, 255);">class</span><span style="color: rgb(0, 0, 0);"> </span><span style="color: rgb(0, 0, 0);">=&gt;</span><span style="color: rgb(0, 0, 0);"> </span><span style="color: rgb(0, 0, 0);">'</span><span style="color: rgb(0, 0, 0);">pagination</span><span style="color: rgb(0, 0, 0);">'</span><span style="color: rgb(0, 0, 0);">,</span><span style="color: rgb(0, 0, 0);"><br />
+        </span><span style="color: rgb(0, 0, 0);">:</span><span style="color: rgb(0, 0, 0);">prev_label   </span><span style="color: rgb(0, 0, 0);">=&gt;</span><span style="color: rgb(0, 0, 0);"> </span><span style="color: rgb(0, 0, 0);">'</span><span style="color: rgb(0, 0, 0);">上一页</span><span style="color: rgb(0, 0, 0);">'</span><span style="color: rgb(0, 0, 0);">,</span><span style="color: rgb(0, 0, 0);"><br />
+        </span><span style="color: rgb(0, 0, 0);">:</span><span style="color: rgb(0, 0, 0);">next_label   </span><span style="color: rgb(0, 0, 0);">=&gt;</span><span style="color: rgb(0, 0, 0);"> </span><span style="color: rgb(0, 0, 0);">'</span><span style="color: rgb(0, 0, 0);">下一页</span><span style="color: rgb(0, 0, 0);">'</span><span style="color: rgb(0, 0, 0);">,</span><span style="color: rgb(0, 0, 0);"><br />
+        </span><span style="color: rgb(0, 0, 0);">:</span><span style="color: rgb(0, 0, 0);">inner_window </span><span style="color: rgb(0, 0, 0);">=&gt;</span><span style="color: rgb(0, 0, 0);"> </span><span style="color: rgb(0, 0, 0);">4</span><span style="color: rgb(0, 0, 0);">,</span><span style="color: rgb(0, 0, 0);"> </span><span style="color: rgb(0, 128, 0);">#</span><span style="color: rgb(0, 128, 0);"> links around the current page</span><span style="color: rgb(0, 128, 0);"><br /></span><span style="color: rgb(0, 0, 0);">        </span><span style="color: rgb(0, 0, 0);">:</span><span style="color: rgb(0, 0, 0);">outer_window </span><span style="color: rgb(0, 0, 0);">=&gt;</span><span style="color: rgb(0, 0, 0);"> </span><span style="color: rgb(0, 0, 0);">1</span><span style="color: rgb(0, 0, 0);">,</span><span style="color: rgb(0, 0, 0);"> </span><span style="color: rgb(0, 128, 0);">#</span><span style="color: rgb(0, 128, 0);"> links around beginning and end</span><span style="color: rgb(0, 128, 0);"><br /></span><span style="color: rgb(0, 0, 0);">        </span><span style="color: rgb(0, 0, 0);">:</span><span style="color: rgb(0, 0, 0);">separator    </span><span style="color: rgb(0, 0, 0);">=&gt;</span><span style="color: rgb(0, 0, 0);"> </span><span style="color: rgb(0, 0, 0);">'</span><span style="color: rgb(0, 0, 0);"> </span><span style="color: rgb(0, 0, 0);">'</span><span style="color: rgb(0, 0, 0);">,</span><span style="color: rgb(0, 0, 0);"> </span><span style="color: rgb(0, 128, 0);">#</span><span style="color: rgb(0, 128, 0);"> single space is friendly to spiders and non-graphic browsers</span><span style="color: rgb(0, 128, 0);"><br /></span><span style="color: rgb(0, 0, 0);">        </span><span style="color: rgb(0, 0, 0);">:</span><span style="color: rgb(0, 0, 0);">param_name   </span><span style="color: rgb(0, 0, 0);">=&gt;</span><span style="color: rgb(0, 0, 0);"> </span><span style="color: rgb(0, 0, 0);">:</span><span style="color: rgb(0, 0, 0);">page</span><span style="color: rgb(0, 0, 0);">,</span><span style="color: rgb(0, 0, 0);"><br />
+        </span><span style="color: rgb(0, 128, 0);">#</span><span style="color: rgb(0, 128, 0);">add by chengang</span><span style="color: rgb(0, 128, 0);"><br /></span><span style="color: rgb(0, 0, 0);">        </span><span style="color: rgb(0, 0, 0);">:</span><span style="color: rgb(0, 0, 0);">update </span><span style="color: rgb(0, 0, 0);">=&gt;</span><span style="color: rgb(0, 0, 0);"></span><span style="color: rgb(0, 0, 0);">nil</span><span style="color: rgb(0, 0, 0);">,</span><span style="color: rgb(0, 0, 0);"> </span><span style="color: rgb(0, 128, 0);">#</span><span style="color: rgb(0, 128, 0);">ajax所要更新的html元素的id</span><span style="color: rgb(0, 128, 0);"><br /></span><span style="color: rgb(0, 0, 0);">        </span><span style="color: rgb(0, 0, 0);">:</span><span style="color: rgb(0, 0, 0);">url_suffix </span><span style="color: rgb(0, 0, 0);">=&gt;</span><span style="color: rgb(0, 0, 0);"> </span><span style="color: rgb(0, 0, 0);">''</span><span style="color: rgb(0, 0, 0);">  </span><span style="color: rgb(0, 128, 0);">#</span><span style="color: rgb(0, 128, 0);">url的后缀，主要是为了补全REST所需要的url</span><span style="color: rgb(0, 128, 0);"><br /></span><span style="color: rgb(0, 0, 0);">        </span><span style="color: rgb(0, 128, 0);">#</span><span style="color: rgb(0, 128, 0);">add end</span><span style="color: rgb(0, 128, 0);"><br /></span><span style="color: rgb(0, 0, 0);">        }<br />
+  mattr_reader </span><span style="color: rgb(0, 0, 0);">:</span><span style="color: rgb(0, 0, 0);">pagination_options<br /><br />
+  def will_paginate_remote(entries </span><span style="color: rgb(0, 0, 0);">=</span><span style="color: rgb(0, 0, 0);"> &#64;entries</span><span style="color: rgb(0, 0, 0);">,</span><span style="color: rgb(0, 0, 0);"> options </span><span style="color: rgb(0, 0, 0);">=</span><span style="color: rgb(0, 0, 0);"> {})<br />
+    total_pages </span><span style="color: rgb(0, 0, 0);">=</span><span style="color: rgb(0, 0, 0);"> entries</span><span style="color: rgb(0, 0, 0);">.</span><span style="color: rgb(0, 0, 0);">page_count<br /><br />
+    </span><span style="color: rgb(0, 0, 255);">if</span><span style="color: rgb(0, 0, 0);"> total_pages </span><span style="color: rgb(0, 0, 0);">&gt;</span><span style="color: rgb(0, 0, 0);"> </span><span style="color: rgb(0, 0, 0);">1</span><span style="color: rgb(0, 0, 0);"><br />
+      options </span><span style="color: rgb(0, 0, 0);">=</span><span style="color: rgb(0, 0, 0);"> options</span><span style="color: rgb(0, 0, 0);">.</span><span style="color: rgb(0, 0, 0);">symbolize_keys</span><span style="color: rgb(0, 0, 0);">.</span><span style="color: rgb(0, 0, 0);">reverse_merge(pagination_options)<br />
+      page</span><span style="color: rgb(0, 0, 0);">,</span><span style="color: rgb(0, 0, 0);"> param </span><span style="color: rgb(0, 0, 0);">=</span><span style="color: rgb(0, 0, 0);"> entries</span><span style="color: rgb(0, 0, 0);">.</span><span style="color: rgb(0, 0, 0);">current_page</span><span style="color: rgb(0, 0, 0);">,</span><span style="color: rgb(0, 0, 0);"> options</span><span style="color: rgb(0, 0, 0);">.</span><span style="color: rgb(0, 0, 0);">delete(</span><span style="color: rgb(0, 0, 0);">:</span><span style="color: rgb(0, 0, 0);">param_name)<br />
+      <br />
+      inner_window</span><span style="color: rgb(0, 0, 0);">,</span><span style="color: rgb(0, 0, 0);"> outer_window </span><span style="color: rgb(0, 0, 0);">=</span><span style="color: rgb(0, 0, 0);"> options</span><span style="color: rgb(0, 0, 0);">.</span><span style="color: rgb(0, 0, 0);">delete(</span><span style="color: rgb(0, 0, 0);">:</span><span style="color: rgb(0, 0, 0);">inner_window)</span><span style="color: rgb(0, 0, 0);">.</span><span style="color: rgb(0, 0, 0);">to_i</span><span style="color: rgb(0, 0, 0);">,</span><span style="color: rgb(0, 0, 0);"> options</span><span style="color: rgb(0, 0, 0);">.</span><span style="color: rgb(0, 0, 0);">delete(</span><span style="color: rgb(0, 0, 0);">:</span><span style="color: rgb(0, 0, 0);">outer_window)</span><span style="color: rgb(0, 0, 0);">.</span><span style="color: rgb(0, 0, 0);">to_i<br />
+      </span><span style="color: rgb(0, 128, 0);">#</span><span style="color: rgb(0, 128, 0);">add by chengang</span><span style="color: rgb(0, 128, 0);"><br /></span><span style="color: rgb(0, 0, 0);">      update </span><span style="color: rgb(0, 0, 0);">=</span><span style="color: rgb(0, 0, 0);">  options</span><span style="color: rgb(0, 0, 0);">.</span><span style="color: rgb(0, 0, 0);">delete(</span><span style="color: rgb(0, 0, 0);">:</span><span style="color: rgb(0, 0, 0);">update)<br />
+      suffix </span><span style="color: rgb(0, 0, 0);">=</span><span style="color: rgb(0, 0, 0);">  options</span><span style="color: rgb(0, 0, 0);">.</span><span style="color: rgb(0, 0, 0);">delete(</span><span style="color: rgb(0, 0, 0);">:</span><span style="color: rgb(0, 0, 0);">url_suffix)<br />
+      url </span><span style="color: rgb(0, 0, 0);">=</span><span style="color: rgb(0, 0, 0);"> request</span><span style="color: rgb(0, 0, 0);">.</span><span style="color: rgb(0, 0, 0);">env[</span><span style="color: rgb(0, 0, 0);">'</span><span style="color: rgb(0, 0, 0);">PATH_INFO</span><span style="color: rgb(0, 0, 0);">'</span><span style="color: rgb(0, 0, 0);">] <br />
+      url </span><span style="color: rgb(0, 0, 0);">+=</span><span style="color: rgb(0, 0, 0);"> suffix </span><span style="color: rgb(0, 0, 255);">if</span><span style="color: rgb(0, 0, 0);"> suffix<br />
+      </span><span style="color: rgb(0, 128, 0);">#</span><span style="color: rgb(0, 128, 0);">add end</span><span style="color: rgb(0, 128, 0);"><br /></span><span style="color: rgb(0, 0, 0);"><br />
+      </span><span style="color: rgb(0, 128, 128);">min</span><span style="color: rgb(0, 0, 0);"> </span><span style="color: rgb(0, 0, 0);">=</span><span style="color: rgb(0, 0, 0);"> page </span><span style="color: rgb(0, 0, 0);">-</span><span style="color: rgb(0, 0, 0);"> inner_window<br />
+      </span><span style="color: rgb(0, 128, 128);">max</span><span style="color: rgb(0, 0, 0);"> </span><span style="color: rgb(0, 0, 0);">=</span><span style="color: rgb(0, 0, 0);"> page </span><span style="color: rgb(0, 0, 0);">+</span><span style="color: rgb(0, 0, 0);"> inner_window<br />
+      </span><span style="color: rgb(0, 0, 255);">if</span><span style="color: rgb(0, 0, 0);"> </span><span style="color: rgb(0, 128, 128);">max</span><span style="color: rgb(0, 0, 0);"> </span><span style="color: rgb(0, 0, 0);">&gt;</span><span style="color: rgb(0, 0, 0);"> total_pages then </span><span style="color: rgb(0, 128, 128);">min</span><span style="color: rgb(0, 0, 0);"> </span><span style="color: rgb(0, 0, 0);">-=</span><span style="color: rgb(0, 0, 0);"> </span><span style="color: rgb(0, 128, 128);">max</span><span style="color: rgb(0, 0, 0);"> </span><span style="color: rgb(0, 0, 0);">-</span><span style="color: rgb(0, 0, 0);"> total_pages<br />
+      elsif </span><span style="color: rgb(0, 128, 128);">min</span><span style="color: rgb(0, 0, 0);"> </span><span style="color: rgb(0, 0, 0);">&lt;</span><span style="color: rgb(0, 0, 0);"> </span><span style="color: rgb(0, 0, 0);">1</span><span style="color: rgb(0, 0, 0);">  then </span><span style="color: rgb(0, 128, 128);">max</span><span style="color: rgb(0, 0, 0);"> </span><span style="color: rgb(0, 0, 0);">+=</span><span style="color: rgb(0, 0, 0);"> </span><span style="color: rgb(0, 0, 0);">1</span><span style="color: rgb(0, 0, 0);"> </span><span style="color: rgb(0, 0, 0);">-</span><span style="color: rgb(0, 0, 0);"> </span><span style="color: rgb(0, 128, 128);">min</span><span style="color: rgb(0, 0, 0);"><br />
+      </span><span style="color: rgb(0, 128, 128);">end</span><span style="color: rgb(0, 0, 0);"><br />
+      <br />
+      </span><span style="color: rgb(0, 128, 128);">current</span><span style="color: rgb(0, 0, 0);">   </span><span style="color: rgb(0, 0, 0);">=</span><span style="color: rgb(0, 0, 0);"> </span><span style="color: rgb(0, 128, 128);">min</span><span style="color: rgb(0, 0, 0);">..</span><span style="color: rgb(0, 128, 128);">max</span><span style="color: rgb(0, 0, 0);"><br />
+      beginning </span><span style="color: rgb(0, 0, 0);">=</span><span style="color: rgb(0, 0, 0);"> </span><span style="color: rgb(0, 0, 0);">1</span><span style="color: rgb(0, 0, 0);">..</span><span style="color: rgb(0, 0, 0);">(</span><span style="color: rgb(0, 0, 0);">1</span><span style="color: rgb(0, 0, 0);"> </span><span style="color: rgb(0, 0, 0);">+</span><span style="color: rgb(0, 0, 0);"> outer_window)<br />
+      tail      </span><span style="color: rgb(0, 0, 0);">=</span><span style="color: rgb(0, 0, 0);"> (total_pages </span><span style="color: rgb(0, 0, 0);">-</span><span style="color: rgb(0, 0, 0);"> outer_window)</span><span style="color: rgb(0, 0, 0);">..</span><span style="color: rgb(0, 0, 0);">total_pages<br />
+      visible   </span><span style="color: rgb(0, 0, 0);">=</span><span style="color: rgb(0, 0, 0);"> [beginning</span><span style="color: rgb(0, 0, 0);">,</span><span style="color: rgb(0, 0, 0);"> </span><span style="color: rgb(0, 128, 128);">current</span><span style="color: rgb(0, 0, 0);">,</span><span style="color: rgb(0, 0, 0);"> tail]</span><span style="color: rgb(0, 0, 0);">.</span><span style="color: rgb(0, 0, 0);">map(</span><span style="color: rgb(0, 0, 0);">&amp;:</span><span style="color: rgb(0, 0, 0);">to_a)</span><span style="color: rgb(0, 0, 0);">.</span><span style="color: rgb(0, 0, 0);">flatten</span><span style="color: rgb(0, 0, 0);">.</span><span style="color: rgb(0, 128, 128);">sort</span><span style="color: rgb(0, 0, 0);">.</span><span style="color: rgb(0, 0, 0);">uniq<br />
+      links</span><span style="color: rgb(0, 0, 0);">,</span><span style="color: rgb(0, 0, 0);"> </span><span style="color: rgb(0, 128, 128);">prev</span><span style="color: rgb(0, 0, 0);"> </span><span style="color: rgb(0, 0, 0);">=</span><span style="color: rgb(0, 0, 0);"> []</span><span style="color: rgb(0, 0, 0);">,</span><span style="color: rgb(0, 0, 0);"> </span><span style="color: rgb(0, 0, 0);">0</span><span style="color: rgb(0, 0, 0);"><br /><br />
+      visible</span><span style="color: rgb(0, 0, 0);">.</span><span style="color: rgb(0, 128, 128);">each</span><span style="color: rgb(0, 0, 0);"> </span><span style="color: rgb(0, 0, 255);">do</span><span style="color: rgb(0, 0, 0);"> </span><span style="color: rgb(0, 0, 0);">|</span><span style="color: rgb(0, 0, 0);">n</span><span style="color: rgb(0, 0, 0);">|</span><span style="color: rgb(0, 0, 0);"><br />
+        </span><span style="color: rgb(0, 128, 128);">next</span><span style="color: rgb(0, 0, 0);"> </span><span style="color: rgb(0, 0, 255);">if</span><span style="color: rgb(0, 0, 0);"> n </span><span style="color: rgb(0, 0, 0);">&lt;</span><span style="color: rgb(0, 0, 0);"> </span><span style="color: rgb(0, 0, 0);">1</span><span style="color: rgb(0, 0, 0);"><br />
+        </span><span style="color: rgb(0, 0, 255);">break</span><span style="color: rgb(0, 0, 0);"> </span><span style="color: rgb(0, 0, 255);">if</span><span style="color: rgb(0, 0, 0);"> n </span><span style="color: rgb(0, 0, 0);">&gt;</span><span style="color: rgb(0, 0, 0);"> total_pages<br /><br />
+        unless n </span><span style="color: rgb(0, 0, 0);">-</span><span style="color: rgb(0, 0, 0);"> </span><span style="color: rgb(0, 128, 128);">prev</span><span style="color: rgb(0, 0, 0);"> </span><span style="color: rgb(0, 0, 0);">&gt;</span><span style="color: rgb(0, 0, 0);"> </span><span style="color: rgb(0, 0, 0);">1</span><span style="color: rgb(0, 0, 0);"><br />
+          </span><span style="color: rgb(0, 128, 128);">prev</span><span style="color: rgb(0, 0, 0);"> </span><span style="color: rgb(0, 0, 0);">=</span><span style="color: rgb(0, 0, 0);"> n<br />
+          </span><span style="color: rgb(0, 128, 0);">#</span><span style="color: rgb(0, 128, 0);">change by chengang</span><span style="color: rgb(0, 128, 0);"><br /></span><span style="color: rgb(0, 0, 0);">          text </span><span style="color: rgb(0, 0, 0);">=</span><span style="color: rgb(0, 0, 0);"> (n</span><span style="color: rgb(0, 0, 0);">==</span><span style="color: rgb(0, 0, 0);">page </span><span style="color: rgb(0, 0, 0);">?</span><span style="color: rgb(0, 0, 0);"> n </span><span style="color: rgb(0, 0, 0);">:</span><span style="color: rgb(0, 0, 0);"> </span><span style="color: rgb(0, 0, 0);">"</span><span style="color: rgb(0, 0, 0);">[#{n}]</span><span style="color: rgb(0, 0, 0);">"</span><span style="color: rgb(0, 0, 0);">)<br />
+          links </span><span style="color: rgb(0, 0, 0);">&lt;&lt;</span><span style="color: rgb(0, 0, 0);"> page_link_remote_or_span((n </span><span style="color: rgb(0, 0, 0);">!=</span><span style="color: rgb(0, 0, 0);"> page </span><span style="color: rgb(0, 0, 0);">?</span><span style="color: rgb(0, 0, 0);"> n </span><span style="color: rgb(0, 0, 0);">:</span><span style="color: rgb(0, 0, 0);"> nil)</span><span style="color: rgb(0, 0, 0);">,</span><span style="color: rgb(0, 0, 0);"> </span><span style="color: rgb(0, 0, 0);">'</span><span style="color: rgb(0, 0, 0);">current</span><span style="color: rgb(0, 0, 0);">'</span><span style="color: rgb(0, 0, 0);">,</span><span style="color: rgb(0, 0, 0);"> text</span><span style="color: rgb(0, 0, 0);">,</span><span style="color: rgb(0, 0, 0);"> param</span><span style="color: rgb(0, 0, 0);">,</span><span style="color: rgb(0, 0, 0);"> update</span><span style="color: rgb(0, 0, 0);">,</span><span style="color: rgb(0, 0, 0);"> url)<br />
+        </span><span style="color: rgb(0, 0, 255);">else</span><span style="color: rgb(0, 0, 0);"><br />
+          </span><span style="color: rgb(0, 128, 128);">prev</span><span style="color: rgb(0, 0, 0);"> </span><span style="color: rgb(0, 0, 0);">=</span><span style="color: rgb(0, 0, 0);"> n </span><span style="color: rgb(0, 0, 0);">-</span><span style="color: rgb(0, 0, 0);"> </span><span style="color: rgb(0, 0, 0);">1</span><span style="color: rgb(0, 0, 0);"><br />
+          links </span><span style="color: rgb(0, 0, 0);">&lt;&lt;</span><span style="color: rgb(0, 0, 0);"> </span><span style="color: rgb(0, 0, 0);">'</span><span style="color: rgb(0, 0, 0);"><img src="/Images/dot.gif" alt="" /></span><span style="color: rgb(0, 0, 0);">'</span><span style="color: rgb(0, 0, 0);"><br />
+          redo<br />
+        </span><span style="color: rgb(0, 128, 128);">end</span><span style="color: rgb(0, 0, 0);"><br />
+      </span><span style="color: rgb(0, 128, 128);">end</span><span style="color: rgb(0, 0, 0);"><br />
+      <br />
+      </span><span style="color: rgb(0, 128, 0);">#</span><span style="color: rgb(0, 128, 0);">change by chengang</span><span style="color: rgb(0, 128, 0);"><br /></span><span style="color: rgb(0, 0, 0);">      links</span><span style="color: rgb(0, 0, 0);">.</span><span style="color: rgb(0, 0, 0);">unshift page_link_remote_or_span(entries</span><span style="color: rgb(0, 0, 0);">.</span><span style="color: rgb(0, 0, 0);">previous_page</span><span style="color: rgb(0, 0, 0);">,</span><span style="color: rgb(0, 0, 0);"> </span><span style="color: rgb(0, 0, 0);">'</span><span style="color: rgb(0, 0, 0);">disabled</span><span style="color: rgb(0, 0, 0);">'</span><span style="color: rgb(0, 0, 0);">,</span><span style="color: rgb(0, 0, 0);"> options</span><span style="color: rgb(0, 0, 0);">.</span><span style="color: rgb(0, 0, 0);">delete(</span><span style="color: rgb(0, 0, 0);">:</span><span style="color: rgb(0, 0, 0);">prev_label)</span><span style="color: rgb(0, 0, 0);">,</span><span style="color: rgb(0, 0, 0);"> param</span><span style="color: rgb(0, 0, 0);">,</span><span style="color: rgb(0, 0, 0);"> update</span><span style="color: rgb(0, 0, 0);">,</span><span style="color: rgb(0, 0, 0);"> url)<br />
+      links</span><span style="color: rgb(0, 0, 0);">.</span><span style="color: rgb(0, 0, 0);">push    page_link_remote_or_span(entries</span><span style="color: rgb(0, 0, 0);">.</span><span style="color: rgb(0, 0, 0);">next_page</span><span style="color: rgb(0, 0, 0);">,</span><span style="color: rgb(0, 0, 0);">     </span><span style="color: rgb(0, 0, 0);">'</span><span style="color: rgb(0, 0, 0);">disabled</span><span style="color: rgb(0, 0, 0);">'</span><span style="color: rgb(0, 0, 0);">,</span><span style="color: rgb(0, 0, 0);"> options</span><span style="color: rgb(0, 0, 0);">.</span><span style="color: rgb(0, 0, 0);">delete(</span><span style="color: rgb(0, 0, 0);">:</span><span style="color: rgb(0, 0, 0);">next_label)</span><span style="color: rgb(0, 0, 0);">,</span><span style="color: rgb(0, 0, 0);"> param</span><span style="color: rgb(0, 0, 0);">,</span><span style="color: rgb(0, 0, 0);"> update</span><span style="color: rgb(0, 0, 0);">,</span><span style="color: rgb(0, 0, 0);"> url)<br />
+      </span><span style="color: rgb(0, 128, 0);">#</span><span style="color: rgb(0, 128, 0);">change end</span><span style="color: rgb(0, 128, 0);"><br /></span><span style="color: rgb(0, 0, 0);"><br />
+      content_tag </span><span style="color: rgb(0, 0, 0);">:</span><span style="color: rgb(0, 0, 0);">div</span><span style="color: rgb(0, 0, 0);">,</span><span style="color: rgb(0, 0, 0);"> links</span><span style="color: rgb(0, 0, 0);">.</span><span style="color: rgb(0, 128, 128);">join</span><span style="color: rgb(0, 0, 0);">(options</span><span style="color: rgb(0, 0, 0);">.</span><span style="color: rgb(0, 0, 0);">delete(</span><span style="color: rgb(0, 0, 0);">:</span><span style="color: rgb(0, 0, 0);">separator))</span><span style="color: rgb(0, 0, 0);">,</span><span style="color: rgb(0, 0, 0);"> options<br />
+    </span><span style="color: rgb(0, 128, 128);">end</span><span style="color: rgb(0, 0, 0);"><br />
+  </span><span style="color: rgb(0, 128, 128);">end</span><span style="color: rgb(0, 0, 0);"><br />
+  <br /></span><span style="color: rgb(0, 0, 255);">protected</span><span style="color: rgb(0, 0, 0);"><br /><br />
+  def page_link_remote_or_span(page</span><span style="color: rgb(0, 0, 0);">,</span><span style="color: rgb(0, 0, 0);"> span_class</span><span style="color: rgb(0, 0, 0);">,</span><span style="color: rgb(0, 0, 0);"> text</span><span style="color: rgb(0, 0, 0);">,</span><span style="color: rgb(0, 0, 0);"> param</span><span style="color: rgb(0, 0, 0);">,</span><span style="color: rgb(0, 0, 0);"> update</span><span style="color: rgb(0, 0, 0);">,</span><span style="color: rgb(0, 0, 0);"> url)<br />
+    unless page<br />
+      content_tag </span><span style="color: rgb(0, 0, 0);">:</span><span style="color: rgb(0, 0, 0);">span</span><span style="color: rgb(0, 0, 0);">,</span><span style="color: rgb(0, 0, 0);"> text</span><span style="color: rgb(0, 0, 0);">,</span><span style="color: rgb(0, 0, 0);"> </span><span style="color: rgb(0, 0, 0);">:</span><span style="color: rgb(0, 0, 255);">class</span><span style="color: rgb(0, 0, 0);"> </span><span style="color: rgb(0, 0, 0);">=&gt;</span><span style="color: rgb(0, 0, 0);"> span_class<br />
+    </span><span style="color: rgb(0, 0, 255);">else</span><span style="color: rgb(0, 0, 0);"><br />
+      link_to_remote text</span><span style="color: rgb(0, 0, 0);">,</span><span style="color: rgb(0, 0, 0);"> </span><span style="color: rgb(0, 0, 0);">:</span><span style="color: rgb(0, 0, 0);">update </span><span style="color: rgb(0, 0, 0);">=&gt;</span><span style="color: rgb(0, 0, 0);"> update</span><span style="color: rgb(0, 0, 0);">,</span><span style="color: rgb(0, 0, 0);"> </span><span style="color: rgb(0, 0, 0);">:</span><span style="color: rgb(0, 0, 0);">url </span><span style="color: rgb(0, 0, 0);">=&gt;</span><span style="color: rgb(0, 0, 0);"> </span><span style="color: rgb(0, 0, 0);">"</span><span style="color: rgb(0, 0, 0);">#{url}?#{param.to_sym}=#{page}</span><span style="color: rgb(0, 0, 0);">"</span><span style="color: rgb(0, 0, 0);">,</span><span style="color: rgb(0, 0, 0);"> </span><span style="color: rgb(0, 0, 0);">:</span><span style="color: rgb(0, 0, 0);">method</span><span style="color: rgb(0, 0, 0);">=&gt;:</span><span style="color: rgb(0, 0, 0);">get<br />
+    </span><span style="color: rgb(0, 128, 128);">end</span><span style="color: rgb(0, 0, 0);"><br />
+  </span><span style="color: rgb(0, 128, 128);">end</span><span style="color: rgb(0, 0, 0);"><br /><br /></span></div><br />
+在view中的使用如下所示:<br /><div style="border: 1px solid rgb(204, 204, 204); padding: 4px 5px 4px 4px; background-color: rgb(238, 238, 238); font-size: 13px; width: 98%;"><!--<br />
+<br />
+Code highlighting produced by Actipro CodeHighlighter (freeware)<br />
+http://www.CodeHighlighter.com/<br />
+<br />
+--><span style="color: rgb(0, 0, 0);">          </span><span style="color: rgb(0, 0, 0);">&lt;%=</span><span style="color: rgb(0, 0, 0);">will_paginate_remote &#64;topics</span><span style="color: rgb(0, 0, 0);">,</span><span style="color: rgb(0, 0, 0);"> </span><span style="color: rgb(0, 0, 0);">:</span><span style="color: rgb(0, 0, 0);">update </span><span style="color: rgb(0, 0, 0);">=&gt;</span><span style="color: rgb(0, 0, 0);"> </span><span style="color: rgb(0, 0, 0);">'</span><span style="color: rgb(0, 0, 0);">topicList</span><span style="color: rgb(0, 0, 0);">'</span><span style="color: rgb(0, 0, 0);">,</span><span style="color: rgb(0, 0, 0);"> </span><span style="color: rgb(0, 0, 0);">:</span><span style="color: rgb(0, 0, 0);">url_suffix </span><span style="color: rgb(0, 0, 0);">=&gt;</span><span style="color: rgb(0, 0, 0);"> url_suffix</span><span style="color: rgb(0, 0, 0);">%&gt;</span><span style="color: rgb(0, 0, 0);"><br /></span></div><br /><br />
+		</div>
+		<p class="postfoot">
+			posted on 2007-09-02 15:42 <a href='http://www.blogjava.net/chengang/'>陈刚</a> 阅读(4279) <a href='#Post'>评论(14)</a> &nbsp;<a href="http://www.blogjava.net/chengang/admin/EditPosts.aspx?postid=142077">编辑</a> &nbsp;<a href="http://www.blogjava.net/chengang/AddToFavorite.aspx?id=142077">收藏</a>  所属分类: <a href='http://www.blogjava.net/chengang/category/20990.html'>Rails&Ruby</a> 
+		</p>
+	</div>
+	<img src ="http://www.blogjava.net/chengang/aggbug/142077.html?webview=1" width = "1" height = "1" />
+	
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+xmlns:dc="http://purl.org/dc/elements/1.1/"
+xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+<rdf:Description
+rdf:about="http://www.blogjava.net/chengang/archive/2007/09/02/142077.html"
+dc:identifier="http://www.blogjava.net/chengang/archive/2007/09/02/142077.html"
+dc:title="让will_paginate的分页支持ajax"
+trackback:ping="http://www.blogjava.net/chengang/services/trackbacks/142077.aspx" />
+</rdf:RDF>
+-->
+
+	<script type="text/javascript">
+//<![CDATA[
+Sys.WebForms.PageRequestManager._initialize('AjaxHolder$scriptmanager1', document.getElementById('Form1'));
+Sys.WebForms.PageRequestManager.getInstance()._updateControls(['tAjaxHolder$UpdatePanel1'], [], [], 90);
+//]]>
+</script>
+
+<div id="AjaxHolder_UpdatePanel1">
+	    
+    <a name="pagedcomment"></a>
+<a name = "评论" />
+<div id="comments">
+<h3>评论</h3>
+	
+	
+			<div class="post">
+				<h2>
+					<a title="permalink: re: 让will_paginate的分页支持ajax" href="/chengang/archive/2007/09/02/142077.html#143011">#</a>&nbsp;<a name="143011"></a>re: 让will_paginate的分页支持ajax&nbsp;&nbsp;<a onclick="return SetReplyAuhor(&quot;陈老师好&quot;)" href="/chengang/archive/2007/09/02/142077.html#post">回复</a>&nbsp;&nbsp;<a title="查看该作者发表过的评论" href="http://www.blogjava.net/comment?author=%e9%99%88%e8%80%81%e5%b8%88%e5%a5%bd" target="_blank">更多评论</a>
+					<a id="AjaxHolder_Comments_CommentList_ctl00_DeleteLink" href="javascript:__doPostBack('AjaxHolder$Comments$CommentList$ctl00$DeleteLink','')"></a>&nbsp;&nbsp;<a id="AjaxHolder_Comments_CommentList_ctl00_EditLink"></a>
+				</h2>
+				怎么没反应。。。
+				<div class="postfoot">
+					2007-09-05 22:12 | <a id="AjaxHolder_Comments_CommentList_ctl00_NameLink" target="_blank">陈老师好</a>
+				</div>
+			</div>
+		
+			<div class="post">
+				<h2>
+					<a title="permalink: re: 让will_paginate的分页支持ajax" href="/chengang/archive/2007/09/02/142077.html#143127">#</a>&nbsp;<a name="143127"></a>re: 让will_paginate的分页支持ajax&nbsp;&nbsp;<a onclick="return SetReplyAuhor(&quot;你自己试过？&quot;)" href="/chengang/archive/2007/09/02/142077.html#post">回复</a>&nbsp;&nbsp;<a title="查看该作者发表过的评论" href="http://www.blogjava.net/comment?author=%e4%bd%a0%e8%87%aa%e5%b7%b1%e8%af%95%e8%bf%87%ef%bc%9f" target="_blank">更多评论</a>
+					<a id="AjaxHolder_Comments_CommentList_ctl01_DeleteLink" href="javascript:__doPostBack('AjaxHolder$Comments$CommentList$ctl01$DeleteLink','')"></a>&nbsp;&nbsp;<a id="AjaxHolder_Comments_CommentList_ctl01_EditLink"></a>
+				</h2>
+				不行啊，你试过能行？
+				<div class="postfoot">
+					2007-09-06 11:43 | <a id="AjaxHolder_Comments_CommentList_ctl01_NameLink" target="_blank">你自己试过？</a>
+				</div>
+			</div>
+		
+			<div class="post">
+				<h2>
+					<a title="permalink: re: 让will_paginate的分页支持ajax" href="/chengang/archive/2007/09/02/142077.html#143484">#</a>&nbsp;<a name="143484"></a>re: 让will_paginate的分页支持ajax&nbsp;&nbsp;<a onclick="return SetReplyAuhor(&quot;陈刚&quot;)" href="/chengang/archive/2007/09/02/142077.html#post">回复</a>&nbsp;&nbsp;<a title="查看该作者发表过的评论" href="http://www.blogjava.net/comment?author=%e9%99%88%e5%88%9a" target="_blank">更多评论</a>
+					<a id="AjaxHolder_Comments_CommentList_ctl02_DeleteLink" href="javascript:__doPostBack('AjaxHolder$Comments$CommentList$ctl02$DeleteLink','')"></a>&nbsp;&nbsp;<a id="AjaxHolder_Comments_CommentList_ctl02_EditLink"></a>
+				</h2>
+				url_suffix有没有值，Ruby局域变量必须给一个初值，如果没值让他为nil
+				<div class="postfoot">
+					2007-09-07 17:09 | <a id="AjaxHolder_Comments_CommentList_ctl02_NameLink" href="http://www.blogjava.net/chengang/" target="_blank">陈刚</a>
+				</div>
+			</div>
+		
+			<div class="post">
+				<h2>
+					<a title="permalink: re: 让will_paginate的分页支持ajax" href="/chengang/archive/2007/09/02/142077.html#147413">#</a>&nbsp;<a name="147413"></a>re: 让will_paginate的分页支持ajax&nbsp;&nbsp;<a onclick="return SetReplyAuhor(&quot;陈老师好&quot;)" href="/chengang/archive/2007/09/02/142077.html#post">回复</a>&nbsp;&nbsp;<a title="查看该作者发表过的评论" href="http://www.blogjava.net/comment?author=%e9%99%88%e8%80%81%e5%b8%88%e5%a5%bd" target="_blank">更多评论</a>
+					<a id="AjaxHolder_Comments_CommentList_ctl03_DeleteLink" href="javascript:__doPostBack('AjaxHolder$Comments$CommentList$ctl03$DeleteLink','')"></a>&nbsp;&nbsp;<a id="AjaxHolder_Comments_CommentList_ctl03_EditLink"></a>
+				</h2>
+				我就是让他为nil<br>算了，已解决
+				<div class="postfoot">
+					2007-09-22 15:18 | <a id="AjaxHolder_Comments_CommentList_ctl03_NameLink" target="_blank">陈老师好</a>
+				</div>
+			</div>
+		
+			<div class="post">
+				<h2>
+					<a title="permalink: re: 让will_paginate的分页支持ajax" href="/chengang/archive/2007/09/02/142077.html#153482">#</a>&nbsp;<a name="153482"></a>re: 让will_paginate的分页支持ajax&nbsp;&nbsp;<a onclick="return SetReplyAuhor(&quot;skatefish&quot;)" href="/chengang/archive/2007/09/02/142077.html#post">回复</a>&nbsp;&nbsp;<a title="查看该作者发表过的评论" href="http://www.blogjava.net/comment?author=skatefish" target="_blank">更多评论</a>
+					<a id="AjaxHolder_Comments_CommentList_ctl04_DeleteLink" href="javascript:__doPostBack('AjaxHolder$Comments$CommentList$ctl04$DeleteLink','')"></a>&nbsp;&nbsp;<a id="AjaxHolder_Comments_CommentList_ctl04_EditLink"></a>
+				</h2>
+				不行，出错了，咋回事呢？<br>undefined method `to_i' for {:page=&gt;nil}:Hash<br>RAILS_ROOT: ./script/../config/..<br><br>
+				<div class="postfoot">
+					2007-10-17 10:08 | <a id="AjaxHolder_Comments_CommentList_ctl04_NameLink" target="_blank">skatefish</a>
+				</div>
+			</div>
+		
+			<div class="post">
+				<h2>
+					<a title="permalink: re: 让will_paginate的分页支持ajax" href="/chengang/archive/2007/09/02/142077.html#153550">#</a>&nbsp;<a name="153550"></a>re: 让will_paginate的分页支持ajax&nbsp;&nbsp;<a onclick="return SetReplyAuhor(&quot;skatefish&quot;)" href="/chengang/archive/2007/09/02/142077.html#post">回复</a>&nbsp;&nbsp;<a title="查看该作者发表过的评论" href="http://www.blogjava.net/comment?author=skatefish" target="_blank">更多评论</a>
+					<a id="AjaxHolder_Comments_CommentList_ctl05_DeleteLink" href="javascript:__doPostBack('AjaxHolder$Comments$CommentList$ctl05$DeleteLink','')"></a>&nbsp;&nbsp;<a id="AjaxHolder_Comments_CommentList_ctl05_EditLink"></a>
+				</h2>
+				您好，调试了一下还是蛮好用的了，想问一下能加上:loading=&gt;Element.show这样的参数么
+				<div class="postfoot">
+					2007-10-17 13:36 | <a id="AjaxHolder_Comments_CommentList_ctl05_NameLink" target="_blank">skatefish</a>
+				</div>
+			</div>
+		
+			<div class="post">
+				<h2>
+					<a title="permalink: re: 让will_paginate的分页支持ajax" href="/chengang/archive/2007/09/02/142077.html#153551">#</a>&nbsp;<a name="153551"></a>re: 让will_paginate的分页支持ajax&nbsp;&nbsp;<a onclick="return SetReplyAuhor(&quot;skatefish&quot;)" href="/chengang/archive/2007/09/02/142077.html#post">回复</a>&nbsp;&nbsp;<a title="查看该作者发表过的评论" href="http://www.blogjava.net/comment?author=skatefish" target="_blank">更多评论</a>
+					<a id="AjaxHolder_Comments_CommentList_ctl06_DeleteLink" href="javascript:__doPostBack('AjaxHolder$Comments$CommentList$ctl06$DeleteLink','')"></a>&nbsp;&nbsp;<a id="AjaxHolder_Comments_CommentList_ctl06_EditLink"></a>
+				</h2>
+				参照了您的修改，现在加上了loading和complete的效果，还是不错的，谢谢:)
+				<div class="postfoot">
+					2007-10-17 13:48 | <a id="AjaxHolder_Comments_CommentList_ctl06_NameLink" target="_blank">skatefish</a>
+				</div>
+			</div>
+		
+			<div class="post">
+				<h2>
+					<a title="permalink: re: 让will_paginate的分页支持ajax" href="/chengang/archive/2007/09/02/142077.html#202397">#</a>&nbsp;<a name="202397"></a>re: 让will_paginate的分页支持ajax&nbsp;&nbsp;<a onclick="return SetReplyAuhor(&quot;轩辕武&quot;)" href="/chengang/archive/2007/09/02/142077.html#post">回复</a>&nbsp;&nbsp;<a title="查看该作者发表过的评论" href="http://www.blogjava.net/comment?author=%e8%bd%a9%e8%be%95%e6%ad%a6" target="_blank">更多评论</a>
+					<a id="AjaxHolder_Comments_CommentList_ctl07_DeleteLink" href="javascript:__doPostBack('AjaxHolder$Comments$CommentList$ctl07$DeleteLink','')"></a>&nbsp;&nbsp;<a id="AjaxHolder_Comments_CommentList_ctl07_EditLink"></a>
+				</h2>
+				不错，很好用，谢谢！
+				<div class="postfoot">
+					2008-05-23 14:17 | <a id="AjaxHolder_Comments_CommentList_ctl07_NameLink" target="_blank">轩辕武</a>
+				</div>
+			</div>
+		
+			<div class="post">
+				<h2>
+					<a title="permalink: re: 让will_paginate的分页支持ajax" href="/chengang/archive/2007/09/02/142077.html#240612">#</a>&nbsp;<a name="240612"></a>re: 让will_paginate的分页支持ajax&nbsp;&nbsp;<a onclick="return SetReplyAuhor(&quot;yanghuan&quot;)" href="/chengang/archive/2007/09/02/142077.html#post">回复</a>&nbsp;&nbsp;<a title="查看该作者发表过的评论" href="http://www.blogjava.net/comment?author=yanghuan" target="_blank">更多评论</a>
+					<a id="AjaxHolder_Comments_CommentList_ctl08_DeleteLink" href="javascript:__doPostBack('AjaxHolder$Comments$CommentList$ctl08$DeleteLink','')"></a>&nbsp;&nbsp;<a id="AjaxHolder_Comments_CommentList_ctl08_EditLink"></a>
+				</h2>
+				正想找一个支持AJAX的分页呢，多谢分享！
+				<div class="postfoot">
+					2008-11-14 22:36 | <a id="AjaxHolder_Comments_CommentList_ctl08_NameLink" href="http://yangzhihuan.javaeye.com/" target="_blank">yanghuan</a>
+				</div>
+			</div>
+		
+			<div class="post">
+				<h2>
+					<a title="permalink: re: 让will_paginate的分页支持ajax" href="/chengang/archive/2007/09/02/142077.html#240614">#</a>&nbsp;<a name="240614"></a>re: 让will_paginate的分页支持ajax&nbsp;&nbsp;<a onclick="return SetReplyAuhor(&quot;yanghuan&quot;)" href="/chengang/archive/2007/09/02/142077.html#post">回复</a>&nbsp;&nbsp;<a title="查看该作者发表过的评论" href="http://www.blogjava.net/comment?author=yanghuan" target="_blank">更多评论</a>
+					<a id="AjaxHolder_Comments_CommentList_ctl09_DeleteLink" href="javascript:__doPostBack('AjaxHolder$Comments$CommentList$ctl09$DeleteLink','')"></a>&nbsp;&nbsp;<a id="AjaxHolder_Comments_CommentList_ctl09_EditLink"></a>
+				</h2>
+				请问一下：mattr_reader 这个是怎么用的？？
+				<div class="postfoot">
+					2008-11-14 22:48 | <a id="AjaxHolder_Comments_CommentList_ctl09_NameLink" href="http://yangzhihuan.javaeye.com/" target="_blank">yanghuan</a>
+				</div>
+			</div>
+		
+			<div class="post">
+				<h2>
+					<a title="permalink: re: 让will_paginate的分页支持ajax" href="/chengang/archive/2007/09/02/142077.html#240622">#</a>&nbsp;<a name="240622"></a>re: 让will_paginate的分页支持ajax&nbsp;&nbsp;<a onclick="return SetReplyAuhor(&quot;yanghuan&quot;)" href="/chengang/archive/2007/09/02/142077.html#post">回复</a>&nbsp;&nbsp;<a title="查看该作者发表过的评论" href="http://www.blogjava.net/comment?author=yanghuan" target="_blank">更多评论</a>
+					<a id="AjaxHolder_Comments_CommentList_ctl10_DeleteLink" href="javascript:__doPostBack('AjaxHolder$Comments$CommentList$ctl10$DeleteLink','')"></a>&nbsp;&nbsp;<a id="AjaxHolder_Comments_CommentList_ctl10_EditLink"></a>
+				</h2>
+				假如使用RJS的话，普通的分页就可以实现无刷新页面的效果了。
+				<div class="postfoot">
+					2008-11-15 01:00 | <a id="AjaxHolder_Comments_CommentList_ctl10_NameLink" href="http://yangzhihuan.javaeye.com/" target="_blank">yanghuan</a>
+				</div>
+			</div>
+		
+			<div class="post">
+				<h2>
+					<a title="permalink: re: 让will_paginate的分页支持ajax[未登录]" href="/chengang/archive/2007/09/02/142077.html#240681">#</a>&nbsp;<a name="240681"></a>re: 让will_paginate的分页支持ajax[未登录]&nbsp;&nbsp;<a onclick="return SetReplyAuhor(&quot;YY&quot;)" href="/chengang/archive/2007/09/02/142077.html#post">回复</a>&nbsp;&nbsp;<a title="查看该作者发表过的评论" href="http://www.blogjava.net/comment?author=YY" target="_blank">更多评论</a>
+					<a id="AjaxHolder_Comments_CommentList_ctl11_DeleteLink" href="javascript:__doPostBack('AjaxHolder$Comments$CommentList$ctl11$DeleteLink','')"></a>&nbsp;&nbsp;<a id="AjaxHolder_Comments_CommentList_ctl11_EditLink"></a>
+				</h2>
+				找不到page_count這個方法 這是wii_paginate內建的方法嗎?
+				<div class="postfoot">
+					2008-11-15 15:58 | <a id="AjaxHolder_Comments_CommentList_ctl11_NameLink" target="_blank">YY</a>
+				</div>
+			</div>
+		
+			<div class="post">
+				<h2>
+					<a title="permalink: re: 让will_paginate的分页支持ajax" href="/chengang/archive/2007/09/02/142077.html#240764">#</a>&nbsp;<a name="240764"></a>re: 让will_paginate的分页支持ajax&nbsp;&nbsp;<a onclick="return SetReplyAuhor(&quot;yanghuan&quot;)" href="/chengang/archive/2007/09/02/142077.html#post">回复</a>&nbsp;&nbsp;<a title="查看该作者发表过的评论" href="http://www.blogjava.net/comment?author=yanghuan" target="_blank">更多评论</a>
+					<a id="AjaxHolder_Comments_CommentList_ctl12_DeleteLink" href="javascript:__doPostBack('AjaxHolder$Comments$CommentList$ctl12$DeleteLink','')"></a>&nbsp;&nbsp;<a id="AjaxHolder_Comments_CommentList_ctl12_EditLink"></a>
+				</h2>
+				楼上的，你把<br>total_pages = entries.page_count<br><br>换成<br><br>total_pages = entries.total_pages<br>就没问题了，这是因为WillPaginate::Collection中没有page_count方法。
+				<div class="postfoot">
+					2008-11-16 01:15 | <a id="AjaxHolder_Comments_CommentList_ctl12_NameLink" href="http://yangzhihuan.javaeye.com/" target="_blank">yanghuan</a>
+				</div>
+			</div>
+		
+			<div class="post">
+				<h2>
+					<a title="permalink: re: 让will_paginate的分页支持ajax" href="/chengang/archive/2007/09/02/142077.html#292105">#</a>&nbsp;<a name="292105"></a>re: 让will_paginate的分页支持ajax<a name="Post"></a>&nbsp;&nbsp;<a onclick="return SetReplyAuhor(&quot;fl1429&quot;)" href="/chengang/archive/2007/09/02/142077.html#post">回复</a>&nbsp;&nbsp;<a title="查看该作者发表过的评论" href="http://www.blogjava.net/comment?author=fl1429" target="_blank">更多评论</a>
+					<a id="AjaxHolder_Comments_CommentList_ctl13_DeleteLink" href="javascript:__doPostBack('AjaxHolder$Comments$CommentList$ctl13$DeleteLink','')"></a>&nbsp;&nbsp;<a id="AjaxHolder_Comments_CommentList_ctl13_EditLink"></a>
+				</h2>
+				过时了吧........
+				<div class="postfoot">
+					2009-08-21 15:03 | <a id="AjaxHolder_Comments_CommentList_ctl13_NameLink" href="http://www.blogjava.net/fl1429/" target="_blank">fl1429</a>
+				</div>
+			</div>
+		
+</div>
+
+<style>
+td { font-size: 12px }
+.commentTextBox 
+{ 
+    font-family : Verdana; 
+    font-size: 13px;
+ }
+</style>
+<!--Beging Temp Save-->
+<STYLE>.userData { BEHAVIOR: url(#default#userdata) }
+	</STYLE>
+<DIV class="userData" id="CommentsPersistDiv"></DIV>
+
+<script type="text/javascript">
+function pageLoad()
+{
+    Sys.WebForms.PageRequestManager.getInstance().add_initializeRequest(handleInitializeRequest);
+    //Sys.WebForms.PageRequestManager.getInstance().add_endRequest(handleEndRequest);
+}
+
+function handleInitializeRequest(sender, args)
+{
+    var prm = Sys.WebForms.PageRequestManager.getInstance();
+    var eid = args.get_postBackElement().id;
+    if (eid.indexOf("DeleteLink")>0) 
+    {
+       args.get_postBackElement().innerHTML = "<font color='red'>正在删除...</font>";         
+    }    
+    else if (eid.indexOf("btnSubmit")>0) 
+    {
+       document.getElementById("AjaxHolder_PostComment_ltSubmitMsg").innerHTML="正在提交...";
+       document.getElementById("AjaxHolder_PostComment_btnSubmit").disabled = true;       
+    }   
+    else if(eid.indexOf("refreshList")>0)
+    {
+        document.getElementById("AjaxHolder_PostComment_refreshList").innerHTML="<font color='red'>正在刷新...</font>";
+    }
+   
+}	
+
+function TempSave(ElementID)
+{
+	try
+	{
+	CommentsPersistDiv.setAttribute("CommentContent",document.getElementById(ElementID).value);
+	CommentsPersistDiv.save("CommentXMLStore");
+	}
+	catch(ex)
+	{
+	}
+	
+}
+function Restore(ElementID)
+{
+	CommentsPersistDiv.load("CommentXMLStore");
+	document.getElementById(ElementID).value=CommentsPersistDiv.getAttribute("CommentContent");
+}	
+			
+			
+</script>
+<!--Ene TempSave-->
+<div id="divRefreshComments" style="text-align:right;margin-right:10px;margin-bottom:5px;font-size:12px"><a href="/RequireRegister.aspx">新用户注册</a>&nbsp;&nbsp;<a id="AjaxHolder_PostComment_refreshList" href="javascript:__doPostBack('AjaxHolder$PostComment$refreshList','')">刷新评论列表</a>&nbsp;&nbsp;</div>
+<div class="commentform">
+<span id="AjaxHolder_PostComment_ltSubmitMsg" style="color:Red;"></span>
+<br />
+<a name="Feedback"></a>
+	<TABLE cellSpacing="1" cellPadding="1" border="0">
+		<tr>
+		<td id="AjaxHolder_PostComment_tdOnCommentForm" colspan="3" style="line-height:1.5">		
+		</td>
+	
+		</tr>
+		
+		<tr><td colSpan="3">只有注册用户<a href='http://www.blogjava.net/login.aspx?ReturnUrl=/chengang/archive/2007/09/02/142077.html'>登录</a>后才能发表评论。</td></tr>
+		<TR>
+			<TD colSpan="3"><!--该文被作者在 2007-09-05 17:35 编辑过--></TD>
+		</TR>
+		<!--
+		<TR>
+			<TD colSpan="3" height="5"></TD>
+		</TR>	
+		-->	
+		<TR>
+		<TD colSpan="3">
+		<br/>
+		
+<script type='text/javascript'>
+var googletag = googletag || {};
+googletag.cmd = googletag.cmd || [];
+(function() {
+var gads = document.createElement('script');
+gads.async = true;
+gads.type = 'text/javascript';
+var useSSL = 'https:' == document.location.protocol;
+gads.src = (useSSL ? 'https:' : 'http:') + 
+'//www.googletagservices.com/tag/js/gpt.js';
+var node = document.getElementsByTagName('script')[0];
+node.parentNode.insertBefore(gads, node);
+})();
+</script>
+
+<script type='text/javascript'>
+googletag.cmd.push(function() {
+googletag.defineSlot('/1090369/blogjava_blogpost_bottom', [300, 250], 'div-gpt-ad-1364133350381-0').addService(googletag.pubads());
+googletag.pubads().enableSingleRequest();
+googletag.enableServices();
+});
+</script>
+<!-- blogjava_blogpost_bottom -->
+<div id='div-gpt-ad-1364133350381-0' style='width:300px; height:250px;'>
+<script type='text/javascript'>
+googletag.cmd.push(function() { googletag.display('div-gpt-ad-1364133350381-0'); });
+</script>
+</div>
+<br/>
+
+		</TD>
+		</TR>
+		<tr>			
+		<td colspan="3">
+		
+		</td>
+		</tr>
+		<TR>
+		<TD colSpan="3"></TD>
+		</TR>
+		<TR>
+			<TD colSpan="3" height="1">网站导航:<div id="blogsite">
+			<a href="http://www.cnblogs.com" title="开发者的网上家园">博客园</a>&nbsp;&nbsp;
+			<a href="https://news.cnblogs.com">IT新闻</a>&nbsp;&nbsp;
+			<a href="http://kb.cnblogs.com">知识库</a>&nbsp;&nbsp;
+			<a href="http://www.cppblog.com">C++博客</a>&nbsp;&nbsp;
+			<a href="https://q.cnblogs.com">博问</a>&nbsp;&nbsp;
+			<a href="/chengang/archive/2007/09/02/142077.html?opt=admin">管理</a>
+			</div>
+		</TD>
+		</TR>
+		<TR>
+			<TD colSpan="3" height="5">
+<div id="divRelativePosts">
+相关文章:
+	
+			<ul style="margin-top:0px;padding-left:0px;">
+		
+			<li style='list-style:none;'>
+				<a id="AjaxHolder_PostComment_ctl07_RelativePostsList_ctl01_Hyperlink1" href="http://www.blogjava.net/chengang/archive/2007/10/18/153970.html">VIM的常用插件+配置文件+资料</a>
+			</li>
+		
+			<li style='list-style:none;'>
+				<a id="AjaxHolder_PostComment_ctl07_RelativePostsList_ctl02_Hyperlink1" href="http://www.blogjava.net/chengang/archive/2007/10/11/151900.html">个性化页面布局的设计思考与Rails初步实现</a>
+			</li>
+		
+			<li style='list-style:none;'>
+				<a id="AjaxHolder_PostComment_ctl07_RelativePostsList_ctl03_Hyperlink1" href="http://www.blogjava.net/chengang/archive/2007/09/26/148412.html">抽取FCKEditor的浏览图片功能</a>
+			</li>
+		
+			<li style='list-style:none;'>
+				<a id="AjaxHolder_PostComment_ctl07_RelativePostsList_ctl04_Hyperlink1" href="http://www.blogjava.net/chengang/archive/2007/09/26/148114.html">让Rails版的FCKEditor支持动态设置上传目录</a>
+			</li>
+		
+			<li style='list-style:none;'>
+				<a id="AjaxHolder_PostComment_ctl07_RelativePostsList_ctl05_Hyperlink1" href="http://www.blogjava.net/chengang/archive/2007/09/24/147867.html">定制FCKEditor，以及使其中文化</a>
+			</li>
+		
+			<li style='list-style:none;'>
+				<a id="AjaxHolder_PostComment_ctl07_RelativePostsList_ctl06_Hyperlink1" href="http://www.blogjava.net/chengang/archive/2007/09/19/146548.html">error_messages_for的中文化</a>
+			</li>
+		
+			<li style='list-style:none;display:none'>
+				<a id="AjaxHolder_PostComment_ctl07_RelativePostsList_ctl07_Hyperlink1" href="http://www.blogjava.net/chengang/archive/2007/09/02/142077.html">让will_paginate的分页支持ajax</a>
+			</li>
+		
+			<li style='list-style:none;'>
+				<a id="AjaxHolder_PostComment_ctl07_RelativePostsList_ctl08_Hyperlink1" href="http://www.blogjava.net/chengang/archive/2007/08/25/139287.html">在Rails中使用FCKeditor插件实现WEB富文本编辑</a>
+			</li>
+		
+			<li style='list-style:none;'>
+				<a id="AjaxHolder_PostComment_ctl07_RelativePostsList_ctl09_Hyperlink1" href="http://www.blogjava.net/chengang/archive/2007/08/23/138780.html">mootools VS prototype</a>
+			</li>
+		
+			<li style='list-style:none;'>
+				<a id="AjaxHolder_PostComment_ctl07_RelativePostsList_ctl10_Hyperlink1" href="http://www.blogjava.net/chengang/archive/2007/08/17/137683.html">Rails验证码图片的实现</a>
+			</li>
+		
+			</ul>
+		
+</div>
+</TD>
+		</TR>	
+		<TR>
+			<TD colSpan="3">&nbsp;</TD>
+		</TR>
+		<TR>
+			<TD colSpan="3" height="5"></TD>
+		</TR>
+		<TR>
+			<TD colSpan="3">
+				</TD>
+		</TR>		
+	</TABLE>	
+</div>
+<div id="AjaxHolder_PostComment_ValidationSummary1" style="color:Red;display:none;">
+
+	</div>
+
+</div>
+
+				
+			</div>
+		</td>
+	</tr>
+	<tr>
+		<td class="FooterCell">
+			
+<p id="footer">
+	Powered by: 
+	<br />
+	
+	<a id="Footer1_Hyperlink3" NAME="Hyperlink1" href="http://www.blogjava.net/" style="font-family:Verdana;font-size:12px;">BlogJava</a>
+	<br />
+	Copyright &copy; 陈刚
+</p>
+		</td>
+	</tr>
+</table>
+<div id="lefttemp" style="display:none">
+
+					
+<h3>导航</h3>
+<ul>
+	<li>
+		
+	<li>
+		<a id="MyLinks1_MyHomeLink" href="http://www.blogjava.net/chengang/">首页</a>
+	<li>
+		<a id="MyLinks1_NewPostLink" href="http://www.blogjava.net/chengang/admin/EditPosts.aspx?opt=1">新随笔</a>
+	<li>
+		<a id="MyLinks1_ContactLink" accesskey="9" href="http://www.blogjava.net/chengang/contact.aspx?id=1">联系</a>
+	<li>
+		<a id="MyLinks1_XMLLink" href="http://www.blogjava.net/chengang/rss"><img src="http://www.blogjava.net/images/xml.gif" alt="RSS 2.0 Feed" style="border-width:0px;" /></a><a id="MyLinks1_Syndication" href="http://www.blogjava.net/chengang/rss">聚合</a>
+	<li>
+		<a id="MyLinks1_Admin" href="http://www.blogjava.net/chengang/admin/EditPosts.aspx">管理</a></li>
+
+</ul>
+
+					
+					
+					
+		<h3>随笔分类<span style="font-size:11px;font-weight:normal">(117)</span></h3>
+		
+				<ul>
+			
+				<li><a id="SingleColumn1_Categories_CatList_ctl00_LinkList_ctl01_Link" href="http://www.blogjava.net/chengang/category/8012.html">Eclipse(16)</a><a id="SingleColumn1_Categories_CatList_ctl00_LinkList_ctl01_RssLink" title="Subscribe to Eclipse(16)" href="http://www.blogjava.net/chengang/category/8012.html/rss">(rss)</a></li>
+			
+				<li><a id="SingleColumn1_Categories_CatList_ctl00_LinkList_ctl02_Link" href="http://www.blogjava.net/chengang/category/8707.html">Eclipse从入门到精通(16)</a><a id="SingleColumn1_Categories_CatList_ctl00_LinkList_ctl02_RssLink" title="Subscribe to Eclipse从入门到精通(16)" href="http://www.blogjava.net/chengang/category/8707.html/rss">(rss)</a></li>
+			
+				<li><a id="SingleColumn1_Categories_CatList_ctl00_LinkList_ctl03_Link" href="http://www.blogjava.net/chengang/category/28246.html">Jakarta Commons(2)</a><a id="SingleColumn1_Categories_CatList_ctl00_LinkList_ctl03_RssLink" title="Subscribe to Jakarta Commons(2)" href="http://www.blogjava.net/chengang/category/28246.html/rss">(rss)</a></li>
+			
+				<li><a id="SingleColumn1_Categories_CatList_ctl00_LinkList_ctl04_Link" href="http://www.blogjava.net/chengang/category/8014.html">Java(11)</a><a id="SingleColumn1_Categories_CatList_ctl00_LinkList_ctl04_RssLink" title="Subscribe to Java(11)" href="http://www.blogjava.net/chengang/category/8014.html/rss">(rss)</a></li>
+			
+				<li><a id="SingleColumn1_Categories_CatList_ctl00_LinkList_ctl05_Link" href="http://www.blogjava.net/chengang/category/12967.html">jBPM(5)</a><a id="SingleColumn1_Categories_CatList_ctl00_LinkList_ctl05_RssLink" title="Subscribe to jBPM(5)" href="http://www.blogjava.net/chengang/category/12967.html/rss">(rss)</a></li>
+			
+				<li><a id="SingleColumn1_Categories_CatList_ctl00_LinkList_ctl06_Link" href="http://www.blogjava.net/chengang/category/8015.html">JMX(10)</a><a id="SingleColumn1_Categories_CatList_ctl00_LinkList_ctl06_RssLink" title="Subscribe to JMX(10)" href="http://www.blogjava.net/chengang/category/8015.html/rss">(rss)</a></li>
+			
+				<li><a id="SingleColumn1_Categories_CatList_ctl00_LinkList_ctl07_Link" href="http://www.blogjava.net/chengang/category/23634.html">Linux(6)</a><a id="SingleColumn1_Categories_CatList_ctl00_LinkList_ctl07_RssLink" title="Subscribe to Linux(6)" href="http://www.blogjava.net/chengang/category/23634.html/rss">(rss)</a></li>
+			
+				<li><a id="SingleColumn1_Categories_CatList_ctl00_LinkList_ctl08_Link" href="http://www.blogjava.net/chengang/category/20990.html">Rails&Ruby(24)</a><a id="SingleColumn1_Categories_CatList_ctl00_LinkList_ctl08_RssLink" title="Subscribe to Rails&amp;Ruby(24)" href="http://www.blogjava.net/chengang/category/20990.html/rss">(rss)</a></li>
+			
+				<li><a id="SingleColumn1_Categories_CatList_ctl00_LinkList_ctl09_Link" href="http://www.blogjava.net/chengang/category/8414.html">Test(4)</a><a id="SingleColumn1_Categories_CatList_ctl00_LinkList_ctl09_RssLink" title="Subscribe to Test(4)" href="http://www.blogjava.net/chengang/category/8414.html/rss">(rss)</a></li>
+			
+				<li><a id="SingleColumn1_Categories_CatList_ctl00_LinkList_ctl10_Link" href="http://www.blogjava.net/chengang/category/8013.html">技术其他(13)</a><a id="SingleColumn1_Categories_CatList_ctl00_LinkList_ctl10_RssLink" title="Subscribe to 技术其他(13)" href="http://www.blogjava.net/chengang/category/8013.html/rss">(rss)</a></li>
+			
+				<li><a id="SingleColumn1_Categories_CatList_ctl00_LinkList_ctl11_Link" href="http://www.blogjava.net/chengang/category/14925.html">数据结构(2)</a><a id="SingleColumn1_Categories_CatList_ctl00_LinkList_ctl11_RssLink" title="Subscribe to 数据结构(2)" href="http://www.blogjava.net/chengang/category/14925.html/rss">(rss)</a></li>
+			
+				<li><a id="SingleColumn1_Categories_CatList_ctl00_LinkList_ctl12_Link" href="http://www.blogjava.net/chengang/category/8413.html">项目日记(8)</a><a id="SingleColumn1_Categories_CatList_ctl00_LinkList_ctl12_RssLink" title="Subscribe to 项目日记(8)" href="http://www.blogjava.net/chengang/category/8413.html/rss">(rss)</a></li>
+			
+				</ul>
+			
+	
+
+<script language="JavaScript">
+function SearchGoogle(key,evt,site)
+		{
+			if(evt.keyCode==13 || evt.keyCode==0 || evt.type =='click')
+			{
+				key.focus();
+				var keystr = encodeURIComponent(key.value);
+				url = "http://www.google.com/search?q=";
+				url = url+keystr;
+				url += "&ie=UTF-8&oe=GB2312&hl=zh-CN&domains="+site+"&sitesearch="+site;
+				window.location=url;
+				return false;
+			}
+		}
+</script>
+<H3>搜索</H3>
+<ul>
+	<li>
+		<li><input style="WIDTH: 130px" type="text" name="q" id="q" onkeydown="return SearchGoogle(document.getElementById('q'),event,'www.blogjava.net/chengang')">&nbsp;<input onclick="SearchGoogle(document.getElementById('q'),event,'www.blogjava.net/chengang')" type="button" value="搜索" name="sa">
+	</li>
+</ul>
+
+<H3>积分与排名</H3>
+<ul>
+	<li>
+		积分 -
+		691803
+	<li>
+		排名 -
+		56
+	</li>
+</ul>
+
+<h3>最新评论
+	<a id="SingleColumn1__1d581e4_RSSHyperlink1" href="http://www.blogjava.net/chengang/CommentsRSS.aspx"><img src="/images/xml.gif" style="border-width:0px;" /></a></h3>
+<div class="RecentComment">
+	
+			<ul>
+		
+			<li style="word-break:break-all">
+				<a id="SingleColumn1__1d581e4_CommentList_ctl01_Hyperlink1" href="http://www.blogjava.net/chengang/archive/2015/05/26/57986.html#425313">1. re: jBPM开发入门指南(1)</a>
+			</li>
+			<li style="word-break:break-all">
+				@钟城<br>@陈勇<br>你们找到原因了么？我现在按照他的博客步奏做，也是一运行start.bat就闪退，根本没办法启动服务。
+			</li>
+			<li style="text-align:right;margin-right:4px">
+				--实习</li>
+		
+			<li style="word-break:break-all">
+				<a id="SingleColumn1__1d581e4_CommentList_ctl02_Hyperlink1" href="http://www.blogjava.net/chengang/archive/2014/06/06/108666.html#414460">2. re: 怎么成为Eclipse插件开发的高手</a>
+			</li>
+			<li style="word-break:break-all">
+				狗屎
+			</li>
+			<li style="text-align:right;margin-right:4px">
+				--艹楼主</li>
+		
+			<li style="word-break:break-all">
+				<a id="SingleColumn1__1d581e4_CommentList_ctl03_Hyperlink1" href="http://www.blogjava.net/chengang/archive/2014/05/20/43378.html#413863">3. re: 在Eclipse RCP中使用Spring解析问题</a>
+			</li>
+			<li style="word-break:break-all">
+				你好，我用你的方法，文件找到了。可是解析出现了不少问题，求指导
+			</li>
+			<li style="text-align:right;margin-right:4px">
+				--王传</li>
+		
+			<li style="word-break:break-all">
+				<a id="SingleColumn1__1d581e4_CommentList_ctl04_Hyperlink1" href="http://www.blogjava.net/chengang/archive/2014/04/18/57986.html#412658">4. re: jBPM开发入门指南(1)[未登录]</a>
+			</li>
+			<li style="word-break:break-all">
+				jbpm-server 目录下的 start.bat不能启动，是什么问题？？
+			</li>
+			<li style="text-align:right;margin-right:4px">
+				--陈勇</li>
+		
+			<li style="word-break:break-all">
+				<a id="SingleColumn1__1d581e4_CommentList_ctl05_Hyperlink1" href="http://www.blogjava.net/chengang/archive/2013/10/07/34061.html#404708">5. re: [JMX一步步来]　1、JMX的Hello World</a>
+			</li>
+			<li style="word-break:break-all">
+				54
+			</li>
+			<li style="text-align:right;margin-right:4px">
+				--12</li>
+		
+			</ul>
+		
+</div>
+
+<h3>阅读排行榜</h3>
+<div class="RecentComment">
+	
+			<ul style="word-break:break-all">
+		
+			<li>
+				<a id="SingleColumn1__2d129a9_TopList_ctl01_Hyperlink1" href="http://www.blogjava.net/chengang/archive/2006/07/13/57986.html">1. jBPM开发入门指南(1)(73562)</a>
+			</li>
+		
+			<li>
+				<a id="SingleColumn1__2d129a9_TopList_ctl02_Hyperlink1" href="http://www.blogjava.net/chengang/archive/2006/08/23/65346.html">2. jBPM开发入门指南(3) (44779)</a>
+			</li>
+		
+			<li>
+				<a id="SingleColumn1__2d129a9_TopList_ctl03_Hyperlink1" href="http://www.blogjava.net/chengang/archive/2006/04/24/42868.html">3. 《Eclipse从入门到精通》常见问题解答 (37983)</a>
+			</li>
+		
+			<li>
+				<a id="SingleColumn1__2d129a9_TopList_ctl04_Hyperlink1" href="http://www.blogjava.net/chengang/archive/2006/08/22/65132.html">4. jBPM开发入门指南(2) (35665)</a>
+			</li>
+		
+			<li>
+				<a id="SingleColumn1__2d129a9_TopList_ctl05_Hyperlink1" href="http://www.blogjava.net/chengang/archive/2006/09/16/70069.html">5. jBPM开发入门指南(5) (32600)</a>
+			</li>
+		
+			</ul>
+		
+</div>
+
+
+</div>
+
+    
+<script type="text/javascript">
+//<![CDATA[
+var Page_ValidationSummaries =  new Array(document.getElementById("AjaxHolder_PostComment_ValidationSummary1"));
+//]]>
+</script>
+
+<script type="text/javascript">
+//<![CDATA[
+var AjaxHolder_PostComment_ValidationSummary1 = document.all ? document.all["AjaxHolder_PostComment_ValidationSummary1"] : document.getElementById("AjaxHolder_PostComment_ValidationSummary1");
+AjaxHolder_PostComment_ValidationSummary1.showmessagebox = "True";
+AjaxHolder_PostComment_ValidationSummary1.showsummary = "False";
+//]]>
+</script>
+
+
+<script type="text/javascript">
+//<![CDATA[
+
+document.getElementById('AjaxHolder_PostComment_ValidationSummary1').dispose = function() {
+    Array.remove(Page_ValidationSummaries, document.getElementById('AjaxHolder_PostComment_ValidationSummary1'));
+}
+Sys.Application.initialize();
+//]]>
+</script>
+</form>
+    <script type="text/javascript" src="/script/ShowHidden.js"></script>
+	<script type="text/javascript">
+	  var _gaq = _gaq || [];
+	  _gaq.push(['_setAccount', 'UA-476124-3']);
+	  _gaq.push(['_trackPageview']);
+
+	  (function() {
+		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	  })();
+	</script>
+</body>
+</html>
