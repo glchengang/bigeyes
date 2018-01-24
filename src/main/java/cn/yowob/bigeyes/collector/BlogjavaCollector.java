@@ -3,6 +3,7 @@ package cn.yowob.bigeyes.collector;
 import cn.yowob.bigeyes.Configuration;
 import cn.yowob.bigeyes.FilenameHelper;
 import cn.yowob.bigeyes.ProjectCommons;
+import com.overzealous.remark.Options;
 import com.overzealous.remark.Remark;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -209,11 +210,15 @@ public class BlogjavaCollector extends AbstractCollector implements Collector {
 
 			Document document = ProjectCommons.getDocument(url);
 			this.toHexoImage(document);
+
 			/**
 			 * http://remark.overzealous.com/manual/index.html
 			 */
-			Remark remark = new Remark();
-			String content = remark.convert(document.selectFirst("#my_post_content").html());
+			Options opts = Options.markdown();
+			opts.tables = Options.Tables.CONVERT_TO_CODE_BLOCK;
+			Remark remark = new Remark(opts);
+			String content = document.selectFirst("#my_post_content").html();
+			content = remark.convertFragment(content);
 			lines.add(content);
 			/**
 			 * comments
@@ -245,28 +250,34 @@ public class BlogjavaCollector extends AbstractCollector implements Collector {
 			boolean isBlock = false;
 			for (int i = 0; i < oldLines.size(); i++) {
 				String line = oldLines.get(i);
-				line = StringUtils.trimToNull(line.trim());
-				boolean isTitle = (line != null && (line.startsWith("#") || line.startsWith("---------")));
-				if (isTitle) {
-					newLines.add(NEW_LINE);
-				}
-				line = ProjectCommons.revertRemarkChange(line);
-				if (line == null) {
-					//pass
-				} else if (line.equals(BLOCK_MARK)) {
+				String cleanLine = line.trim();
+//				boolean isTitle = (!isBlock && (cleanLine.startsWith("#") || cleanLine.startsWith("---------")));
+//				if (isTitle) {
+//					newLines.add(NEW_LINE);
+//				}
+				cleanLine = ProjectCommons.revertRemarkChange(cleanLine);
+				if (cleanLine.equals(BLOCK_MARK)) {
 					newLines.add("```");
 					isBlock = !isBlock;
-				} else if (line.startsWith("l ")) {
-					newLines.add(line.replaceFirst("l ", "- "));
-				} else {
-					if (isBlock) {
-						line = StringUtils.replace(line, "**", "");
+				} else if (cleanLine.startsWith("l ")) {
+					newLines.add(cleanLine.replaceFirst("l ", "- "));
+				} else if (cleanLine.startsWith("| ")) {
+					newLines.add(cleanLine);
+				} else if (isBlock) { //处理代码块里很多的粗体字
+					if (cleanLine.equals("") || cleanLine.equals(" ")) {
+						// 压缩空行
+					} else {
+						while (cleanLine.indexOf("  ") != -1) {
+							cleanLine = StringUtils.replace(cleanLine, "  ", " ");//压缩行内的空格
+						}
+						newLines.add(cleanLine);
 					}
+				} else {
 					newLines.add(line);
 				}
-				if (isTitle) {
-					newLines.add(NEW_LINE);
-				}
+//				if (isTitle) {
+//					newLines.add(NEW_LINE);
+//				}
 			}
 			String returnURL = this.outputDir + imagesDirName + ".md";
 			FileUtils.writeLines(new File(returnURL), newLines, NEW_LINE);
@@ -331,10 +342,12 @@ public class BlogjavaCollector extends AbstractCollector implements Collector {
 	 * 处理代码块
 	 */
 	private void handleCodeBlock(Document document) {
-		for (Element element : document.select("div[style*='background:'], div[style*='background-color:']")) {
-			element.clearAttributes();
-			element.prepend("<br/>" + BLOCK_MARK + "<br/>");
-			element.append("<br/>" + BLOCK_MARK + "<br/>");
+		for (Element blockElement : document.select("div[style*='background:'], div[style*='background-color:']")) {
+			for (Element e : blockElement.select("b,font,span")) {
+				e.unwrap();
+			}
+			blockElement.prepend("<br/>" + BLOCK_MARK + "<br/>");
+			blockElement.append("<br/>" + BLOCK_MARK + "<br/>");
 		}
 	}
 

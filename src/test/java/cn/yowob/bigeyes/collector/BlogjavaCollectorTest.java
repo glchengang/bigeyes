@@ -19,16 +19,14 @@ public class BlogjavaCollectorTest {
 
 	@Test
 	public void collectOne() throws Exception {
-//		String url = TEST_RESOURCES_DIR + "blogjava_test_01.html";
-		String url = TEST_RESOURCES_DIR + "blogjava_test_02_img.html";
-//		String url = TEST_RESOURCES_DIR + "blogjava_test_03_comments.html";
-//		String url = "http://www.blogjava.net/chengang/archive/2006/08/23/65346.html";
-		spider.collectOne(url);
+		spider.collectOne(TEST_RESOURCES_DIR + "blogjava_test_01_code.html");
+		spider.collectOne(TEST_RESOURCES_DIR + "blogjava_test_02_img_table.html");
+		spider.collectOne(TEST_RESOURCES_DIR + "blogjava_test_03_comments.html");
 	}
 
 	@Test
 	public void convertToMarkdown() throws Exception {
-		String url = "/Users/chen/workspace/oldblog/in/a.html";
+		String url = "/Volumes/M320/Downloads/tmp/blogjava/tmp/a.html";
 		spider.convertToMarkdown(url);
 	}
 
